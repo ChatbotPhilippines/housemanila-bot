@@ -44,5 +44,7 @@ module.exports = [
         });
         
         session.send(reply);
+        session.endDialog();
     }
+    
 ]
