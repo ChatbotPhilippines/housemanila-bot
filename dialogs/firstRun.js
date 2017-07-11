@@ -1,6 +1,7 @@
 'use strict';
 
 var builder = require('botbuilder');
+const menu = require('./dialogs/mainMenu');
 
 module.exports = [
     function(session){
@@ -22,7 +23,7 @@ module.exports = [
     },
     function(session, results){
         if(results.response){
-            session.beginDialog('/mainMenu');
+            session.beginDialog('/mainMenu', menu);
         }
         else{
             session.send('Lol may error ka sa simula pa lang eww.');
