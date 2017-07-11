@@ -31,6 +31,8 @@ server.post('/api/messages', connector.listen());
 // Start of Conversation
 //=======================================================
 
+bot.dialog('/', firstRun);
+bot.dialog('/guestlist', guestlist);
 bot.dialog('/guestnames', [  
     function (session, args, next) {
         builder.Prompts.text(session, 'Please enter the names you would like to add in the guest list (separated by a comma):');
@@ -52,7 +54,5 @@ bot.dialog('/guestnames', [
 ]);
 
 
-bot.dialog('/', firstRun);
-bot.dialog('/guestlist', guestlist);
 //bot.dialog('/guestnames', names);
 bot.dialog('/bookTable', bookTable);
