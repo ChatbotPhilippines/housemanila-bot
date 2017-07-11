@@ -4,7 +4,7 @@
 const restify = require('restify');
 const builder = require('botbuilder');
 const config = require('./config');
-const dialogs = require('./dialogs');
+const dialogs = require('../dialogs');
 
 //=======================================================
 // Bot Setup
