@@ -63,7 +63,7 @@ module.exports = [
             var reply = results.response.entity;
             switch (reply){
                 case 'Guest-List':
-                    session.beginDialog('/guestList');
+                    session.beginDialog('/guestlist');
                 break;
 
                 case 'Book-Table':

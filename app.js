@@ -5,7 +5,7 @@ const restify = require('restify');
 const builder = require('botbuilder');
 const config = require('./config');
 const firstRun = require('./dialogs/firstRun');
-const names = require('./dialogs/guestnames');
+// const names = require('./dialogs/guestnames');
 const guestlist = require('./dialogs/guestlist');
 
 //=======================================================
@@ -32,5 +32,6 @@ server.post('/api/messages', connector.listen());
 //=======================================================
 
 bot.dialog('/', firstRun);
-bot.dialog('/guestnames', names);
 bot.dialog('/guestlist', guestlist);
+//bot.dialog('/guestnames', names);
+
