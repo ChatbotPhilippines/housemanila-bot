@@ -2,58 +2,59 @@
 
 var builder = require('botbuilder');
 
+
 module.exports = [
     function(session){
         var selectArray = [
-            "Guest-List",
-            "Book-Table",
-            "Events",
-            "Corporate-Functions"
+            "DROP",
+            "RSVP",
+            "Organized Chaos",
+            "We Own The Night"
         ];
 
         var cards = getCards();
         var reply = new builder.Message(session)
             .attachmentLayout(builder.AttachmentLayout.carousel)
             .attachments(cards);
-        session.send("What can I do for you?");
+        session.send("Which event would you like to get in the guest list for?");
         builder.Prompts.choice(session, reply, selectArray, { maxRetries:0,promptAfterAction:false});
 
         function getCards(session){
             return [
                 new builder.HeroCard(session)
-                .title('Guest List')
+                .title('DROP')
                 .images([
                     builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
                 ])
                 .buttons([
-                    builder.CardAction.imBack(session, 'Guest-List', 'Guest List')
+                    builder.CardAction.imBack(session, 'DROP', 'DROP')
                 ]),
 
                 new builder.HeroCard(session)
-                .title('Book a Table')
+                .title('RSVP')
                 .images([
                     builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
                 ])
                 .buttons([
-                    builder.CardAction.imBack(session, 'Book-Table', 'Book a Table')
+                    builder.CardAction.imBack(session, 'RSVP', 'RSVP')
                 ]),
 
                 new builder.HeroCard(session)
-                .title('Events')
+                .title('Organized Chaos')
                 .images([
                     builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
                 ])
                 .buttons([
-                    builder.CardAction.imBack(session, 'Events', 'See Upcoming Events')
+                    builder.CardAction.imBack(session, 'Organized', 'Organized Chaos')
                 ]),
 
                 new builder.HeroCard(session)
-                .title('Corporate Functions')
+                .title('We Own The Night')
                 .images([
                     builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
                 ])
                 .buttons([
-                    builder.CardAction.imBack(session, 'Corporate-Functions', 'Book an Event')
+                    builder.CardAction.imBack(session, 'WOTN', 'We Own The Night')
                 ])
             ]
         }
@@ -62,20 +63,20 @@ module.exports = [
         if (results.response){
             var reply = results.response.entity;
             switch (reply){
-                case 'Guest-List':
-                    session.beginDialog('/guest-list');
+                case 'DROP':
+                    session.beginDialog('/guestList');
                 break;
 
-                case 'Book-Table':
-                    session.beginDialog('/bookTable');
+                case 'RSVP':
+                    session.beginDialog('/guestList');
                 break;
 
-                case 'Events':
-                    session.beginDialog('/events');
+                case 'Organized':
+                    session.beginDialog('/guestList');
                 break;
 
-                case 'Corporate-Functions':
-                    session.beginDialog('/corporateFunctions');
+                case 'WOTN':
+                    session.beginDialog('/guestList');
                 break;
 
                 default:
