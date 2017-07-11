@@ -7,7 +7,7 @@ const config = require('./config');
 const firstRun = require('./dialogs/firstRun');
 // const names = require('./dialogs/guestnames');
 const guestlist = require('./dialogs/guestlist');
-const bookTable = require('.dialogs/bookTable');
+const bookTable = require('./dialogs/bookTable');
 
 //=======================================================
 // Bot Setup
