@@ -6,7 +6,7 @@ module.exports = [
     function(session){
         var cards = getCards();
         var reply = new builder.Message(session).addAttachment(cards);
-        builder.Prompts.choice(session, reply, { maxRetries:0,promptAfterAction:false})
+        builder.Prompts.choice(session, reply);
         
         function getCards(session){
             return [
