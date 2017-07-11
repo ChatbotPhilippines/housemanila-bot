@@ -4,7 +4,7 @@
 const restify = require('restify');
 const builder = require('botbuilder');
 const config = require('./config');
-const Dialogs = require('./dialogs');
+const firstRun = require('./dialogs/firstRun');
 
 //=======================================================
 // Bot Setup
@@ -28,4 +28,4 @@ var bot = new builder.UniversalBot(connector);
 // Start of Conversation
 //=======================================================
 
-bot.dialog('/', Dialogs.firstRun);
+bot.dialog('/', firstRun);
