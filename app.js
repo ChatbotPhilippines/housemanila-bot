@@ -32,5 +32,5 @@ server.post('/api/messages', connector.listen());
 //=======================================================
 
 bot.dialog('/', firstRun);
-bot.dialog('/guestnames', names);
-bot.dialog('/guestlist', guestlist);
+// bot.dialog('/guestnames', names);
+// bot.dialog('/guestlist', guestlist);
