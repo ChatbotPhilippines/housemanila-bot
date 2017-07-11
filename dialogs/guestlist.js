@@ -64,19 +64,19 @@ module.exports = [
             var reply = results.response.entity;
             switch (reply){
                 case 'DROP':
-                    session.beginDialog('/guestList');
+                    session.beginDialog('/guestnames');
                 break;
 
                 case 'RSVP':
-                    session.beginDialog('/guestList');
+                    session.beginDialog('/guestnames');
                 break;
 
                 case 'Organized':
-                    session.beginDialog('/guestList');
+                    session.beginDialog('/guestnames');
                 break;
 
                 case 'WOTN':
-                    session.beginDialog('/guestList');
+                    session.beginDialog('/guestnames');
                 break;
 
                 default:
