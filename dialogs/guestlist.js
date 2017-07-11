@@ -86,5 +86,7 @@ module.exports = [
         else{
             session.send('May error ka din lol.');
         }
+
+        session.endDialog();
     }
 ]
