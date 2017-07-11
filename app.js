@@ -5,8 +5,8 @@ const restify = require('restify');
 const builder = require('botbuilder');
 const config = require('./config');
 const firstRun = require('./dialogs/firstRun');
-const names = require('./dialogs/guestnames');
-const guestlist = require('./dialogs/guestlist');
+// const names = require('./dialogs/guestnames');
+// const guestlist = require('./dialogs/guestlist');
 
 //=======================================================
 // Bot Setup
