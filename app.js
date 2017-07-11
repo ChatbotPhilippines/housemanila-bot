@@ -6,6 +6,7 @@ const builder = require('botbuilder');
 const config = require('./config');
 const firstRun = require('./dialogs/firstRun');
 const guestlist = require('./dialogs/guestlist');
+const bookTable = require('./dialogs/bookTable');
 
 //=======================================================
 // Bot Setup
@@ -48,10 +49,10 @@ bot.dialog('/guestnames', [
             session.replaceDialog('/ensure-party');
         }
     }
-]););
+]);
 
 
 bot.dialog('/', firstRun);
 bot.dialog('/guestlist', guestlist);
-
-
+//bot.dialog('/guestnames', names);
+bot.dialog('/bookTable', bookTable);
