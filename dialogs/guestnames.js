@@ -2,13 +2,13 @@ var builder = require('botbuilder');
 
 module.exports = [
 
-    function (session, args, next) {
+    function (session, args) {
         builder.Prompts.text(session, 'Please enter the names you would like to add in the guest list (separated by a comma):');
     },
-    function (session, results, next) {
+    function (session, results) {
         if (results.response) {
-            session.dialogData.party = results.response.split(/[,\n]+/).map(function (x) { return x.trim(); }) || [];
-            builder.Prompts.confirm(session, `${session.dialogData.party.join('<br/>')}<br/>Is this confirmed?`)
+            //session.dialogData.party = results.response.split(/[,\n]+/).map(function (x) { return x.trim(); }) || [];
+            //builder.Prompts.confirm(session,`You entered: ${results.response} \n 'Is this confirmed?`)
         }
     },
     function (session, results) {
