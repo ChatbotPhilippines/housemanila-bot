@@ -64,7 +64,7 @@ module.exports = [
             var reply = results.response.entity;
             switch (reply){
                 case 'DROP':
-                    session.Dialog('/guestnames', [
+                    bot.Dialog('/guestnames', [
 function (session, args) {
         builder.Prompts.text(session, 'Please enter the names you would like to add in the guest list (separated by a comma):');
     },
