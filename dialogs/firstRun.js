@@ -4,7 +4,8 @@ var builder = require('botbuilder');
 
 module.exports = [
     function(session){
-        var reply = getCards();
+        var cards = getCards();
+        var reply = new builder.Message(session).addAttachment(cards);
         builder.Prompts.choice(session, reply, { maxRetries:0,promptAfterAction:false})
         
         function getCards(session){
