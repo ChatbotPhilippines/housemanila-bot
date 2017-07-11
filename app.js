@@ -41,7 +41,7 @@ bot.dialog('/guestnames', [
     },
     function (session, results) {
         if (results.response) {
-            session.dialogData.party = results.response.split(/[,\n]+/).map(function (x) { return x.trim(); }) || [];
+            //session.dialogData.party = results.response.split(/[,\n]+/).map(function (x) { return x.trim(); }) || [];
             builder.Prompts.confirm(session,`You entered: ${results.response} \n 'Is this confirmed?`)
         }
      },
@@ -50,7 +50,7 @@ bot.dialog('/guestnames', [
          if (choice === 'yes') {
              session.endDialogWithResult(session.dialogData.party);
          } else {
-             session.replaceDialog('/guestList');
+             session.replaceDialog('/guestnames');
         }
     }
 
