@@ -1,7 +1,7 @@
 'use strict';
 
 var builder = require('botbuilder');
-const menu = require('./dialogs/mainMenu');
+const menu = require('./mainMenu');
 
 module.exports = [
     function(session){
