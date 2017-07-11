@@ -10,13 +10,13 @@ module.exports = [
             //session.dialogData.party = results.response.split(/[,\n]+/).map(function (x) { return x.trim(); }) || [];
             //builder.Prompts.confirm(session,`You entered: ${results.response} \n 'Is this confirmed?`)
         }
-    },
-    function (session, results) {
-        var choice = results.response ? 'yes' : 'no';
-        if (choice === 'yes') {
-            session.endDialogWithResult(session.dialogData.party);
-        } else {
-            session.replaceDialog('/guestList');
-        }
+    // },
+    // function (session, results) {
+    //     var choice = results.response ? 'yes' : 'no';
+    //     if (choice === 'yes') {
+    //         session.endDialogWithResult(session.dialogData.party);
+    //     } else {
+    //         session.replaceDialog('/guestList');
+    //     }
     }
 ];
