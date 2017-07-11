@@ -7,6 +7,7 @@ const config = require('./config');
 const firstRun = require('./dialogs/firstRun');
 const guestlist = require('./dialogs/guestlist');
 const bookTable = require('./dialogs/bookTable');
+const names = require('./dialogs/guestnames');
 
 //=======================================================
 // Bot Setup
@@ -34,5 +35,5 @@ server.post('/api/messages', connector.listen());
 
 bot.dialog('/', firstRun);
 bot.dialog('/guestlist', guestlist);
-//bot.dialog('/guestnames', names);
+bot.dialog('/guestnames', names);
 bot.dialog('/bookTable', bookTable);
