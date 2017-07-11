@@ -9,6 +9,13 @@ const firstRun = require('./dialogs/firstRun');
 //=======================================================
 // Bot Setup
 //=======================================================
+//Setup Bot
+var connector = new builder.ChatConnector({
+  appId: config.appID,
+  appPassword: config.appPassword
+});
+var bot = new builder.UniversalBot(connector);
+
 
 //Setup Restify Server
 var server = restify.createServer();
@@ -17,12 +24,6 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 });
 server.post('/api/messages', connector.listen());
 
-//Setup Bot
-var connector = new builder.ChatConnector({
-  appId: config.appID,
-  appPassword: config.appPassword
-});
-var bot = new builder.UniversalBot(connector);
 
 //=======================================================
 // Start of Conversation
