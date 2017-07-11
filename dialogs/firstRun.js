@@ -63,19 +63,19 @@ module.exports = [
             var reply = results.response.entity;
             switch (reply){
                 case 'Guest-List':
-                    session.beginDialog('/guestlist');
+                    session.replaceDialog('/guestlist');
                 break;
 
                 case 'Book-Table':
-                    session.beginDialog('/bookTable');
+                    session.replaceDialog('/bookTable');
                 break;
 
                 case 'Events':
-                    session.beginDialog('/events');
+                    session.replaceDialog('/events');
                 break;
 
                 case 'Corporate-Functions':
-                    session.beginDialog('/corporateFunctions');
+                    session.replaceDialog('/corporateFunctions');
                 break;
 
                 default:
