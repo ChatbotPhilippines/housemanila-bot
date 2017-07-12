@@ -51,7 +51,6 @@ bot.dialog('/firstRun', [
             .attachments(cards)
 
         session.send(reply);
-        session.endDialog();
     }
 ]).triggerAction({matches:/Get_Started/i});
 
@@ -64,7 +63,7 @@ function main_menu_card(session){
                 builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
             ])
             .buttons([
-                builder.CardAction.imBack(session, 'mainMenu', 'Main Menu')
+                builder.CardAction.postBack(session, 'mainMenu', 'Main Menu')
             ])
     ]
 }
@@ -80,7 +79,7 @@ bot.dialog('/mainMenu', [
         session.send(reply);
         session.endDialog();
     }
-]);
+]).triggerAction({matches:/mainMenu/i});
 
 function main_menu(session){
     return [
