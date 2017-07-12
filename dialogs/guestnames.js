@@ -8,7 +8,7 @@ module.exports = [
     function (session, results) {
         if (results.response) {
             session.dialogData.party = results.response.split(/[,\n]+/).map(function (x) { return x.trim(); }) || [];
-            builder.Prompts.confirm(session,`You entered: ${results.response} \n 'Is this confirmed?`)
+            builder.Prompts.text(session,`You entered: ${results.response} \n 'Is this confirmed?`)
         }
      }
 ];
