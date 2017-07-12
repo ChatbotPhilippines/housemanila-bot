@@ -16,7 +16,7 @@ module.exports = [
          if (choice === 'yes') {
              session.endDialogWithResult(session.dialogData.party);
          } else {
-             session.replaceDialog('/guestList');
+             session.replaceDialog('/guestlist');
         }
     }
 ];
