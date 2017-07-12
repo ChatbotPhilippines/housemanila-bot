@@ -54,6 +54,11 @@ bot.dialog('/firstRun', [
     }
 ]).triggerAction({matches:/Get_Started/i});
 
+bot.dialog('/mainMenu').triggerAction({matches:/mainMenu/i});
+bot.dialog('/guestlist', guestlist);
+bot.dialog('/guestnames', names);
+bot.dialog('/bookTable', bookTable);
+
 function main_menu_card(session){
     return [
         new builder.HeroCard(session)
@@ -68,59 +73,57 @@ function main_menu_card(session){
     ]
 }
 
-bot.dialog('/mainMenu', [
-    function(session){        
-        var cards = main_menu();
+// bot.dialog('/mainMenu', [
+//     function(session){        
+//         var cards = main_menu();
 
-        var reply = new builder.Message(session)
-            .attachmentLayout(builder.AttachmentLayout.carousel)
-            .attachments(cards)
+//         var reply = new builder.Message(session)
+//             .attachmentLayout(builder.AttachmentLayout.carousel)
+//             .attachments(cards)
 
-        session.send(reply);
-        session.endDialog();
-    }
-]).triggerAction({matches:/mainMenu/i});
+//         session.send(reply);
+//         session.endDialog();
+//     }
+// ]).triggerAction({matches:/mainMenu/i});
 
-function main_menu(session){
-    return [
-    new builder.HeroCard(session)
-        .title('Guest List')        
-        .images([
-            builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-        ])
-        .buttons([
-            builder.CardAction.postBack(session, 'guestList', 'Guest List')
-        ]),
+// function main_menu(session){
+//     return [
+//     new builder.HeroCard(session)
+//         .title('Guest List')        
+//         .images([
+//             builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+//         ])
+//         .buttons([
+//             builder.CardAction.postBack(session, 'guestList', 'Guest List')
+//         ]),
 
-    new builder.ThumbnailCard(session)
-        .title('Book Table')        
-        .images([
-            builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-        ])
-        .buttons([
-            builder.CardAction.postBack(session, 'bookTable', 'Book Table')
-        ]),
+//     new builder.ThumbnailCard(session)
+//         .title('Book Table')        
+//         .images([
+//             builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+//         ])
+//         .buttons([
+//             builder.CardAction.postBack(session, 'bookTable', 'Book Table')
+//         ]),
     
-    new builder.HeroCard(session)
-        .title('Events')        
-        .images([
-            builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-        ])
-        .buttons([
-            builder.CardAction.postBack(session, 'events', 'Events')
-        ]),
-    new builder.ThumbnailCard(session)
-        .title('Corporate Functions')        
-        .images([
-            builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-        ])
-        .buttons([
-            builder.CardAction.postBack(session, 'corporateFunctions', 'Corporate Functions')
-        ])
-    ]
-}
+//     new builder.HeroCard(session)
+//         .title('Events')        
+//         .images([
+//             builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+//         ])
+//         .buttons([
+//             builder.CardAction.postBack(session, 'events', 'Events')
+//         ]),
+//     new builder.ThumbnailCard(session)
+//         .title('Corporate Functions')        
+//         .images([
+//             builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+//         ])
+//         .buttons([
+//             builder.CardAction.postBack(session, 'corporateFunctions', 'Corporate Functions')
+//         ])
+//     ]
+// }
 
 
-// bot.dialog('/guestlist', guestlist);
-// bot.dialog('/guestnames', names);
-// bot.dialog('/bookTable', bookTable);
+
