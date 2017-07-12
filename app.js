@@ -44,7 +44,7 @@ bot.dialog('/', [
 
 bot.dialog('/firstRun', [
     function(session){        
-        var cards = main_menu();
+        var cards = main_menu_card();
 
         var reply = new builder.Message(session)
             .attachmentLayout(builder.AttachmentLayout.carousel)
@@ -69,7 +69,7 @@ function main_menu_card(session){
     ]
 }
 
-bot.dialog('/MainMenu', [
+bot.dialog('/mainMenu', [
     function(session){        
         var cards = main_menu();
 
@@ -80,19 +80,44 @@ bot.dialog('/MainMenu', [
         session.send(reply);
         session.endDialog();
     }
-]).triggerAction({matches:/mainMenu/i});
+]);
 
 function main_menu(session){
     return [
-        new builder.HeroCard(session)
-            .title('Main Menu')
-            .subtitle('Hey I\'m House Manila Bot here to make your partying easier! 🎉🎉🎉 Click the button below to start!')
-            .images([
-                builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-            ])
-            .buttons([
-                builder.CardAction.postBack(session, 'mainMenu', 'Main Menu')
-            ])
+    new builder.HeroCard(session)
+        .title('Guest List')        
+        .images([
+            builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+        ])
+        .buttons([
+            builder.CardAction.postBack(session, 'guestList', 'Guest List')
+        ]),
+
+    new builder.ThumbnailCard(session)
+        .title('Book Table')        
+        .images([
+            builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+        ])
+        .buttons([
+            builder.CardAction.postBack(session, 'bookTable', 'Book Table')
+        ]),
+    
+    new builder.HeroCard(session)
+        .title('Events')        
+        .images([
+            builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+        ])
+        .buttons([
+            builder.CardAction.postBack(session, 'events', 'Events')
+        ]),
+    new builder.ThumbnailCard(session)
+        .title('Corporate Functions')        
+        .images([
+            builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+        ])
+        .buttons([
+            builder.CardAction.postBack(session, 'corporateFunctions', 'Corporate Functions')
+        ])
     ]
 }
 
