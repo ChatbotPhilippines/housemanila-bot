@@ -78,7 +78,7 @@ bot.dialog('/', [
                                 session.send(new builder.Message(session)
                                     .addAttachment(welcomeCard));
                                 
-                                next();
+                                
                             } else {
                                 session.userData.firstRun = true;
                                 var welcomeCard = new builder.HeroCard(session)
@@ -95,7 +95,7 @@ bot.dialog('/', [
                                 session.send(new builder.Message(session)
                                     .addAttachment(welcomeCard));
                                 
-                                next();
+                                
                             }
                         });
                     break;
@@ -104,7 +104,7 @@ bot.dialog('/', [
             }
 
         } else {
-            next();
+            
         }
     }
 ]);
