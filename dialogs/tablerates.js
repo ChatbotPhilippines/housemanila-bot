@@ -9,5 +9,6 @@ module.exports = [
                 contentUrl: "http://i.imgur.com/fJsZQY6.png"
             }]);
         builder.Prompts.confirm(session, `Is this confirmed?`);
-        //session.endDialog(msg);   
+        //session.endDialog(msg);
+    }   
 ]
