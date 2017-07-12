@@ -36,8 +36,28 @@ server.post('/api/messages', connector.listen());
 
 
 
-bot.dialog('/', menu);
-//bot.dialog('/mainmenu', menu);
+bot.dialog('/', [
+  function(session){
+        session.beginDialog('/firstRun');
+    }
+]);
+
+bot.dialog('/firstRun', [
+    function(session){        
+        var cards = menu;
+
+        var reply = new builder.Message(session)
+            .attachmentLayout(builder.AttachmentLayout.carousel)
+            .attachments(cards)
+
+        session.send(reply);
+        session.endDialog();
+    }
+]).triggerAction({matches:/Get_Started/i});
+
+
+
+
 bot.dialog('/guestlist', guestlist);
 bot.dialog('/guestnames', names);
 bot.dialog('/bookTable', bookTable);
