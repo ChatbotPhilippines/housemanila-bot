@@ -121,6 +121,8 @@ function main_menu(session){
 }
 
 
+
+
 // bot.dialog('/guestlist', guestlist);
 // bot.dialog('/guestnames', names);
 // bot.dialog('/bookTable', bookTable);
