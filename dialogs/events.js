@@ -63,14 +63,16 @@ var builder = require('botbuilder');
                 break;
 
                 case 'floor-plan':
-                    session.send("Here's the floor plan for this event");
-                    var imgfloor = new builder.Message(session)
-                        .addAttachment({
-                            contentURL: 'http://i.imgur.com/dzy25OF.jpg',
-                            contentType: 'image/jpg',
-                            name: 'NBS Logo'
-                        });
-                    session.send(imgfloor);
+                    // session.send("Here's the floor plan for this event");
+                    // var imgfloor = new builder.Message(session)
+                    //     .addAttachment({
+                    //         contentURL: 'http://i.imgur.com/dzy25OF.jpg',
+                    //         contentType: 'image/jpg',
+                    //         name: 'NBS Logo'
+                    //     });
+                    // session.send(imgfloor);
+
+                    session.replaceDialog('/floorplan'); 
 
                 break;
 

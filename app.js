@@ -1,3 +1,4 @@
+
 'use strict';
 
 //Declarations
@@ -13,6 +14,8 @@ const PAGE_ACCESS_TOKEN = 'EAAcMbSiRTlABADmflfXlqOWKZBh56eD9ruT9eRwC2oG8UhSndDgU
 const request = require('request');
 const events = require('./dialogs/events');
 const tablerates = require('./dialogs/tablerates');
+const floorplan = require('./dialogs/floorplan');
+
 //=======================================================
 // Bot Setup
 //=======================================================
@@ -62,6 +65,7 @@ bot.dialog('/guestlist', guestlist);
 bot.dialog('/bookTable', bookTable);
 bot.dialog('/events', events);
 bot.dialog('/tablerates', tablerates);
+bot.dialog('/floorplan', floorplan);
 function main_menu_card(session){
     return [
         new builder.HeroCard(session)
