@@ -9,6 +9,7 @@ module.exports = [
                 contentUrl: "http://i.imgur.com/fJsZQY6.png"
             }]);        
         session.endDialog(msg);
+        var style = builder.ListStyle[results.response.entity];
         builder.Prompts.choice(session, "Select: ", "Back|Buy Tickets", { listStyle: style });
     }   
 ]
