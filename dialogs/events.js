@@ -57,7 +57,7 @@ var builder = require('botbuilder');
                             contentType: 'image/jpg',
                             name: 'table rates'
                         });
-                    session.send(img);
+                    session.send(img);                    
 
                 break;
 

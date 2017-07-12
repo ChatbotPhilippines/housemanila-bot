@@ -18,10 +18,11 @@ var builder = require('botbuilder');
             .attachments(cards);
         session.send("What can I do for you?");
         builder.Prompts.choice(session, reply, selectArray, { maxRetries:0,promptAfterAction:false});
+        session.endDialog(reply);
 
         function getCards(session){
             return [
-                new builder.HeroCard(session)
+                 new builder.HeroCard(session)
                 .title('Guest List')
                 .images([
                     builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
