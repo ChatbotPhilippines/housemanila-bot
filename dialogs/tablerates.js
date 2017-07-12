@@ -8,8 +8,24 @@ module.exports = [
                 contentType: "image/jpeg",
                 contentUrl: "http://i.imgur.com/fJsZQY6.png"
             }]);        
+            msg.sourceEvent({
+            facebook: {
+                quick_replies: [
+                    {
+                        content_type: 'text',
+                        title: 'Back',
+                        payload: 'backToEvents',
+                    },
+                    {
+                        content_type: 'text',
+                        title: 'Buy Tickets',
+                        payload: 'buyTickets'
+                    }
+                ]
+            }
+        });
+
         session.endDialog(msg);
-        var style = builder.ListStyle[results.response.entity];
-        builder.Prompts.choice(session, "Select: ", "Back|Buy Tickets", { listStyle: style });
+        
     }   
 ]
