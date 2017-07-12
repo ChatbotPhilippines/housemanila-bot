@@ -66,10 +66,10 @@ function main_menu(session){
             .buttons([
                 builder.CardAction.postback(session, 'mainMenu', 'Main Menu')
             ])
-            ]
-        }
+    ]
+}
 
 
-bot.dialog('/guestlist', guestlist);
-bot.dialog('/guestnames', names);
-bot.dialog('/bookTable', bookTable);
+// bot.dialog('/guestlist', guestlist);
+// bot.dialog('/guestnames', names);
+// bot.dialog('/bookTable', bookTable);
