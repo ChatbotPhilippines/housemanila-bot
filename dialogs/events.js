@@ -47,7 +47,7 @@ var builder = require('botbuilder');
     },
     function (session, results){
         if (results.response){
-            console.log(results.response + "This is the reply");
+            console.log(JSON.stringify(results.response) + "This is the reply");
             var reply = results.response.entity;
             switch (reply){
                 case 'table-rates':
