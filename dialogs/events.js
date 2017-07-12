@@ -6,8 +6,9 @@ var builder = require('botbuilder');
         
     function(session){
         var selectArray = [
-            "sample-1",
-            "sample-2"
+            "table-rates",
+            "floor-plan",
+            "buy-tickets"
         ];
 
         var cards = getCards();
