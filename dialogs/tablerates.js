@@ -6,8 +6,18 @@ module.exports = [
         var msg = new builder.Message(session)
             .attachments([{
                 contentType: "image/jpeg",
-                contentUrl: "http://i.imgur.com/dzy25OF.jpg"
+                contentUrl: "http://i.imgur.com/fJsZQY6.png"
             }]);
-        session.endDialog(msg);
+        builder.Prompts.confirm(session, `Is this confirmed?`);
+        //session.endDialog(msg);
+    },
+    function (session, results) {
+        console.log(results.response + "results");
+        var choice = results.response ? 'yes' : 'no';
+        if (choice === 'yes') {
+            session.endDialogWithResult(session.dialogData.party);
+        } else {
+            session.replaceDialog('/ensure-party');
+        }
     }
 ]
