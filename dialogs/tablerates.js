@@ -1,4 +1,5 @@
 console.log("table rates");
+var builder = require('botbuilder');
 module.exports = [
     
     function (session) {        
