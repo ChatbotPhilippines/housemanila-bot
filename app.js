@@ -52,6 +52,9 @@ bot.dialog('/firstRun', [
 
         session.send(reply);
         session.endDialog();
+    },
+    function(session, results){
+      session.replaceDialog(`/${results.response}`);
     }
 ]).triggerAction({matches:/Get_Started/i});
 
@@ -64,8 +67,8 @@ function main_menu_card(session){
                 builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
             ])
             .buttons([
-                builder.CardAction.postBack(session, '/mainMenu', 'Main Menu')
-            ])
+                builder.CardAction.postBack(session, 'mainMenu', 'Main Menu')
+            ])            
     ]
 }
 
