@@ -71,6 +71,8 @@ module.exports = [
             console.log(session.dialogData.guestlist.party);
             console.log(session.dialogData.guestlist.names);
             // var msg = ;
-            session.send(`You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.dialogData.guestlist.names}. Is this confirmed?`);
+            var party = session.dialogData.guestlist.party;
+            var names = session.dialogData.guestlist.names;
+            session.send('You will be enlisted to the ' + party + 'with the following people ' + names + '. Is this confirmed?');
     }
 ]
