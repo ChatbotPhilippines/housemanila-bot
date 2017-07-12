@@ -89,17 +89,17 @@
 //     }
 // ]
 
-function(session){
+function (session){
     return [
         new builder.HeroCard(session)
             .title('House Manila')
-            .subtitle('Check out the best selling books this month')
+            .subtitle('Hey I\'m House Manila Bot here to make your partying easier! 🎉🎉🎉 Click the button below to start!')
             .images([
                 builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
             ])
             .buttons([
-                builder.CardAction.postback(session, 'mainMenu', 'Main Menu')
+                builder.CardAction.postBack(session, 'mainMenu', 'Main Menu')
             ])
-            ]
-        }
+    ]
+}
  ]

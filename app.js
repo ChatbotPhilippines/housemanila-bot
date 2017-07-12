@@ -48,7 +48,7 @@ bot.dialog('/firstRun', [
 
         var reply = new builder.Message(session)
             .attachmentLayout(builder.AttachmentLayout.carousel)
-            .attachments(cards)
+            .attachments(menu)
 
         session.send(reply);
         session.endDialog();
@@ -59,7 +59,7 @@ function main_menu(session){
     return [
         new builder.HeroCard(session)
             .title('House Manila')
-            .subtitle('Check out the best selling books this month')
+            .subtitle('Hey I\'m House Manila Bot here to make your partying easier! 🎉🎉🎉 Click the button below to start!')
             .images([
                 builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
             ])
@@ -68,6 +68,21 @@ function main_menu(session){
             ])
     ]
 }
+
+bot.dialog('/MainMenu', [
+    function(session){        
+        var cards = main_menu();
+
+        var reply = new builder.Message(session)
+            .attachmentLayout(builder.AttachmentLayout.carousel)
+            .attachments(cards)
+
+        session.send(reply);
+        session.endDialog();
+    }
+]).triggerAction({matches:/mainMenu/i});
+
+
 
 
 // bot.dialog('/guestlist', guestlist);
