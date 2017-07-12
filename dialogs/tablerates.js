@@ -9,15 +9,5 @@ module.exports = [
                 contentUrl: "http://i.imgur.com/fJsZQY6.png"
             }]);
         builder.Prompts.confirm(session, `Is this confirmed?`);
-        //session.endDialog(msg);
-    },
-    function (session, results) {
-        console.log(results.response + "results");
-        var choice = results.response ? 'yes' : 'no';
-        if (choice === 'yes') {
-            session.endDialogWithResult(session.dialogData.party);
-        } else {
-            session.replaceDialog('/ensure-party');
-        }
-    }
+        //session.endDialog(msg);   
 ]
