@@ -4,7 +4,7 @@ var builder = require('botbuilder');
 
 module.exports = [
     function(session){
-        var reply = new builder.Message(session).text('Testing');
+        var reply = new builder.Message(session).text('Are you celebrating anything special? :)');
 
         reply.sourceEvent({
             facebook: {
@@ -42,9 +42,9 @@ module.exports = [
                 ]
             }
         });
-        
         session.send(reply);
-        session.endDialog();
+    },
+    function(session, results){
+        var occasion = results.response.entity;
     }
-    
 ]
