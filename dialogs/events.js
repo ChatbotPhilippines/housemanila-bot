@@ -50,16 +50,16 @@ var builder = require('botbuilder');
             console.log(JSON.stringify(results.response) + "This is the reply");
             var reply = results.response.entity;
             switch (reply){
-                case 'table-rates':
-                    //session.replaceDialog('/guestlist');
-                    var img = new builder.Message(session)
-                        .addAttachment({
-                            contentURL: 'http://i.imgur.com/dzy25OF.jpg',
-                            contentType: 'image/jpg',
-                            name: 'table rates'
-                        });
-                    session.send(img);                    
-
+                case 'table-rates':                    
+                    // var img = new builder.Message(session)
+                    //     .addAttachment({
+                    //         contentURL: 'http://i.imgur.com/dzy25OF.jpg',
+                    //         contentType: 'image/jpg',
+                    //         name: 'table rates'
+                    //     });
+                    // session.send(img);      
+                    session.replaceDialog('/tablerates'); 
+                 
                 break;
 
                 case 'floor-plan':

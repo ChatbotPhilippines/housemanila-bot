@@ -11,7 +11,8 @@ const bookTable = require('./dialogs/bookTable');
 const names = require('./dialogs/guestnames');
 const PAGE_ACCESS_TOKEN = 'EAAcMbSiRTlABADmflfXlqOWKZBh56eD9ruT9eRwC2oG8UhSndDgUJDZCnsPZAubrfGkRYtUb21qecZCDAlXlElJTQNfUsZBM5kXKBoeUSHJ4esAKhfhqHZCVwZAf3xbqniZCDAbaBJwmHwGWUnSHXhr29batAE5C4jeZBm7s9U9ZBj4gZDZD';
 const request = require('request');
-const events = require('./dialogs/events')
+const events = require('./dialogs/events');
+const tablerates = require('./dialogs/tablerates');
 //=======================================================
 // Bot Setup
 //=======================================================
@@ -60,7 +61,7 @@ bot.dialog('/guestlist', guestlist);
 //bot.dialog('/guestnames', names);
 bot.dialog('/bookTable', bookTable);
 bot.dialog('/events', events);
-
+bot.dialog('/tablerates', tablerates);
 function main_menu_card(session){
     return [
         new builder.HeroCard(session)
