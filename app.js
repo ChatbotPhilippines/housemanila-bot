@@ -34,7 +34,7 @@ server.post('/api/messages', connector.listen());
 //=========================================================
 
 // Anytime the major version is incremented any existing conversations will be restarted.
-bot.use(builder.Middleware.dialogVersion({ version: 1.0, resetCommand: /^reset/i }));
+bot.use(builder.Middleware.firstRun({ version: 1.0, dialogId: '*:/firstRun' }));
 bot.use({
     botbuilder: function (session, next) {
         if (session.message.text === "GET_STARTED") {
