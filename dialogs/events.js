@@ -47,6 +47,7 @@ var builder = require('botbuilder');
     },
     function (session, results){
         if (results.response){
+            console.log(reply + "This is the reply");
             var reply = results.response.entity;
             switch (reply){
                 case 'table-rates':
@@ -63,13 +64,13 @@ var builder = require('botbuilder');
 
                 case 'floor-plan':
                     session.send("Here's the floor plan for this event");
-                    var img = new builder.Message(session)
+                    var imgfloor = new builder.Message(session)
                         .addAttachment({
                             contentURL: 'http://i.imgur.com/dzy25OF.jpg',
                             contentType: 'image/jpg',
                             name: 'NBS Logo'
                         });
-                    session.send(img);
+                    session.send(imgfloor);
 
                 break;
 
