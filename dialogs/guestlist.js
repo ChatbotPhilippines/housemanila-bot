@@ -61,36 +61,16 @@ module.exports = [
         }
     },
     function (session, results){
-        if (results.response){
             session.dialogData.guestlist.party = results.response.entity;
             builder.Prompts.text(session, "Please enter the names you would like to add in the guest list (separated by a comma):");
-        }
-        else{
-            session.send('May error ka din lol.');
-        }
+        
     },
     function(session, results){
-        if(results.response){
             session.dialogData.guestlist.names = results.response;
-            var reply = new builder.Message(session).text(`You will be enlisted to the %(party)s with the following people %(names)s. Is this confirmed?`, session.guestlist);
-
-            reply.sourceEvent({
-            facebook: {
-                quick_replies: [
-                    {
-                        content_type: 'text',
-                        title: 'Yes',
-                        payload: 'yes',
-                    },
-                    {
-                        content_type: 'text',
-                        title: 'No',
-                        payload: 'no'
-                    }
-                ]
-            }
-            });        
-            session.send(reply);
-        }
+            console.log("Napunta sa huling waterfall");
+            console.log(session.dialogData.guestlist.party);
+            console.log(session.dialogData.guestlist.names);
+            // var msg = ;
+            builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.dialogData.guestlist.names}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.auto});
     }
 ]
