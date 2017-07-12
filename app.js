@@ -64,7 +64,7 @@ function main_menu(session){
                 builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
             ])
             .buttons([
-                builder.CardAction.postback(session, 'mainMenu', 'Main Menu')
+                builder.CardAction.postBack(session, 'mainMenu', 'Main Menu')
             ])
     ]
 }
