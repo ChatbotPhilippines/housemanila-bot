@@ -1,6 +1,6 @@
  'use strict';
 
-// var builder = require('botbuilder');
+var builder = require('botbuilder');
 
  module.exports = [
         

@@ -54,7 +54,7 @@ bot.dialog('/firstRun', [
     }
 ]).triggerAction({matches:/Get_Started/i});
 
-bot.dialog('/mainMenu').triggerAction({matches:/mainMenu/i});
+bot.dialog('/mainMenu', menu).triggerAction({matches:/mainMenu/i});
 bot.dialog('/guestlist', guestlist);
 bot.dialog('/guestnames', names);
 bot.dialog('/bookTable', bookTable);
