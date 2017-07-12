@@ -8,7 +8,7 @@ module.exports = [
                         .addAttachment({
                             contentURL: 'http://i.imgur.com/dzy25OF.jpg',
                             contentType: 'image/jpg',                            
-                        });
-                    session.send(imgfloor);
+                        });                    
+                    session.endDialog(imgfloor);
     }
 ]
