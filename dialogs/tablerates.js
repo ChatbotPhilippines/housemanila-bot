@@ -7,8 +7,8 @@ module.exports = [
             .attachments([{
                 contentType: "image/jpeg",
                 contentUrl: "http://i.imgur.com/fJsZQY6.png"
-            }]);
+            }]);        
+        session.endDialog(msg);
         builder.Prompts.confirm(session, `Is this confirmed?`);
-        //session.endDialog(msg);
     }   
 ]
