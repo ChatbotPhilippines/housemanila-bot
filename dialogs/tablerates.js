@@ -9,6 +9,6 @@ module.exports = [
                 contentUrl: "http://i.imgur.com/fJsZQY6.png"
             }]);        
         session.endDialog(msg);
-        builder.Prompts.confirm(session, `Is this confirmed?`);
+        builder.Prompts.choice(session, "Select: ", "Back|Buy Tickets", { listStyle: style });
     }   
 ]
