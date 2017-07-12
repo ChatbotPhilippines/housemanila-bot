@@ -14,7 +14,7 @@ module.exports = [
         function getCards(session){
             return [
                 new builder.HeroCard(session)
-                .title('Guest List')
+                .title('Main Menu')
                 .images([
                     builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
                 ])
