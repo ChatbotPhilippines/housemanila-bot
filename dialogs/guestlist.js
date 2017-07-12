@@ -76,5 +76,6 @@ module.exports = [
             // builder.Prompts.choice(session, msg, "Yes|No", {listStyle: button});
             session.send(msg);
         }
+        session.endDialog();
     }
 ]
