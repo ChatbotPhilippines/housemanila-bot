@@ -51,7 +51,6 @@ bot.dialog('/firstRun', [
             .attachments(cards)
 
         session.send(reply);
-        session.endDialog();
     }
 ]).triggerAction({matches:/Get_Started/i});
 
@@ -80,7 +79,7 @@ bot.dialog('/mainMenu', [
         session.send(reply);
         session.endDialog();
     }
-]);
+]).triggerAction({matches:/mainMenu/i});
 
 function main_menu(session){
     return [
