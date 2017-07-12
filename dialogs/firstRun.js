@@ -9,7 +9,7 @@ var welcomeCard = new builder.HeroCard(session)
                                             .url("http://i.imgur.com/fJsZQY6.png")                                            
                                     ])
                                     .buttons([
-                                        builder.CardAction.imBack(session, 'menu', 'Main Menu')
+                                        builder.CardAction.imBack(session, 'main-menu', 'Main Menu')
                                     ]);
 
                                 session.send(new builder.Message(session)
@@ -19,8 +19,8 @@ var welcomeCard = new builder.HeroCard(session)
         if (results.response){
             var reply = results.response.entity;
             switch (reply){
-                case 'menu':
-                    session.replaceDialog('/menu');
+                case 'main-menu':
+                    session.replaceDialog('/mainmenu');
                 break;
                 default:
                     session.send('May error ka lol.');
