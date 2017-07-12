@@ -18,7 +18,7 @@ module.exports = [
             .attachmentLayout(builder.AttachmentLayout.carousel)
             .attachments(cards);
         session.send("Which event would you like to get in the guest list for?");
-        builder.Prompts.choice(session, reply, selectArray, { maxRetries:0,promptAfterAction:false});
+        session.send(reply);
 
         function getCards(session){
             return [
