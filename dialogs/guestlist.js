@@ -61,7 +61,7 @@ module.exports = [
     },
     function (session, results){
         if (results.response){
-            var party = results.response;
+            var party = session.dialogData.party = results.response;
             builder.Prompts.text(session, "Please enter the names you would like to add in the guest list (separated by a comma):");
         }
         else{
