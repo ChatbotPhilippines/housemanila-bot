@@ -61,16 +61,13 @@ module.exports = [
         }
     },
     function (session, results){
-        if (results.response){
             session.dialogData.guestlist.party = results.response.entity;
             builder.Prompts.text(session, "Please enter the names you would like to add in the guest list (separated by a comma):");
-        }
-        else{
-            session.send('May error ka din lol.');
-        }
+        
     },
     function(session, results){
             session.dialogData.guestlist.names = results.response;
+            console.log("Napunta sa huling waterfall");
             console.log(session.dialogData.guestlist.party);
             console.log(session.dialogData.guestlist.names);
             // var msg = ;
