@@ -4,7 +4,8 @@ var builder = require('botbuilder');
 
 
 module.exports = [
-    function(session){
+    function(session, args){
+        session.dialogData.guestlist = args || {};
         var selectArray = [
             "DROP",
             "RSVP",
@@ -61,18 +62,17 @@ module.exports = [
     },
     function (session, results){
         if (results.response){
-            var party = session.dialogData.party = results.response;
+            session.dialogData.guestlist.party = results.response;
             builder.Prompts.text(session, "Please enter the names you would like to add in the guest list (separated by a comma):");
         }
         else{
             session.send('May error ka din lol.');
         }
-        session.endDialog();
     },
     function(session, results){
         if(results.response){
-            var guestNames = results.response;
-            var msg = `You will be enlisted to the ${party} with the following people ${guestNames}. Is this confirmed?`;
+            session.dialogData.guestlist.names = results.response;
+            var msg = `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.dialogData.guestlist.names}. Is this confirmed?`;
             builder.Prompts.choice(session, msg, "Yes|No", {listStyle: button});
         }
     }
