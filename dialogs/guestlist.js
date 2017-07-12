@@ -89,7 +89,8 @@ module.exports = [
                     }
                 ]
             }
-            });            
+            });        
+            session.send(reply);
         }
     }
 ]
