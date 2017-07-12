@@ -35,8 +35,8 @@ server.post('/api/messages', connector.listen());
 
 // Anytime the major version is incremented any existing conversations will be restarted.
 bot.use(builder.Middleware.dialogVersion({ version: 1.0, resetCommand: /^reset/i }));
-bot.use({
-    botbuilder: function (session, next) {
+bot.dialog('/', [
+    function (session, next) {
         if (session.message.text === "GET_STARTED") {
             session.perUserInConversationData = {};
             session.userData = {};
@@ -107,7 +107,7 @@ bot.use({
             next();
         }
     }
-});
+]);
 
 
 //=======================================================
@@ -116,7 +116,7 @@ bot.use({
 
 
 
-bot.dialog('/', firstRun);
+bot.dialog('/firstrun', firstRun);
 bot.dialog('/guestlist', guestlist);
 bot.dialog('/guestnames', names);
 bot.dialog('/bookTable', bookTable);
