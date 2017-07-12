@@ -116,7 +116,7 @@ bot.use({
 
 
 
-bot.dialog('/', firstRun);
+//bot.dialog('/', firstRun);
 bot.dialog('/guestlist', guestlist);
 bot.dialog('/guestnames', names);
 bot.dialog('/bookTable', bookTable);
