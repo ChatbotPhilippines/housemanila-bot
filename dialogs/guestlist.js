@@ -72,25 +72,8 @@ module.exports = [
     function(session, results){
         if(results.response){
             session.dialogData.guestlist.names = results.response;
-            var reply = new builder.Message(session).text(`You will be enlisted to the %(party)s with the following people %(names)s. Is this confirmed?`, session.guestlist);
-
-            reply.sourceEvent({
-            facebook: {
-                quick_replies: [
-                    {
-                        content_type: 'text',
-                        title: 'Yes',
-                        payload: 'yes',
-                    },
-                    {
-                        content_type: 'text',
-                        title: 'No',
-                        payload: 'no'
-                    }
-                ]
-            }
-            });        
-            session.send(reply);
+            // var msg = ;
+            builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.dialogData.guestlist.names}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
         }
     }
 ]
