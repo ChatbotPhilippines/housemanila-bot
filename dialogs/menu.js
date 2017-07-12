@@ -17,8 +17,7 @@ var builder = require('botbuilder');
             .attachmentLayout(builder.AttachmentLayout.carousel)
             .attachments(cards);
         session.send("What can I do for you?");
-        builder.Prompts.choice(session, reply, selectArray, { maxRetries:0,promptAfterAction:false});
-        session.endDialog(reply);
+        builder.Prompts.choice(session, reply, selectArray, { maxRetries:0,promptAfterAction:false});        
 
         function getCards(session){
             return [
