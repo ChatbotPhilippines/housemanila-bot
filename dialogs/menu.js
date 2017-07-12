@@ -98,7 +98,7 @@ function(session){
                 builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
             ])
             .buttons([
-                builder.CardAction.postback(session, 'mainMenu', 'Select')
+                builder.CardAction.postback(session, 'mainMenu', 'Main Menu')
             ])
             ]
         }

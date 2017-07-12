@@ -44,7 +44,7 @@ bot.dialog('/', [
 
 bot.dialog('/firstRun', [
     function(session){        
-        var cards = menu;
+        var cards = main_menu();
 
         var reply = new builder.Message(session)
             .attachmentLayout(builder.AttachmentLayout.carousel)
@@ -55,7 +55,19 @@ bot.dialog('/firstRun', [
     }
 ]).triggerAction({matches:/Get_Started/i});
 
-
+function main_menu(session){
+    return [
+        new builder.HeroCard(session)
+            .title('House Manila')
+            .subtitle('Check out the best selling books this month')
+            .images([
+                builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+            ])
+            .buttons([
+                builder.CardAction.postback(session, 'mainMenu', 'Main Menu')
+            ])
+            ]
+        }
 
 
 bot.dialog('/guestlist', guestlist);
