@@ -35,8 +35,8 @@ server.post('/api/messages', connector.listen());
 
 // Anytime the major version is incremented any existing conversations will be restarted.
 bot.use(builder.Middleware.dialogVersion({ version: 1.0, resetCommand: /^reset/i }));
-bot.dialog('/', [
-    function (session, next) {
+bot.use({
+    botbuilder: function (session, next) {
         if (session.message.text === "GET_STARTED") {
             session.perUserInConversationData = {};
             session.userData = {};
@@ -78,7 +78,7 @@ bot.dialog('/', [
                                 session.send(new builder.Message(session)
                                     .addAttachment(welcomeCard));
                                 
-                                
+                                next();
                             } else {
                                 session.userData.firstRun = true;
                                 var welcomeCard = new builder.HeroCard(session)
@@ -95,7 +95,7 @@ bot.dialog('/', [
                                 session.send(new builder.Message(session)
                                     .addAttachment(welcomeCard));
                                 
-                                
+                                next();
                             }
                         });
                     break;
@@ -104,10 +104,10 @@ bot.dialog('/', [
             }
 
         } else {
-            
+            next();
         }
     }
-]);
+});
 
 
 //=======================================================
@@ -116,7 +116,7 @@ bot.dialog('/', [
 
 
 
-bot.dialog('/firstrun', firstRun);
+bot.dialog('/', firstRun);
 bot.dialog('/guestlist', guestlist);
 bot.dialog('/guestnames', names);
 bot.dialog('/bookTable', bookTable);
