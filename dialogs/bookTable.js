@@ -45,6 +45,6 @@ module.exports = [
         session.send(reply);
     },
     function(session, results){
-        var occasion = results.response.entity;
+        var occasion = results.response;
     }
 ]
