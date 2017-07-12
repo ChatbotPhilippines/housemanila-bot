@@ -59,21 +59,21 @@ module.exports = [
                 ])
             ]
         }
-    },
-    function (session, results){
-        if (results.response){
-            session.dialogData.guestlist.party = results.response.entity;
-            builder.Prompts.text(session, "Please enter the names you would like to add in the guest list (separated by a comma):");
-        }
-        else{
-            session.send('May error ka din lol.');
-        }
-    },
-    function(session, results){
-        if(results.response){
-            session.dialogData.guestlist.names = results.response;
-            // var msg = ;
-            builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.dialogData.guestlist.names}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
-        }
     }
+    // function (session, results){
+    //     if (results.response){
+    //         session.dialogData.guestlist.party = results.response.entity;
+    //         builder.Prompts.text(session, "Please enter the names you would like to add in the guest list (separated by a comma):");
+    //     }
+    //     else{
+    //         session.send('May error ka din lol.');
+    //     }
+    // },
+    // function(session, results){
+    //     if(results.response){
+    //         session.dialogData.guestlist.names = results.response;
+    //         // var msg = ;
+    //         builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.dialogData.guestlist.names}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
+    //     }
+    // }
 ]
