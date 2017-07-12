@@ -61,32 +61,19 @@ module.exports = [
     },
     function (session, results){
         if (results.response){
-            var reply = results.response.entity;
-            switch (reply){
-                case 'DROP':
-                    session.replaceDialog('/guestnames');
-                break;
-
-                case 'RSVP':
-                    session.beginDialog('/guestnames');
-                break;
-
-                case 'Organized':
-                    session.beginDialog('/guestnames');
-                break;
-
-                case 'WOTN':
-                    session.beginDialog('/guestnames');
-                break;
-
-                default:
-                    session.send('May error ka lol.');
-            }
+            var party = results.response;
+            builder.Prompts.text(session, "Please enter the names you would like to add in the guest list (separated by a comma):");
         }
         else{
             session.send('May error ka din lol.');
         }
-
         session.endDialog();
+    },
+    function(session, results){
+        if(results.response){
+            var guestNames = results.response;
+            var msg = `You will be enlisted to the ${party} with the following people ${guestNames}. Is this confirmed?`;
+            builder.Prompts.choice(session, msg, "Yes|No", {listStyle: button});
+        }
     }
 ]
