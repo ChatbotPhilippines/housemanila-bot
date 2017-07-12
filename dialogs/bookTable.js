@@ -42,9 +42,9 @@ module.exports = [
                 ]
             }
         });
-        
         session.send(reply);
-        session.endDialog();
+    },
+    function(session, results){
+        var occasion = results.response.entity;
     }
-    
 ]
