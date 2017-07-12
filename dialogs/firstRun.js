@@ -9,10 +9,25 @@ var welcomeCard = new builder.HeroCard(session)
                                             .url("http://i.imgur.com/fJsZQY6.png")                                            
                                     ])
                                     .buttons([
-                                        builder.CardAction.dialogAction(session, "/menu", " ", "Main Menu"),
+                                        builder.CardAction.imBack(session, 'menu', 'Main Menu')
                                     ]);
 
                                 session.send(new builder.Message(session)
                                     .addAttachment(welcomeCard));
+    },
+    function (session, results){
+        if (results.response){
+            var reply = results.response.entity;
+            switch (reply){
+                case 'menu':
+                    session.replaceDialog('/menu');
+                break;
+                default:
+                    session.send('May error ka lol.');
+            }
+        }
+        else{
+            session.send('May error ka din lol.');
+        }
     }
 ]
