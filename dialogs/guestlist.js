@@ -73,6 +73,7 @@ module.exports = [
             // var msg = ;
             var party = session.dialogData.guestlist.party;
             var names = session.dialogData.guestlist.names;
+            session.send("PUTANGINA NITO");
             session.send('You will be enlisted to the ' + party + 'with the following people ' + names + '. Is this confirmed?');
     }
 ]
