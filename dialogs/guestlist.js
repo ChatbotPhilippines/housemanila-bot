@@ -66,14 +66,14 @@ module.exports = [
         
     },
     function(session, results){
-            session.dialogData.guestlist.names = results.response;
+            // session.dialogData.guestlist.names = results.response;
             console.log("Napunta sa huling waterfall");
-            console.log(session.dialogData.guestlist.party);
-            console.log(session.dialogData.guestlist.names);
-            // var msg = ;
-            var party = session.dialogData.guestlist.party;
-            var names = session.dialogData.guestlist.names;
+            // console.log(session.dialogData.guestlist.party);
+            // console.log(session.dialogData.guestlist.names);
+            // // var msg = ;
+            // var party = session.dialogData.guestlist.party;
+            // var names = session.dialogData.guestlist.names;
             session.send("PUTANGINA NITO");
-            session.send('You will be enlisted to the ' + party + 'with the following people ' + names + '. Is this confirmed?');
+            // session.send('You will be enlisted to the ' + party + 'with the following people ' + names + '. Is this confirmed?');
     }
 ]
