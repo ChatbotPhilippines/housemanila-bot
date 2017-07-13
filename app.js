@@ -14,14 +14,10 @@ const request = require('request');
 const events = require('./dialogs/events');
 const tablerates = require('./dialogs/tablerates');
 const floorplan = require('./dialogs/floorplan');
-<<<<<<< HEAD
 const birthday = require('./dialogs/birthday');
 const birthday2 = require('./dialogs/birthday2');
 const birthday3 = require('./dialogs/birthday3');
-=======
 const bookevents = require('./dialogs/bookevents');
->>>>>>> 7d186cb17b7cc7bc058fff3127732e63cb4be1d3
-
 //=======================================================
 // Bot Setup
 //=======================================================
