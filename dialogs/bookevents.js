@@ -17,13 +17,13 @@ module.exports = [
     },
     function(session, results){
         session.dialogData.events.contact = results.response;
-        builder.Prompts.text(session, 'Please enter your email address');
+        session.replaceDialog('/enteremail', session.userData.emailAdd);
     },
     function(session, results){
-        var emailregex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        var emailAdd = session.dialogData.emailAdd = results.response;
-        if(emailregex.test(emailAdd)){
-            session.send('Tamang email');
-        }
+        session.dialogData.email = results.response;
+        builder.Prompts.time(session, 'When would you like to have the event? Enter the date and time');
+    },
+    function(session, results){
+        session.endDialog('Thank you for the info! Our events officer will contact you within 24 hours for your inquiry.');
     }
 ]
