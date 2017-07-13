@@ -72,9 +72,6 @@ module.exports = [
             // var msg = ;
             var party = session.dialogData.guestlist.party;
             var names = session.dialogData.guestlist.names;
-            // session.send(session.dialogData.guestlist.party);
-            // session.send(session.dialogData.guestlist.names);
-            // session.send("Test");
-            builder.Prompts.confirm(session, 'You will be enlisted to the ' + party + 'with the following people ' + names + '. Is this confirmed?');
-    }
+            builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.dialogData.guestlist.names}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
+     }
 ]
