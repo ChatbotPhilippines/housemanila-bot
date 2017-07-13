@@ -9,7 +9,7 @@ module.exports = [
                 contentUrl: "http://i.imgur.com/fJsZQY6.png"
             }]);                   
         session.send(msg);
-        builder.Prompts.choice(session, ``, "Back|Buy Tickets", {listStyle: builder.ListStyle.button});
+        builder.Prompts.choice(session, `Select:`, "Back|Buy Tickets", {listStyle: builder.ListStyle.button});
 
     }
 ]
