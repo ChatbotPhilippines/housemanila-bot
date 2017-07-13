@@ -17,6 +17,7 @@ module.exports = [
         if (results.response == 'Buy Tickets'){
             session.send('For tickets or table reservations, you may contact +639272204244 🙂');            
         }else{
+            console.log("Error");
             session.replaceDialog('/tablerates'); 
         }
     }
