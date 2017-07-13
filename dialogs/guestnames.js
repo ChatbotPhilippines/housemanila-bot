@@ -11,11 +11,11 @@ module.exports = [
         builder.Prompts.choice(session, `The following people will be part of the guest list ${session.dialogData.names.guests}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
     },
     function (session, results){
-        if(results.response === 'Yes'){
+        if(results.response.entity === 'Yes'){
             session.send('You are now pending for approval in our guest list! You will receive a message once you get approved. Thank you!');
             session.endDialog();
         }
-        else{
+        else if(results.response.entity === 'No'){
             session.replaceDialog('/guestnames');
         }
     }
