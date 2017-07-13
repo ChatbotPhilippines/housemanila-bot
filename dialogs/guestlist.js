@@ -5,7 +5,7 @@ var builder = require('botbuilder');
 
 module.exports = [
     function(session, args){
-        session.dialogData.guestlist = args || {};
+        session.dialogData.party = args || {};
         var selectArray = [
             "DROP",
             "RSVP",
@@ -61,17 +61,18 @@ module.exports = [
         }
     },
     function (session, results){
-            session.dialogData.guestlist.party = results.response.entity;
-            session.replaceDialog('/guestnames', session.dialogData.guestlist.names);
+        session.dialogData.party = results.response.entity;
+        session.replaceDialog('/guestnames', session.userData.names);
     },
     function(session, results){
+        session.userData.names = results.response;
         console.log("Napunta sa huling waterfall");
-        console.log(session.dialogData.guestlist.party);
-        console.log(session.dialogData.guestlist.names);
+        console.log(session.dialogData.party);
+        console.log(session.userData.names);
         // var msg = ;
-        var party = session.dialogData.guestlist.party;
-        var names = session.dialogData.guestlist.names;
-        builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.dialogData.guestlist.names}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
+        var party = session.dialogData.party;
+        var names = session.userData.names;
+        builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.userData.names}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
      },
      function(session, results){
         if(results.response === 'Yes'){
