@@ -16,8 +16,12 @@ const tablerates = require('./dialogs/tablerates');
 const floorplan = require('./dialogs/floorplan');
 const birthday = require('./dialogs/birthday');
 const birthday2 = require('./dialogs/birthday2');
-const birthday3 = require('./dialogs/birthday3');
+const birthday3 = require('./dialogs/birthday3');       
 const bookevents = require('./dialogs/bookevents');
+const reserve = require('./dialogs/tablereserve');
+const sevenFifteen = require('./dialogs/seven-fifteen');
+const sixteen = require('./dialogs/sixteen');
+const number = require('./dialogs/contactnumber');
 //=======================================================
 // Bot Setup
 //=======================================================
@@ -72,6 +76,10 @@ bot.dialog('/floorplan', floorplan);
 bot.dialog('/birthday', birthday);
 bot.dialog('/birthday2', birthday2);
 bot.dialog('/birthday3', birthday3);
+bot.dialog('/tablereserve', reserve);
+bot.dialog('/seven-fifteen', sevenFifteen);
+bot.dialog('/sixteen', sixteen);
+bot.dialog('/contactnumber', number);
 function main_menu_card(session){
     return [
         new builder.HeroCard(session)

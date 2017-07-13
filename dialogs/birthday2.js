@@ -17,7 +17,7 @@ module.exports = [
         if (results.response.entity == 'Add another'){
             session.replaceDialog('/birthday3'); 
         }else if (results.response.entity == 'Yes, continue'){            
-            //session.replaceDialog('/events'); under whose name
+            session.replaceDialog('/tablereserve'); 
         }
     }
 
