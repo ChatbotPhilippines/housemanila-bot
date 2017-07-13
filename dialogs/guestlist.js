@@ -62,25 +62,6 @@ module.exports = [
     },
     function (session, results){
         session.dialogData.party = results.response.entity;
-        session.replaceDialog('/guestnames', session.userData.names);
-    },
-    function(session, results){
-        session.userData.names = results.response;
-        console.log("Napunta sa huling waterfall");
-        console.log(session.dialogData.party);
-        console.log(session.userData.names);
-        // var msg = ;
-        var party = session.dialogData.party;
-        var names = session.userData.names;
-        builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people %(guests)s. Is this confirmed?`, session.userData.names, "Yes|No", {listStyle: builder.ListStyle.button});
-     },
-     function(session, results){
-        if(results.response === 'Yes'){
-            session.send("You are now pending for approval in our guest list! You will receive a message once you get approved. Thank you!");
-            session.endDialog();
-        }
-        // else{
-        //     session.replaceDialog
-        // }
-     }
+        session.replaceDialog('/guestnames');
+    }
 ]

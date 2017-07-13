@@ -8,6 +8,6 @@ module.exports = [
     },
     function (session, results){
         session.dialogData.names.guests = results.response;
-        session.endDialogWithResult({response: session.dialogData.names});
+        builder.Prompts.choice(session, `The following people will be part of the guest list ${session.dialogData.names.guests}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
     }
 ];
