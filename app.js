@@ -1,3 +1,4 @@
+
 'use strict';
 
 //Declarations
@@ -9,8 +10,11 @@ const menu = require('./dialogs/menu');
 const guestlist = require('./dialogs/guestlist');
 const bookTable = require('./dialogs/bookTable');
 const guestnames = require('./dialogs/guestnames');
-const PAGE_ACCESS_TOKEN = 'EAAcMbSiRTlABADmflfXlqOWKZBh56eD9ruT9eRwC2oG8UhSndDgUJDZCnsPZAubrfGkRYtUb21qecZCDAlXlElJTQNfUsZBM5kXKBoeUSHJ4esAKhfhqHZCVwZAf3xbqniZCDAbaBJwmHwGWUnSHXhr29batAE5C4jeZBm7s9U9ZBj4gZDZD';
 const request = require('request');
+const events = require('./dialogs/events');
+const tablerates = require('./dialogs/tablerates');
+const floorplan = require('./dialogs/floorplan');
+
 //=======================================================
 // Bot Setup
 //=======================================================
@@ -57,9 +61,10 @@ bot.dialog('/firstRun', [
 bot.dialog('/mainMenu', menu).triggerAction({matches:/mainMenu/i});
 bot.dialog('/guestlist', guestlist);
 bot.dialog('/guestnames', guestnames);
-bot.dialog('/guestnames', names);
 bot.dialog('/bookTable', bookTable);
-
+bot.dialog('/events', events);
+bot.dialog('/tablerates', tablerates);
+bot.dialog('/floorplan', floorplan);
 function main_menu_card(session){
     return [
         new builder.HeroCard(session)
@@ -125,6 +130,3 @@ function main_menu_card(session){
 //         ])
 //     ]
 // }
-
-
-
