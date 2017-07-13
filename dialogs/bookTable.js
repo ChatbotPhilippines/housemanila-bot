@@ -13,10 +13,8 @@ module.exports = [
     },
     function(session,results){   
         console.log(results.response.entity);
-        if (results.response.entity == 'Birthday'){
+        if (results.response != null){
             session.replaceDialog('/birthday');             
-        }else if (results.response.entity == 'Back'){            
-            session.replaceDialog('/events'); 
         }
     }
 ]
