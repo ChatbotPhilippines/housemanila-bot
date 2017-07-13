@@ -14,6 +14,7 @@ const request = require('request');
 const events = require('./dialogs/events');
 const tablerates = require('./dialogs/tablerates');
 const floorplan = require('./dialogs/floorplan');
+const bookevents = require('./dialogs/bookevents');
 
 //=======================================================
 // Bot Setup
@@ -62,6 +63,7 @@ bot.dialog('/mainMenu', menu).triggerAction({matches:/mainMenu/i});
 bot.dialog('/guestlist', guestlist);
 bot.dialog('/guestnames', guestnames);
 bot.dialog('/bookTable', bookTable);
+bot.dialog('/bookevents', bookevents);
 bot.dialog('/events', events);
 bot.dialog('/tablerates', tablerates);
 bot.dialog('/floorplan', floorplan);
