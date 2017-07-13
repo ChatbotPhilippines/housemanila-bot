@@ -72,7 +72,7 @@ module.exports = [
         // var msg = ;
         var party = session.dialogData.party;
         var names = session.userData.names;
-        builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.userData.names}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
+        builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people %(guests)s. Is this confirmed?`, session.userData.names, "Yes|No", {listStyle: builder.ListStyle.button});
      },
      function(session, results){
         if(results.response === 'Yes'){
