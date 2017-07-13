@@ -13,8 +13,8 @@ module.exports = [
         console.log(results.response);
         session.dialogData.numbers.phone = results.response;
         if (results.response != null){
-
-            builder.Prompts.confirm(session, `${session.dialogData.numbers.phone} Is this confirmed?`);
+            
+            builder.Prompts.choice(session, `${session.dialogData.numbers.phone} Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
 
         }
         

@@ -15,7 +15,7 @@ module.exports = [
         if (results.response.entity != null){
             
 
-            builder.Prompts.confirm(session, `${session.dialogData.numbers.phone} Is this confirmed?`);
+            builder.Prompts.choice(session, `${session.dialogData.numbers.phone} Is this confirmed?`);
 
         }
         
