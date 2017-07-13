@@ -25,7 +25,7 @@ module.exports = [
 
         }else if (results.response.entity == "16+"){
 
-        session.replaceDialog("/seven-fifteen");
+        session.replaceDialog("/sixteen");
 
         }
 
