@@ -10,10 +10,12 @@ module.exports = [
 
     },
     function(session,results){   
-        console.log(results.response.entity);
+        console.log(results.response);
+        session.dialogData.numbers.phone = results.response;
         if (results.response.entity != null){
+            
 
-            builder.Prompts.confirm(session, `${session.dialogData.numbers} Is this confirmed?`);
+            builder.Prompts.confirm(session, `${session.dialogData.numbers.phone} Is this confirmed?`);
 
         }
         
@@ -21,7 +23,7 @@ module.exports = [
     function(session,results){   
         console.log(results.response.entity);
         if(results.response.entity == "yes"){
-            session.send(session, `Thank you! A confirmation code will be sent to ${session.dialogData.numbers} within 24 hours to confirm the reservation 🙂`)
+            session.send(session, `Thank you! A confirmation code will be sent to ${session.dialogData.numbers.phone} within 24 hours to confirm the reservation 🙂`)
         }else if (results.response.entity == "no"){
             session.replaceDialog("/contactnumber");
         }
