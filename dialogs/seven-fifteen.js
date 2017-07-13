@@ -5,7 +5,7 @@ var builder = require('botbuilder');
 module.exports = [
 
         function(session, args){
-        session.dialogData.number = args || {};
+        session.dialogData.numbers = args || {};
         builder.Prompts.number(session, 'Alright! Lastly, please enter your contact number so we can send a confirmation code once your table is approved.');                    
 
     },
@@ -13,7 +13,7 @@ module.exports = [
         console.log(results.response);
         if (results.response != null){
 
-            builder.Prompts.confirm(session, `${session.dialogData.number} Is this confirmed?`);
+            builder.Prompts.confirm(session, `${session.dialogData.numbers} Is this confirmed?`);
 
         }
         
