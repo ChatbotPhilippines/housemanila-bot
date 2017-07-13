@@ -27,5 +27,10 @@ module.exports = [
 
         session.endDialog(msg);
         
-    }   
+    },
+    
+    function(session, results){
+        console.log(results.response);        
+
+    }
 ]
