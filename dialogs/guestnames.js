@@ -7,5 +7,8 @@ module.exports = [
     },
     function (session, results){
         session.dialogData.guestlist.names = results.response;
+        return [
+            session.dialogData.guestlist.names
+        ]
     }
 ];
