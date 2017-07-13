@@ -18,7 +18,7 @@ module.exports = [
             session.send('For tickets or table reservations, you may contact +639272204244 🙂');            
             session.endDialog();
         }else if (results.response.entity == 'Back'){            
-            session.replaceDialog('/tablerates'); 
+            session.replaceDialog('/events'); 
         }
     }
 ]

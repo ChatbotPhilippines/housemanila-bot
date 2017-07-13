@@ -9,6 +9,16 @@ module.exports = [
                             contentURL: 'http://i.imgur.com/fJsZQY6.png',
                             contentType: 'image/jpg',                            
                         });                    
-                    session.endDialog(imgfloor);
-            }
+                    session.send(imgfloor);
+                    builder.Prompts.choice(session, `Select: `, "Back|Buy Tickets", {listStyle: builder.ListStyle.button});
+            },
+    function(session,results){   
+        console.log(results.response.entity);
+        if (results.response.entity == 'Buy Tickets'){
+            session.send('For tickets or table reservations, you may contact +639272204244 🙂');            
+            session.endDialog();
+        }else if (results.response.entity == 'Back'){            
+            session.replaceDialog('/events'); 
+        }
+    }
 ]
