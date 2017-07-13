@@ -62,16 +62,24 @@ module.exports = [
     },
     function (session, results){
             session.dialogData.guestlist.party = results.response.entity;
-            builder.Prompts.text(session, "Please enter the names you would like to add in the guest list (separated by a comma):");
+            session.replaceDialog('/guestnames');
     },
     function(session, results){
-            session.dialogData.guestlist.names = results.response;
-            console.log("Napunta sa huling waterfall");
-            console.log(session.dialogData.guestlist.party);
-            console.log(session.dialogData.guestlist.names);
-            // var msg = ;
-            var party = session.dialogData.guestlist.party;
-            var names = session.dialogData.guestlist.names;
-            builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.dialogData.guestlist.names}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
+        console.log("Napunta sa huling waterfall");
+        console.log(session.dialogData.guestlist.party);
+        console.log(session.dialogData.guestlist.names);
+        // var msg = ;
+        var party = session.dialogData.guestlist.party;
+        var names = session.dialogData.guestlist.names;
+        builder.Prompts.choice(session, `You will be enlisted to the ${session.dialogData.guestlist.party} with the following people ${session.dialogData.guestlist.names}. Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
+     },
+     function(session, results){
+        if(results.response === 'Yes'){
+            session.send("You are now pending for approval in our guest list! You will receive a message once you get approved. Thank you!");
+            session.endDialog();
+        }
+        // else{
+        //     session.replaceDialog
+        // }
      }
 ]

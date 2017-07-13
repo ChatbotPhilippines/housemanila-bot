@@ -9,7 +9,7 @@ const firstRun = require('./dialogs/firstRun');
 const menu = require('./dialogs/menu');
 const guestlist = require('./dialogs/guestlist');
 const bookTable = require('./dialogs/bookTable');
-const names = require('./dialogs/guestnames');
+const guestnames = require('./dialogs/guestnames');
 const request = require('request');
 const events = require('./dialogs/events');
 const tablerates = require('./dialogs/tablerates');
@@ -60,7 +60,7 @@ bot.dialog('/firstRun', [
 
 bot.dialog('/mainMenu', menu).triggerAction({matches:/mainMenu/i});
 bot.dialog('/guestlist', guestlist);
-//bot.dialog('/guestnames', names);
+bot.dialog('/guestnames', guestnames);
 bot.dialog('/bookTable', bookTable);
 bot.dialog('/events', events);
 bot.dialog('/tablerates', tablerates);
@@ -78,55 +78,3 @@ function main_menu_card(session){
             ])
     ]
 }
-
-// bot.dialog('/mainMenu', [
-//     function(session){        
-//         var cards = main_menu();
-
-//         var reply = new builder.Message(session)
-//             .attachmentLayout(builder.AttachmentLayout.carousel)
-//             .attachments(cards)
-
-//         session.send(reply);
-//         session.endDialog();
-//     }
-// ]).triggerAction({matches:/mainMenu/i});
-
-// function main_menu(session){
-//     return [
-//     new builder.HeroCard(session)
-//         .title('Guest List')        
-//         .images([
-//             builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-//         ])
-//         .buttons([
-//             builder.CardAction.postBack(session, 'guestList', 'Guest List')
-//         ]),
-
-//     new builder.ThumbnailCard(session)
-//         .title('Book Table')        
-//         .images([
-//             builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-//         ])
-//         .buttons([
-//             builder.CardAction.postBack(session, 'bookTable', 'Book Table')
-//         ]),
-    
-//     new builder.HeroCard(session)
-//         .title('Events')        
-//         .images([
-//             builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-//         ])
-//         .buttons([
-//             builder.CardAction.postBack(session, 'events', 'Events')
-//         ]),
-//     new builder.ThumbnailCard(session)
-//         .title('Corporate Functions')        
-//         .images([
-//             builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-//         ])
-//         .buttons([
-//             builder.CardAction.postBack(session, 'corporateFunctions', 'Corporate Functions')
-//         ])
-//     ]
-// }
