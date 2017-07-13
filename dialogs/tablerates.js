@@ -11,5 +11,8 @@ module.exports = [
         session.send(msg);
         builder.Prompts.choice(session, `Select: `, "Back|Buy Tickets", {listStyle: builder.ListStyle.button});
 
+    },
+    function(session,results){
+        console.log("this is the response" + results.response);
     }
 ]
