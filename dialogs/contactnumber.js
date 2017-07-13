@@ -21,10 +21,10 @@ module.exports = [
         
     },
     function(session,results){   
-        console.log(results.response.entity);
-        if(results.response.entity == "yes"){
+        console.log(results.response);
+        if(results.response == "yes"){
             session.send(session, `Thank you! A confirmation code will be sent to ${session.dialogData.numbers.phone} within 24 hours to confirm the reservation 🙂`)
-        }else if (results.response.entity == "no"){
+        }else if (results.response == "no"){
             session.replaceDialog("/contactnumber");
         }
 
