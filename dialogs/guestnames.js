@@ -8,7 +8,7 @@ module.exports = [
     },
     function (session, results){
         session.dialogData.names.guests = results.response.split(/[,\n]+/).map(function (x) { return x.trim(); }) || [];
-        builder.Prompts.choice(session, `The following people will be part of the guest list ${session.dialogData.names.guests.join('<br/>')}.<br/> Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
+        builder.Prompts.choice(session, `The following people will be part of the guest list ${session.dialogData.names.guests.join('<br/>')}<br/>Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
     },
     function (session, results){
         if(results.response.entity === 'Yes'){
