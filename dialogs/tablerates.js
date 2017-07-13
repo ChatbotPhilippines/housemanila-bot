@@ -7,30 +7,9 @@ module.exports = [
             .attachments([{
                 contentType: "image/jpeg",
                 contentUrl: "http://i.imgur.com/fJsZQY6.png"
-            }]);        
-            msg.sourceEvent({
-            facebook: {
-                quick_replies: [
-                    {
-                        content_type: 'text',
-                        title: 'Back',
-                        payload: 'backToEvents',
-                    },
-                    {
-                        content_type: 'text',
-                        title: 'Buy Tickets',
-                        payload: 'buyTickets'
-                    }
-                ]
-            }
-        });
-
-        session.endDialog(msg);
-        
-    },
-    
-    function(session, results){
-        console.log(results.response);        
+            }]);                   
+        session.send(msg);
+        builder.Prompts.choice(session, ``, "Back|Buy Tickets", {listStyle: builder.ListStyle.button});
 
     }
 ]

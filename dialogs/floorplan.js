@@ -10,5 +10,5 @@ module.exports = [
                             contentType: 'image/jpg',                            
                         });                    
                     session.endDialog(imgfloor);
-                        }
+            }
 ]
