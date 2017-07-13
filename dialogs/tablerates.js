@@ -8,8 +8,8 @@ module.exports = [
                 contentType: "image/jpeg",
                 contentUrl: "http://i.imgur.com/fJsZQY6.png"
             }]);                   
-        session.send(msg);
-        builder.Prompts.choice(session, `Select:`, "Back|Buy Tickets", {listStyle: builder.ListStyle.button});
+        //session.send(msg);
+        builder.Prompts.choice(session, msg, "Back|Buy Tickets", {listStyle: builder.ListStyle.button});
 
     }
 ]
