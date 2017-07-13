@@ -8,11 +8,6 @@ module.exports = [
     },
     function(session, results){
         console.log('Ito yung nakuha ' + results.response.entity);
-        if(results.response.entity === 'Continue'){
-            session.send("Tuloy book events");
-        }
-        else if(results.response.entity === 'Back'){
-            session.cancelDialog('/bookevents', '/mainMenu');
-        }
+        session.send('Hahahaha lolz');
     }
 ]
