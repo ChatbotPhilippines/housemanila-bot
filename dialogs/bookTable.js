@@ -44,7 +44,12 @@ module.exports = [
         });
         session.send(reply);
     },
-    function(session, results){
-        var occasion = results.response;
+    function(session,results){   
+        console.log(results.response.entity);
+        if (results.response.entity == 'Birthday'){
+            session.replaceDialog('/birthday');             
+        }else if (results.response.entity == 'Back'){            
+            session.replaceDialog('/events'); 
+        }
     }
 ]

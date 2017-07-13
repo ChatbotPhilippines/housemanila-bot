@@ -14,6 +14,9 @@ const request = require('request');
 const events = require('./dialogs/events');
 const tablerates = require('./dialogs/tablerates');
 const floorplan = require('./dialogs/floorplan');
+const birthday = require('./dialogs/birthday');
+const birthday2 = require('./dialogs/birthday2');
+const birthday3 = require('./dialogs/birthday3');
 
 //=======================================================
 // Bot Setup
@@ -65,6 +68,9 @@ bot.dialog('/bookTable', bookTable);
 bot.dialog('/events', events);
 bot.dialog('/tablerates', tablerates);
 bot.dialog('/floorplan', floorplan);
+bot.dialog('/birthday', birthday);
+bot.dialog('/birthday2', birthday2);
+bot.dialog('/birthday3', birthday3);
 function main_menu_card(session){
     return [
         new builder.HeroCard(session)
