@@ -31,7 +31,7 @@ module.exports = [
     function(session,results){  
         
         if(results.response.entity == 'Continue'){
-            ///
+            session.replaceDialog("/tablereserve");
         }
         
 
