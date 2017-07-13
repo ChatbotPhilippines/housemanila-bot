@@ -10,8 +10,8 @@ module.exports = [
 
     },
     function(session,results){   
-        console.log(results.response.entity);
-        if (results.response.entity != null){
+        console.log(results.response);
+        if (results.response != null){
 
             builder.Prompts.confirm(session, `${session.dialogData.number} Is this confirmed?`);
 
