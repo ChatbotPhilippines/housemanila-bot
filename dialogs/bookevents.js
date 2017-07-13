@@ -17,7 +17,7 @@ module.exports = [
     },
     function(session, results){
         session.dialogData.events.contact = results.response;
-        session.replaceDialog('/enterEmail', session.userData.emailAdd);
+        session.replaceDialog('/enteremail', session.userData.emailAdd);
     },
     function(session, results){
         session.dialogData.email = results.response;
