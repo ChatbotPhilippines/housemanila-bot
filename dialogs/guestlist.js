@@ -62,7 +62,7 @@ module.exports = [
     },
     function (session, results){
             session.dialogData.guestlist.party = results.response.entity;
-            session.replaceDialog('/guestnames');
+            session.replaceDialog('/guestnames', session.dialogData.guestlist.names);
     },
     function(session, results){
         console.log("Napunta sa huling waterfall");
