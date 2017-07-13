@@ -13,6 +13,11 @@ module.exports = [
 
     },
     function(session,results){
-        console.log("this is the response" + results.response);
+        var choice = results.response;
+        if (choice == 'Buy Tickets'){
+            session.send('For tickets or table reservations, you may contact +639272204244 🙂');            
+        }else{
+            session.replaceDialog('/tablerates'); 
+        }
     }
 ]
