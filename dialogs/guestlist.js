@@ -72,9 +72,9 @@ module.exports = [
             // var msg = ;
             var party = session.dialogData.guestlist.party;
             var names = session.dialogData.guestlist.names;
-            session.send(session.dialogData.guestlist.party);
-            session.send(session.dialogData.guestlist.names);
-            session.send("Test");
-            session.send('You will be enlisted to the ' + party + 'with the following people ' + names + '. Is this confirmed?');
+            // session.send(session.dialogData.guestlist.party);
+            // session.send(session.dialogData.guestlist.names);
+            // session.send("Test");
+            builder.Prompts.confirm(session, 'You will be enlisted to the ' + party + 'with the following people ' + names + '. Is this confirmed?');
     }
 ]
