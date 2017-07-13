@@ -18,14 +18,11 @@ const birthday = require('./dialogs/birthday');
 const birthday2 = require('./dialogs/birthday2');
 const birthday3 = require('./dialogs/birthday3');       
 const bookevents = require('./dialogs/bookevents');
-<<<<<<< HEAD
 const enteremail = require('./dialogs/enteremail');
-=======
 const reserve = require('./dialogs/tablereserve');
 const sevenFifteen = require('./dialogs/seven-fifteen');
 const sixteen = require('./dialogs/sixteen');
 const number = require('./dialogs/contactnumber');
->>>>>>> bfd86f3a1f5c1d578fe430725c45ba88f913553d
 //=======================================================
 // Bot Setup
 //=======================================================
