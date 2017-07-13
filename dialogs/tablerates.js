@@ -12,11 +12,11 @@ module.exports = [
         builder.Prompts.choice(session, `Select: `, "Back|Buy Tickets", {listStyle: builder.ListStyle.button});
 
     },
-    function(session,results){        
+    function(session,results){                
         if (results.response == 'Buy Tickets'){
-            session.send('For tickets or table reservations, you may contact +639272204244 🙂');            
+            session.send(session, 'For tickets or table reservations, you may contact +639272204244 🙂');            
         }else{
             session.replaceDialog('/tablerates'); 
         }
-    }//
+    }
 ]
