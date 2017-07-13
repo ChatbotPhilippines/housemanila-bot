@@ -76,7 +76,7 @@ var builder = require('botbuilder');
                 break;
 
                 case 'Corporate-Functions':
-                    session.replaceDialog('/corporateFunctions');
+                    session.replaceDialog('/bookevents');
                 break;
 
                 default:
