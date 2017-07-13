@@ -8,7 +8,7 @@ const firstRun = require('./dialogs/firstRun');
 const menu = require('./dialogs/menu');
 const guestlist = require('./dialogs/guestlist');
 const bookTable = require('./dialogs/bookTable');
-const names = require('./dialogs/guestnames');
+const guestnames = require('./dialogs/guestnames');
 const PAGE_ACCESS_TOKEN = 'EAAcMbSiRTlABADmflfXlqOWKZBh56eD9ruT9eRwC2oG8UhSndDgUJDZCnsPZAubrfGkRYtUb21qecZCDAlXlElJTQNfUsZBM5kXKBoeUSHJ4esAKhfhqHZCVwZAf3xbqniZCDAbaBJwmHwGWUnSHXhr29batAE5C4jeZBm7s9U9ZBj4gZDZD';
 const request = require('request');
 //=======================================================
@@ -56,6 +56,7 @@ bot.dialog('/firstRun', [
 
 bot.dialog('/mainMenu', menu).triggerAction({matches:/mainMenu/i});
 bot.dialog('/guestlist', guestlist);
+bot.dialog('/guestnames', guestnames);
 bot.dialog('/guestnames', names);
 bot.dialog('/bookTable', bookTable);
 
