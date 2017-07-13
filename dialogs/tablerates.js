@@ -13,6 +13,6 @@ module.exports = [
 
     },
     function(session,results){
-        console.log("this is the response" + results.response);
+        console.log("this is the response" + results.response.entity);
     }
 ]
