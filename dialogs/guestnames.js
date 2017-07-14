@@ -9,7 +9,7 @@ module.exports = [
     },
     function (session, results){
         session.dialogData.names.guests = results.response.split(/[,\n]+/).map(function (x) { return x.trim(); }) || [];
-        builder.Prompts.choice(session, `${consts.Messages.GUEST_LIST} ${session.dialogData.names.guests.join('<br/>')}<br/>${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button});
+        builder.Prompts.choice(session, `${consts.Messages.GUEST_LIST}<br/>${session.dialogData.names.guests.join('<br/>')}<br/>${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button});
     },
     function (session, results){
         if(results.response.entity === 'Yes'){
