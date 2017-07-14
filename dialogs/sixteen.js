@@ -21,8 +21,7 @@ module.exports = [
         console.log(results.response.entity);
         if (results.response.entity == "Sure! Get me one"){
 
-            session.send("For immediate assistance with your table reservation, you may contact us at 09272204244 🙂");
-            session.endDialog();
+            session.endDialog("For immediate assistance with your table reservation, you may contact us at 09272204244 🙂");
 
         }else if (results.response.entity == "No thanks"){
             session.replaceDialog("/contactnumber");
