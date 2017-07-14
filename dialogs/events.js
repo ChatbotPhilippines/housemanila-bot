@@ -1,6 +1,7 @@
  'use strict';
 
 var builder = require('botbuilder');
+var consts = require('../helpers/consts')
 
  module.exports = [
         
@@ -50,34 +51,18 @@ var builder = require('botbuilder');
             console.log(JSON.stringify(results.response) + "This is the reply");
             var reply = results.response.entity;
             switch (reply){
-                case 'table-rates':                    
-                    // var img = new builder.Message(session)
-                    //     .addAttachment({
-                    //         contentURL: 'http://i.imgur.com/dzy25OF.jpg',
-                    //         contentType: 'image/jpg',
-                    //         name: 'table rates'
-                    //     });
-                    // session.send(img);      
+                case 'table-rates':                                
                     session.replaceDialog('/tablerates'); 
                  
                 break;
 
-                case 'floor-plan':
-                    // session.send("Here's the floor plan for this event");
-                    // var imgfloor = new builder.Message(session)
-                    //     .addAttachment({
-                    //         contentURL: 'http://i.imgur.com/dzy25OF.jpg',
-                    //         contentType: 'image/jpg',
-                    //         name: 'NBS Logo'
-                    //     });
-                    // session.send(imgfloor);
-
+                case 'floor-plan':                
                     session.replaceDialog('/floorplan'); 
 
                 break;
 
                 case 'buy-tickets':
-                    session.send('For tickets or table reservations, you may contact +639272204244 🙂');
+                    session.send(consts.Messages.BUY_TICKETS);
                 break;
 
                 default:

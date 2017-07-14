@@ -1,18 +1,19 @@
 var builder = require('botbuilder');
+var consts = require('../helpers/consts');
 
 module.exports = [
 
     function (session, args) {
         session.dialogData.names = args || {};
-        builder.Prompts.text(session, 'Please enter the names you would like to add in the guest list (separated by a comma):');
+        builder.Prompts.text(session, consts.Prompts.ENTER_NAMES);
     },
     function (session, results){
         session.dialogData.names.guests = results.response.split(/[,\n]+/).map(function (x) { return x.trim(); }) || [];
-        builder.Prompts.choice(session, `The following people will be part of the guest list ${session.dialogData.names.guests.join('<br/>')}<br/>Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
+        builder.Prompts.choice(session, `${consts.Messages.GUEST_LIST} ${session.dialogData.names.guests.join('<br/>')}<br/>${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button});
     },
     function (session, results){
         if(results.response.entity === 'Yes'){
-            session.send('You are now pending for approval in our guest list! You will receive a message once you get approved. Thank you!');
+            session.send(consts.Messages.PENDING);
             session.endDialog();
         }
         else if(results.response.entity === 'No'){

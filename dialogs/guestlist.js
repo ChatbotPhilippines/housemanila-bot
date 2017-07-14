@@ -1,7 +1,7 @@
 'use strict';
 
 var builder = require('botbuilder');
-
+var consts = require('../helpers/consts');
 
 module.exports = [
     function(session, args){
@@ -17,7 +17,7 @@ module.exports = [
         var reply = new builder.Message(session)
             .attachmentLayout(builder.AttachmentLayout.carousel)
             .attachments(cards);
-        session.send("Which event would you like to get in the guest list for?");
+        session.send(consts.Prompts.EVENT);
         builder.Prompts.choice(session, reply, selectArray, { maxRetries:0,promptAfterAction:false});
 
         function getCards(session){

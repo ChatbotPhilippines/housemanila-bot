@@ -1,11 +1,12 @@
  'use strict';
 
  var builder = require('botbuilder');
+ var consts = require('../helpers/consts');
 
  module.exports = [
 
     function(session){        
-        session.send('Hey I\'m House Manila Bot here to make your partying easier! 🎉🎉🎉 Click the button below to start!');
+        session.send(consts.Messages.WELCOME);
         var cards = main_menu_card();
 
         var reply = new builder.Message(session)
@@ -21,8 +22,7 @@
  function main_menu_card(session){
     return [
         new builder.HeroCard(session)
-            .title('House Manila')
-            //.subtitle('Hey I\'m House Manila Bot here to make your partying easier! 🎉🎉🎉 Click the button below to start!')
+            .title('House Manila')            
             .images([
                 builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
             ])

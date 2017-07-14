@@ -1,14 +1,15 @@
 'use strict';
 
 var builder = require('botbuilder');
+var consts = require('../helpers/consts');
 
 module.exports = [
     function(session, args){
         if(args && args.reprompt){
-            builder.Prompts.text(session, 'Invalid e-mail address, please enter your e-mail address');
+            builder.Prompts.text(session, );
         }
         else{
-            builder.Prompts.text(session, 'Please enter your email address.');
+            builder.Prompts.text(session, consts.Messages.INVALID_EMAIL);
         }
     },
     function(session, results){
@@ -16,7 +17,7 @@ module.exports = [
         var emailAdd = results.response;
         if(emailregex.test(emailAdd)){
             session.userData.emailAdd = results.response;
-            builder.Prompts.time(session, 'When would you like to have the event? Enter the date and time.');
+            builder.Prompts.time(session, consts.Prompts.ENTER_DATE_TIME);
         }
         else{
             session.replaceDialog('/enteremail', {reprompt : true});
@@ -24,6 +25,6 @@ module.exports = [
     },
     function(session, results){
         session.userData.eventdate = results.response;
-        session.endDialog('Thank you for the info! Our events officer will contact you within 24 hours for your inquiry.');
+        session.endDialog(consts.Messages.THANK_INFO);
     }
 ]

@@ -1,12 +1,12 @@
 'use strict';
 
 var builder = require('botbuilder');
-
+var consts = require('../helpers/consts');
 module.exports = [
     function(session){
     
 
-        builder.Prompts.choice(session, `Are you celebrating anything special? 🙂`, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
+        builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
         {listStyle: builder.ListStyle.button});
         
     

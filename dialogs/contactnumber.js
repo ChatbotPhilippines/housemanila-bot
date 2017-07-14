@@ -1,12 +1,13 @@
 'use strict'
 
 var builder = require('botbuilder');
+var consts = require('../helpers/consts');
 
 module.exports = [
 
         function(session, args){
         session.dialogData.numbers = args || {};
-        builder.Prompts.number(session, 'Okay. Please enter your contact number now.');                    
+        builder.Prompts.number(session, consts.Prompts.CONTACT_NUMBER_2);                    
 
     },
     function(session,results){   
@@ -14,7 +15,7 @@ module.exports = [
         session.dialogData.numbers.phone = results.response;
         if (results.response != null){        
 
-            builder.Prompts.choice(session, `${session.dialogData.numbers.phone} Is this confirmed?`, "Yes|No", {listStyle: builder.ListStyle.button});
+            builder.Prompts.choice(session, `${session.dialogData.numbers.phone} ${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button});
 
         }
         
@@ -23,7 +24,7 @@ module.exports = [
         console.log(results.response.entity);
         if(results.response.entity == "Yes"){
 
-            session.endDialog(`Thank you! A confirmation code will be sent to ${session.dialogData.numbers.phone} within 24 hours to confirm the reservation 🙂`)            
+            session.endDialog(consts.Messages.CONFIRMATION_CODE, session.dialogData.numbers.phone);
 
         }else if (results.response.entity == "No"){
             session.replaceDialog("/contactnumber");

@@ -1,18 +1,19 @@
 'use strict';
 
 var builder = require('botbuilder');
+var consts = require('../helpers/consts')
 
 module.exports = [
     function(session){
-        builder.Prompts.text(session, 'What is the name of your company?');
+        builder.Prompts.text(session, consts.Prompts.COMPANY_NAME);
     },
     function(session, results){
         session.userData.company = results.response;
-        builder.Prompts.text(session, 'What is your full name?');
+        builder.Prompts.text(session, consts.Prompts.FULL_NAME);
     },
     function(session, results){
         session.userData.fullname = results.response;
-        builder.Prompts.number(session, 'Please enter your contact number');
+        builder.Prompts.number(session, consts.Prompts.CONTACT_NUMBER);
     },
     function(session, results){
         session.userData.contact = results.response;

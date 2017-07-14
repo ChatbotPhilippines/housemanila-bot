@@ -1,11 +1,12 @@
 'use strict'
 
 var builder = require('botbuilder');
+var consts = require("../helpers/consts")
 
 module.exports = [
 
         function(session){
-        builder.Prompts.choice(session, `Is that all?`, "Add another|Yes, continue", 
+        builder.Prompts.choice(session, consts.Prompts.IS_THAT_ALL, "Add another|Yes, continue", 
         {listStyle: builder.ListStyle.button});
         
 
