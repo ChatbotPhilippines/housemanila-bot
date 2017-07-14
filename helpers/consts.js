@@ -29,24 +29,7 @@ exports.Messages = {
     PENDING: 'You are now pending for approval in our guest list! You will receive a message once you get approved. Thank you!',
     MAIN_MENU: 'What can I do for you?',
     VIP_OFFER: 'May we offer you a table from our elevated VIP area? These tables go from P10-30K and are fully consummable! 🍾🍾🍾',
-    VIP_CONFIRMATION:'For immediate assistance with your table reservation, you may contact us at 09272204244 🙂'
-    // EXAMPLE_REMINDERS: [
-    //     'Remind me to go to the gym at 5pm today',
-    //     'Remind me to go for a run tonight at 7pm',
-    //     'Remind me to feed the cat in one hour',
-    //     'Remind me to buy groceries on Saturday at 10:30am',
-    //     'Remind me to take out the garbage tomorrow at 6pm',
-    //     'Remind me to buy movie tickets tomorrow at 6pm',
-    //     'Remind me to go to the team meeting at 4:30pm on Friday'
-    // ],
-    // GREETINGS: ['Sup?', 'Hi there!', 'Hello!', 'Hey.'],
-    // GREETING_RESPONSE: '%s Try something like: %s, or type "help".',
-    // MULTIPLE_CITIES_FOUND: 'I found a number of cities named %s.',
-    // REMINDER: 'Hey, you asked me to %s',
-    // REMINDER_DELETED: 'Reminder deleted.',
-    // REMINDER_ALREADY_DELETED: 'Oops, looks like that reminder was already deleted.',
-    // NO_REMINDERS: 'You do not have any active reminders. To create one, say something like: "%s"',
-    // TIMEZONE_CHANGED: 'Thanks! I have your current time as %s. Now try something like: "%s", or type "help".'
+    VIP_CONFIRMATION:'For immediate assistance with your table reservation, you may contact us at 09272204244 🙂'    
 };
 
 // exports.Menus = {
