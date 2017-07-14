@@ -5,6 +5,7 @@
  module.exports = [
 
     function(session){        
+        session.send('Hey I\'m House Manila Bot here to make your partying easier! 🎉🎉🎉 Click the button below to start!');
         var cards = main_menu_card();
 
         var reply = new builder.Message(session)
@@ -21,7 +22,7 @@
     return [
         new builder.HeroCard(session)
             .title('House Manila')
-            .subtitle('Hey I\'m House Manila Bot here to make your partying easier! 🎉🎉🎉 Click the button below to start!')
+            //.subtitle('Hey I\'m House Manila Bot here to make your partying easier! 🎉🎉🎉 Click the button below to start!')
             .images([
                 builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
             ])
