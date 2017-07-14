@@ -49,4 +49,4 @@ exports.Messages = {
 //         { title: 'Show timezone', dialogId: '/showTimezone' },
 //         { title: 'Reset timezone', dialogId: '/setTimezone' }
 //     ]
-};
+// };
