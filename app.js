@@ -54,23 +54,16 @@ bot.dialog('/', [
     }
 ]);
 
-bot.dialog('/firstRun', [
-    function(session){        
-        var cards = main_menu_card();
-
-        var reply = new builder.Message(session)
-            .attachmentLayout(builder.AttachmentLayout.carousel)
-            .attachments(cards)
-
-        session.send(reply);
-    }
-]).triggerAction({matches:/Get_Started/i});
+// bot.dialog('/firstRun', [
+    
+// ]).triggerAction({matches:/Get_Started/i});
 
 bot.dialog('/mainMenu', menu).triggerAction({matches:/mainMenu/i});
 bot.dialog('/guestlist', guestlist);
 bot.dialog('/guestnames', guestnames);
 bot.dialog('/bookTable', bookTable);
 bot.dialog('/bookevents', bookevents);
+bot.dialog('/firstRun', firstRun).triggerAction({matches:/Get_Started/i});
 bot.dialog('/events', events);
 bot.dialog('/tablerates', tablerates);
 bot.dialog('/floorplan', floorplan);
@@ -82,16 +75,3 @@ bot.dialog('/tablereserve', reserve);
 bot.dialog('/seven-fifteen', sevenFifteen);
 bot.dialog('/sixteen', sixteen);
 bot.dialog('/contactnumber', number);
-function main_menu_card(session){
-    return [
-        new builder.HeroCard(session)
-            .title('House Manila')
-            .subtitle('Hey I\'m House Manila Bot here to make your partying easier! 🎉🎉🎉 Click the button below to start!')
-            .images([
-                builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-            ])
-            .buttons([
-                builder.CardAction.postBack(session, 'mainMenu', 'Main Menu')
-            ])
-    ]
-}
