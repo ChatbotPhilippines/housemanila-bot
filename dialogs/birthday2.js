@@ -5,8 +5,6 @@ var builder = require('botbuilder');
 module.exports = [
 
         function(session){
-        // var reply = new builder.Message(session).text('Awesome! Any special requests?');
-        // session.send(reply);
         builder.Prompts.choice(session, `Is that all?`, "Add another|Yes, continue", 
         {listStyle: builder.ListStyle.button});
         

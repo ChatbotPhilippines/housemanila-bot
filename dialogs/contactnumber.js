@@ -23,7 +23,7 @@ module.exports = [
         console.log(results.response.entity);
         if(results.response.entity == "Yes"){
 
-            session.send(`Thank you! A confirmation code will be sent to ${session.dialogData.numbers.phone} within 24 hours to confirm the reservation 🙂`)
+            session.endDialog(`Thank you! A confirmation code will be sent to ${session.dialogData.numbers.phone} within 24 hours to confirm the reservation 🙂`)            
 
         }else if (results.response.entity == "No"){
             session.replaceDialog("/contactnumber");
