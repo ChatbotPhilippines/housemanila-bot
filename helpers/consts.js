@@ -1,7 +1,7 @@
 exports.Prompts = {
     BIRTHDAY_REQUEST: 'Awesome! Any special requests?',
     ENTER_MESSAGE: 'Please enter a message for your special request now 🙂',    
-    IS_THAT_ALL: 'Sorry, I couldn\'t understand that. When would you like to be reminded to %s? Say something like: "in two weeks, at 9pm tomorrow, or on the 25th."',
+    IS_THAT_ALL: 'Is that all?',
     WHAT_ELSE: 'Enter the number that corresponds with your city.',
     COMPANY_NAME: 'What is the name of your company?',
     FULL_NAME: 'What is your full name?',
