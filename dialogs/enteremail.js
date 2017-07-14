@@ -6,10 +6,10 @@ var consts = require('../helpers/consts');
 module.exports = [
     function(session, args){
         if(args && args.reprompt){
-            builder.Prompts.text(session, );
+            builder.Prompts.text(session, consts.Messages.INVALID_EMAIL);
         }
         else{
-            builder.Prompts.text(session, consts.Messages.INVALID_EMAIL);
+            builder.Prompts.text(session, consts.Prompts.ENTER_EMAIL);
         }
     },
     function(session, results){

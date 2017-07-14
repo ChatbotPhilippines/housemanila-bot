@@ -11,7 +11,8 @@ exports.Prompts = {
     CONFIRMATION: 'Is this confirmed?',
     ENTER_DATE_TIME: 'When would you like to have the event? Enter the date and time.',
     EVENT: 'Which event would you like to get in the guest list for?',
-    ENTER_NAMES: `Please enter the names you would like to add in the guest list (separated by a comma):`
+    ENTER_NAMES: `Please enter the names you would like to add in the guest list (separated by a comma):`,
+    ENTER_EMAIL: `Please enter you email address` 
 
 };
 
