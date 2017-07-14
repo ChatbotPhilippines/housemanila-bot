@@ -1,5 +1,6 @@
 console.log("table rates");
 var builder = require('botbuilder');
+var consts = require('../helpers/consts');
 module.exports = [
     
     function (session) {        
@@ -15,7 +16,7 @@ module.exports = [
     function(session,results){   
         console.log(results.response.entity);
         if (results.response.entity == 'Buy Tickets'){
-            session.send('For tickets or table reservations, you may contact +639272204244 🙂');            
+            session.send(consts.Messages.BUY_TICKETS);            
             session.endDialog();
         }else if (results.response.entity == 'Back'){            
             session.replaceDialog('/events'); 

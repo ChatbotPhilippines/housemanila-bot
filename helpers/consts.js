@@ -12,8 +12,10 @@ exports.Prompts = {
     ENTER_DATE_TIME: 'When would you like to have the event? Enter the date and time.',
     EVENT: 'Which event would you like to get in the guest list for?',
     ENTER_NAMES: `Please enter the names you would like to add in the guest list (separated by a comma):`,
-    ENTER_EMAIL: `Please enter you email address` 
-
+    ENTER_EMAIL: `Please enter you email address`, 
+    SEVEN_FIFTEEN: 'Alright! Lastly, please enter your contact number so we can send a confirmation code once your table is approved.',
+    TABLE_RESERVE: 'Under whose name will the table be reserved? Please enter full name:',
+    GROUP_COUNT: 'How many persons are in the group?'
 };
 
 exports.Messages = {
@@ -25,23 +27,26 @@ exports.Messages = {
     BUY_TICKETS: 'For tickets or table reservations, you may contact +639272204244 🙂',
     GUEST_LIST: 'The following people will be part of the guest list',
     PENDING: 'You are now pending for approval in our guest list! You will receive a message once you get approved. Thank you!',
-    EXAMPLE_REMINDERS: [
-        'Remind me to go to the gym at 5pm today',
-        'Remind me to go for a run tonight at 7pm',
-        'Remind me to feed the cat in one hour',
-        'Remind me to buy groceries on Saturday at 10:30am',
-        'Remind me to take out the garbage tomorrow at 6pm',
-        'Remind me to buy movie tickets tomorrow at 6pm',
-        'Remind me to go to the team meeting at 4:30pm on Friday'
-    ],
-    GREETINGS: ['Sup?', 'Hi there!', 'Hello!', 'Hey.'],
-    GREETING_RESPONSE: '%s Try something like: %s, or type "help".',
-    MULTIPLE_CITIES_FOUND: 'I found a number of cities named %s.',
-    REMINDER: 'Hey, you asked me to %s',
-    REMINDER_DELETED: 'Reminder deleted.',
-    REMINDER_ALREADY_DELETED: 'Oops, looks like that reminder was already deleted.',
-    NO_REMINDERS: 'You do not have any active reminders. To create one, say something like: "%s"',
-    TIMEZONE_CHANGED: 'Thanks! I have your current time as %s. Now try something like: "%s", or type "help".'
+    MAIN_MENU: 'What can I do for you?',
+    VIP_OFFER: 'May we offer you a table from our elevated VIP area? These tables go from P10-30K and are fully consummable! 🍾🍾🍾',
+    VIP_CONFIRMATION:'For immediate assistance with your table reservation, you may contact us at 09272204244 🙂'
+    // EXAMPLE_REMINDERS: [
+    //     'Remind me to go to the gym at 5pm today',
+    //     'Remind me to go for a run tonight at 7pm',
+    //     'Remind me to feed the cat in one hour',
+    //     'Remind me to buy groceries on Saturday at 10:30am',
+    //     'Remind me to take out the garbage tomorrow at 6pm',
+    //     'Remind me to buy movie tickets tomorrow at 6pm',
+    //     'Remind me to go to the team meeting at 4:30pm on Friday'
+    // ],
+    // GREETINGS: ['Sup?', 'Hi there!', 'Hello!', 'Hey.'],
+    // GREETING_RESPONSE: '%s Try something like: %s, or type "help".',
+    // MULTIPLE_CITIES_FOUND: 'I found a number of cities named %s.',
+    // REMINDER: 'Hey, you asked me to %s',
+    // REMINDER_DELETED: 'Reminder deleted.',
+    // REMINDER_ALREADY_DELETED: 'Oops, looks like that reminder was already deleted.',
+    // NO_REMINDERS: 'You do not have any active reminders. To create one, say something like: "%s"',
+    // TIMEZONE_CHANGED: 'Thanks! I have your current time as %s. Now try something like: "%s", or type "help".'
 };
 
 // exports.Menus = {

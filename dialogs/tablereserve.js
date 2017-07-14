@@ -1,18 +1,19 @@
 'use strict'
 
 var builder = require('botbuilder');
+var consts = require('../helpers/consts');
 
 module.exports = [
 
         function(session){        
-        builder.Prompts.text(session, 'Under whose name will the table be reserved? \n Please enter full name:');
+        builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
         
 
     },
     function(session, results){   
         console.log(results.response.entity);
         if (results.response != null){
-            builder.Prompts.choice(session, `How many persons are in the group?`, "4-6|7-10|11-15|16+", 
+            builder.Prompts.choice(session, consts.Prompts.GROUP_COUNT, "4-6|7-10|11-15|16+", 
         {listStyle: builder.ListStyle.button});
 
         }

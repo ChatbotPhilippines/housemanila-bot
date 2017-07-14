@@ -1,6 +1,7 @@
  'use strict';
 
 var builder = require('botbuilder');
+var consts = require('../helpers/consts')
 
  module.exports = [
         
@@ -16,7 +17,7 @@ var builder = require('botbuilder');
         var reply = new builder.Message(session)
             .attachmentLayout(builder.AttachmentLayout.carousel)
             .attachments(cards);
-        session.send("What can I do for you?");
+        session.send(consts.Messages.MAIN_MENU);
         builder.Prompts.choice(session, reply, selectArray, { maxRetries:0,promptAfterAction:false});        
 
         function getCards(session){
