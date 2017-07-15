@@ -55,14 +55,14 @@ bot.dialog('/', [
 ]);
 
 bot.dialog('/mainMenu', dialogs.menu).triggerAction({matches:/mainMenu/i});
-bot.dialog('/guestlist', dialogs.guestlist);
+bot.dialog('/guestlist', dialogs.guestlist).triggerAction({matches:/Guest-List/i});
 bot.dialog('/guestnames', dialogs.guestnames);
-bot.dialog('/bookTable', dialogs.bookTable);
-bot.dialog('/bookevents', dialogs.bookevents);
+bot.dialog('/bookTable', dialogs.bookTable).triggerAction({matches:/Book-Table/i});
+bot.dialog('/bookevents', dialogs.bookevents).triggerAction({matches:/Corporate-Functions/i});
 bot.dialog('/firstRun', dialogs.firstRun).triggerAction({matches:/Get_Started/i});
-bot.dialog('/events', dialogs.events);
-bot.dialog('/tablerates', dialogs.tablerates);
-bot.dialog('/floorplan', dialogs.floorplan);
+bot.dialog('/events', dialogs.events).triggerAction({matches:/Events/i});
+bot.dialog('/tablerates', dialogs.tablerates).triggerAction({matches:/table-rates/i});
+bot.dialog('/floorplan', dialogs.floorplan).triggerAction({matches:/floor-plan/i});
 bot.dialog('/birthday', dialogs.birthday);
 bot.dialog('/birthday2', dialogs.birthday2);
 bot.dialog('/birthday3', dialogs.birthday3);
