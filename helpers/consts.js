@@ -15,7 +15,7 @@ exports.Prompts = {
     ENTER_NAMES: `Please enter the names you would like to add in the guest list (separated by a comma):`,
     ENTER_EMAIL: `Please enter you email address`, 
     SEVEN_FIFTEEN: 'Alright! Lastly, please enter your contact number so we can send a confirmation code once your table is approved.',
-    TABLE_RESERVE: 'Under whose name will the table be reserved? Please enter full name:',
+    TABLE_RESERVE: 'Under whose name will the table be reserved? \n Please enter full name:',
     GROUP_COUNT: 'How many persons are in the group?'
 };
 
