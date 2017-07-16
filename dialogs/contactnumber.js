@@ -21,18 +21,18 @@ module.exports = [
         var number = matched ? matched.join('') : '';
         if (number.length == 10 || number.length == 11 || number.length == 9) {                    
 
-            builder.Prompts.choice(session, `${number} ${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button});
+            builder.Prompts.choice(session, `${phonenumber} ${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button}, {reprompt: false});
 
         }else{
              session.replaceDialog('/contactnumber', { reprompt: true });
         }
         
     },
-    function(session,results){   
+    function(session, results){   
         console.log(results.response.entity);
         if(results.response.entity == "Yes"){
 
-            session.endDialog(consts.Messages.CONFIRMATION_CODE, session.dialogData.numbers.phone);
+            session.endDialog(consts.Messages.CONFIRMATION_CODE, phonenumber);
 
         }else if (results.response.entity == "No"){
             session.replaceDialog("/contactnumber");
