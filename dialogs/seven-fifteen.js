@@ -7,16 +7,26 @@ module.exports = [
 
         function(session, args){
         session.dialogData.numbers = args || {};
-        builder.Prompts.number(session, consts.Prompts.SEVEN_FIFTEEN);                    
-
+        if (args && args.reprompt) {
+              builder.Prompts.text(session, consts.Prompts.CONTACT_NUMBER_FORMAT);
+        }else{   
+        builder.Prompts.text(session, consts.Prompts.SEVEN_FIFTEEN);                    
+        }
     },
     function(session,results){   
         console.log(results.response);
         session.dialogData.numbers.phone = results.response;
-        if (results.response != null){
+        var phonestring = session.dialogData.numbers.phone;
+        var phonenumber = phonestring.toString();
+        var matched = phonenumber.match(/\d+/g);
+        var number = matched ? matched.join('') : '';
+        if (number.length == 10 || number.length == 11 || number.length == 9) {                    
+
             
             builder.Prompts.choice(session, `${session.dialogData.numbers.phone} ` + consts.Prompts.CONFIRMATION, "Yes|No", {listStyle: builder.ListStyle.button});
 
+        }else{
+             session.replaceDialog('/contactnumber', { reprompt: true });
         }
         
     },
