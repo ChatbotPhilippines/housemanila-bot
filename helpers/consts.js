@@ -8,7 +8,7 @@ exports.Prompts = {
     CONTACT_NUMBER: 'Please enter your contact number',
     CELEBRATE: 'Are you celebrating anything special? 🙂',
     CONTACT_NUMBER_2: 'Okay. Please enter your contact number now.',
-    CONTACT_NUMBER_FORMAT: "'Enter the number using a format of either: '(632) 123-4567' or '555-123-4567' or '09123456789'",
+    CONTACT_NUMBER_FORMAT: "Enter the number using a format of either: '(632) 123-4567' or '555-123-4567' or '09123456789'",
     CONFIRMATION: 'Is this confirmed?',
     ENTER_DATE_TIME: 'When would you like to have the event? Enter the date and time.',
     EVENT: 'Which event would you like to get in the guest list for?',

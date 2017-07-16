@@ -10,7 +10,7 @@ module.exports = [
         if (args && args.reprompt) {
               builder.Prompts.text(session, consts.Prompts.CONTACT_NUMBER_FORMAT);
         }else{        
-        builder.Prompts.number(session, consts.Prompts.CONTACT_NUMBER_2);                    
+        builder.Prompts.text(session, consts.Prompts.CONTACT_NUMBER_2);                    
         }
     },
     function(session,results){   
