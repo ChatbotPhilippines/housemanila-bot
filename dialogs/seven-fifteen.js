@@ -23,7 +23,7 @@ module.exports = [
         if (number.length == 10 || number.length == 11 || number.length == 9) {                    
 
             
-            builder.Prompts.choice(session, `${session.dialogData.numbers.phone} ` + consts.Prompts.CONFIRMATION, "Yes|No", {listStyle: builder.ListStyle.button});
+            builder.Prompts.choice(session, `${phonestring} ${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button}, {reprompt: false});
 
         }else{
              session.replaceDialog('/contactnumber', { reprompt: true });
