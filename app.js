@@ -77,7 +77,8 @@ bot.dialog('/test', [
     request({
       uri: "http://7d2fa0f4.ngrok.io/api/eventbooking",
       headers: {
-        'access-token': '596d94e775ed0a6bac40b708'
+        'access-token': '596d94e775ed0a6bac40b708',
+        'Content-Type': 'application/json'
       },
       qs: {
         ObjectId: '596d94e775ed0a6bac40b708'
