@@ -84,7 +84,7 @@ bot.dialog('/test', [
         'Content-Type': 'application/json'
       },
       qs: {
-        ObjectId: token
+        ObjectId: tokenized
       },
       method: 'GET'
     }, (error, response, body) => {
