@@ -75,7 +75,7 @@ bot.dialog('/contactnumber', dialogs.number);
 bot.dialog('/test', [
   function(session){
     request({
-      uri: "http://7d2fa0f4.ngrok.io/api/eventbooking",
+      uri: "http://7d2fa0f4.ngrok.io/api/eventbooking/:",
       headers: {
         'access-token': '596d94e775ed0a6bac40b708',
         'Content-Type': 'application/json'
