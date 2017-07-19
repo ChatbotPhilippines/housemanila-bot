@@ -83,7 +83,7 @@ bot.dialog('/test', [
         'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
         'Content-Type': 'application/json'
       },
-      params: {
+      qs: {
         ObjectId: tokenized
       },
       method: 'GET'
