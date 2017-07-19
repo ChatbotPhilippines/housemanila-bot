@@ -71,3 +71,19 @@ bot.dialog('/tablereserve', dialogs.reserve);
 bot.dialog('/seven-fifteen', dialogs.sevenFifteen);
 bot.dialog('/sixteen', dialogs.sixteen);
 bot.dialog('/contactnumber', dialogs.number);
+bot.dialog('/test', [
+  function(session){
+    request({
+      uri: "http://7d2fa0f4.ngrok.io/api/eventbooking",
+      headers: {
+        'access-token': '596d94e775ed0a6bac40b708'
+      },
+      qs: {
+        ObjectId: '596d94e775ed0a6bac40b708'
+      },
+      method: 'GET'
+    }, (error, response, body) => {
+      console.log(JSON.parse(body));
+    })
+  }
+]).triggerAction({matches:/hi/i});
