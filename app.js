@@ -81,7 +81,7 @@ bot.dialog('/test', [
         'Content-Type': 'application/json'
       },
       qs: {
-        ObjectId: '596c8a97dfbe2e05f006dcd1'
+        'ObjectId': '596c8a97dfbe2e05f006dcd1'
       },
       method: 'GET'
     }, (error, response, body) => {
