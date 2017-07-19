@@ -5,6 +5,7 @@ const restify = require('restify');
 const builder = require('botbuilder');
 const config = require('./config');
 const dialogs = require("./dialogs");
+const request = require('request');
 // const firstRun = require('./dialogs/firstRun');
 // const menu = require('./dialogs/menu');
 // const guestlist = require('./dialogs/guestlist');
