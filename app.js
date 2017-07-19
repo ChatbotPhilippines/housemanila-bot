@@ -86,7 +86,7 @@ bot.dialog('/test', [
       params: '596c8a97dfbe2e05f006dcd1',
       method: 'GET'
     }, (error, response, body) => {
-      console.log(JSON.parse(body));
+      console.log(response);
     })
   }
 ]).triggerAction({matches:/hi/i});
