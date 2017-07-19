@@ -6,7 +6,7 @@ var consts = require("../helpers/consts")
 module.exports = [
 
         function(session){        
-        builder.Prompts.choice(session, consts.Prompts.BIRTHDAY_REQUEST, "Balloons|Party Poopers|Sparklers|Cake|Bottle Parade|Others|No Occasion", 
+        builder.Prompts.choice(session, consts.Prompts.BIRTHDAY_REQUEST, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|No Occasion", 
         {listStyle: builder.ListStyle.button});
         
 
