@@ -78,7 +78,7 @@ bot.dialog('/test', [
     var token = '596c8a97dfbe2e05f006dcd1';
     var tokenized = mongoose.Types.ObjectId(token);
     request({
-      uri: "http://7d2fa0f4.ngrok.io/api/eventbooking/:ObjectId",
+      uri: "http://7d2fa0f4.ngrok.io/api/eventbooking/",
       headers: {
         'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
         'Content-Type': 'application/json'
