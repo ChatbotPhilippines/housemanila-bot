@@ -75,20 +75,37 @@ bot.dialog('/sixteen', dialogs.sixteen);
 bot.dialog('/contactnumber', dialogs.number);
 bot.dialog('/test', [
   function(session){
-    var token = '596c8a97dfbe2e05f006dcd1';
-    var tokenized = mongoose.Types.ObjectId(token);
-    request({
-      uri: "http://7d2fa0f4.ngrok.io/api/eventbooking/:ObjectId",
-      headers: {
-        'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
-        'Content-Type': 'application/json'
-      },
-      params: {
-       objectId: '596c8a97dfbe2e05f006dcd1'
-      },
-      method: 'GET'
-    }, (error, response, body) => {
-      console.log(response);
-    })
+var id = '596d94e775ed0a6bac40b708';
+    var options = { method: 'GET',
+  url: 'http://7d2fa0f4.ngrok.io/api/tablebooking/'+id,
+  headers: 
+   {
+     'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q' } };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+
+    // var token = '596c8a97dfbe2e05f006dcd1';
+    // var tokenized = mongoose.Types.ObjectId(token);
+    // request({
+    //   uri: "http://7d2fa0f4.ngrok.io/api/eventbooking/:ObjectId",
+    //   headers: {
+    //     'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   params: {
+    //    objectId: '596c8a97dfbe2e05f006dcd1'
+    //   },
+    //   method: 'GET'
+    // }, (error, response, body) => {
+    //   console.log(response);
+    // })
   }
 ]).triggerAction({matches:/hi/i});
+
+
+
+
