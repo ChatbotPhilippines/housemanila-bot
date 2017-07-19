@@ -6,6 +6,7 @@ const builder = require('botbuilder');
 const config = require('./config');
 const dialogs = require("./dialogs");
 const request = require('request');
+const mongoose = require('mongoose');
 // const firstRun = require('./dialogs/firstRun');
 // const menu = require('./dialogs/menu');
 // const guestlist = require('./dialogs/guestlist');
@@ -74,6 +75,8 @@ bot.dialog('/sixteen', dialogs.sixteen);
 bot.dialog('/contactnumber', dialogs.number);
 bot.dialog('/test', [
   function(session){
+    var token = '596c8a97dfbe2e05f006dcd1';
+    var tokenized = mongoose.Types.ObjectId(token);
     request({
       uri: "http://7d2fa0f4.ngrok.io/api/eventbooking/:ObjectId",
       headers: {
@@ -81,7 +84,7 @@ bot.dialog('/test', [
         'Content-Type': 'application/json'
       },
       qs: {
-        'ObjectId': '596c8a97dfbe2e05f006dcd1'
+        ObjectId: token
       },
       method: 'GET'
     }, (error, response, body) => {
