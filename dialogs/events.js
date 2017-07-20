@@ -38,8 +38,9 @@ var request = require('request')
                 
                 var events =JSON.parse(body); 
                 console.log(JSON.parse(body));
-
-                for(var i= 0; i < d.length; i++){
+                
+                
+                for(var i= 0; i < events.d.length; i++){
                 eventName = events.d[i].event_name;
                 eventVenue = events.d[i].event_venue;
                 eventDate = events.d[i].event_date;
