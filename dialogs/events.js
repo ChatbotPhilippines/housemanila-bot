@@ -66,15 +66,17 @@ var request = require('request')
             ];
             elements.push(...elem);
             
-            }
-        });
-var msg = new builder.Message(session)
+        }
+        
+        var msg = new builder.Message(session)
     .attachmentLayout(builder.AttachmentLayout.carousel)
     .attachments(elements);
 
 // Show carousel
 session.send("Here are the upcoming events at House Manila");
 session.send(msg);
+        });
+
 
             // return [
             //     new builder.HeroCard(session)
