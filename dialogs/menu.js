@@ -25,7 +25,7 @@ var consts = require('../helpers/consts')
                  new builder.HeroCard(session)
                 .title('Guest List')
                 .images([
-                    builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+                    builder.CardImage.create(session, 'http://i.imgur.com/tfTpWHV.jpg')
                 ])
                 .buttons([
                     builder.CardAction.imBack(session, 'Guest-List', 'Guest List')
@@ -34,7 +34,7 @@ var consts = require('../helpers/consts')
                 new builder.HeroCard(session)
                 .title('Book a Table')
                 .images([
-                    builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+                    builder.CardImage.create(session, 'http://i.imgur.com/ycFA68n.jpg')
                 ])
                 .buttons([
                     builder.CardAction.imBack(session, 'Book-Table', 'Book a Table')
@@ -52,7 +52,7 @@ var consts = require('../helpers/consts')
                 new builder.HeroCard(session)
                 .title('Corporate Functions')
                 .images([
-                    builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+                    builder.CardImage.create(session, 'http://i.imgur.com/63n9SnY.jpg')
                 ])
                 .buttons([
                     builder.CardAction.imBack(session, 'Corporate-Functions', 'Book an Event')
