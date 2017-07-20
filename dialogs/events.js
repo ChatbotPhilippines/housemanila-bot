@@ -1,7 +1,8 @@
  'use strict';
 
 var builder = require('botbuilder');
-var consts = require('../helpers/consts')
+var consts = require('../helpers/consts');
+var request = require('request')
 
  module.exports = [
         
