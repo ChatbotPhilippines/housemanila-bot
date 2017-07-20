@@ -39,7 +39,7 @@ var request = require('request')
                 var events =JSON.parse(body); 
                 console.log(JSON.parse(body));
                 
-                
+                var elements = [];
                 for(var i= 0; i < events.d.length; i++){
                 let eventName = events.d[i].event_name;
                 let eventVenue = events.d[i].event_venue;
@@ -50,7 +50,8 @@ var request = require('request')
                 let appId = events.d[i].app_id;
                 let eventId = events.d[i]._id;
 
-                return [
+                
+                let elem = [
                 new builder.HeroCard(session)
                 .title(eventName)
                 .images([
@@ -62,7 +63,10 @@ var request = require('request')
                     builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
 
                 ])
-                
+            ]
+            elements.push(elem);
+            return [
+                elements
                 ]//returnend
             }
         });
