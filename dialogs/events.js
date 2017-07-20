@@ -6,18 +6,18 @@ var consts = require('../helpers/consts')
  module.exports = [
         
     function(session){
-        var selectArray = [
-            "table-rates",
-            "floor-plan",
-            "buy-tickets"
-        ];
+        // var selectArray = [
+        //     "table-rates",
+        //     "floor-plan",
+        //     "buy-tickets"
+        // ];
 
         var cards = getCards();
         var reply = new builder.Message(session)
             .attachmentLayout(builder.AttachmentLayout.carousel)
             .attachments(cards);
         session.send("Here are the upcoming events at House Manila");
-        builder.Prompts.choice(session, reply, selectArray, { maxRetries:0,promptAfterAction:false});
+        builder.Prompts.choice(session, reply, { maxRetries:0,promptAfterAction:false});
 
         function getCards(session){
             return [
