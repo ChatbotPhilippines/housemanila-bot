@@ -84,8 +84,22 @@ var id = '596d94e775ed0a6bac40b708';
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
+  
+  var events =JSON.parse(body); 
+  console.log(JSON.parse(body));
 
-  console.log(body);
+for(var i= 0; i < d.length; i++){
+eventName = events.d[i].event_name;
+eventVenue = events.d[i].event_venue;
+eventDate = events.d[i].event_date;
+eventImage = events.d[i].event_image;
+startTime = events.d[i].start_time;
+endTime = events.d[i].end_time;
+appId = events.d[i].app_id;
+eventId = events.d[i]._id;
+
+
+}
     });
   }
 ]).triggerAction({matches:/hi/i});

@@ -23,22 +23,34 @@ var consts = require('../helpers/consts')
         
 
         function getCards(session){
-                var options = { method: 'GET',
+                var options = { 
+                method: 'GET',
                 url: 'http://7d2fa0f4.ngrok.io/api/events',
                 headers: 
                 {
-                    'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q' } };
+                    'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q' 
+                } 
+            };
 
                 request(options, function (error, response, body) {
                 if (error) throw new Error(error);
+                
+                var events =JSON.parse(body); 
+                console.log(JSON.parse(body));
 
-                console.log(body);
-                    });
+                for(var i= 0; i < d.length; i++){
+                eventName = events.d[i].event_name;
+                eventVenue = events.d[i].event_venue;
+                eventDate = events.d[i].event_date;
+                eventImage = events.d[i].event_image;
+                startTime = events.d[i].start_time;
+                endTime = events.d[i].end_time;
+                appId = events.d[i].app_id;
+                eventId = events.d[i]._id;
 
-
-            return [
+                return [
                 new builder.HeroCard(session)
-                .title('Sample 1')
+                .title(eventName)
                 .images([
                     builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
                 ])
@@ -47,19 +59,37 @@ var consts = require('../helpers/consts')
                     builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
                     builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
 
-                ]),
-
-                new builder.HeroCard(session)
-                .title('Sample 2')
-                .images([
-                    builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
                 ])
-                .buttons([
-                    builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
-                    builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
-                    builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
-                ]),                
-            ]
+                
+                ]//returnend
+            }
+        });
+
+
+            // return [
+            //     new builder.HeroCard(session)
+            //     .title('Sample 1')
+            //     .images([
+            //         builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+            //     ])
+            //     .buttons([
+            //         builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
+            //         builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
+            //         builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
+
+            //     ])
+
+                // new builder.HeroCard(session)
+                // .title('Sample 2')
+                // .images([
+                //     builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+                // ])
+                // .buttons([
+                //     builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
+                //     builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
+                //     builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
+                // ]),                
+  //          ]
         }
     },
     function (session, results){
