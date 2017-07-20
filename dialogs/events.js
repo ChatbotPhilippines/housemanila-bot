@@ -66,6 +66,7 @@ var request = require('request')
                 ])
             ]
             elements.push(elem);
+            console.log(elements);
             return elements
                 
                 //returnend
