@@ -41,14 +41,14 @@ var request = require('request')
                 
                 
                 for(var i= 0; i < events.d.length; i++){
-                eventName = events.d[i].event_name;
-                eventVenue = events.d[i].event_venue;
-                eventDate = events.d[i].event_date;
-                eventImage = events.d[i].event_image;
-                startTime = events.d[i].start_time;
-                endTime = events.d[i].end_time;
-                appId = events.d[i].app_id;
-                eventId = events.d[i]._id;
+                let eventName = events.d[i].event_name;
+                let eventVenue = events.d[i].event_venue;
+                let eventDate = events.d[i].event_date;
+                let eventImage = events.d[i].event_image;
+                let startTime = events.d[i].start_time;
+                let endTime = events.d[i].end_time;
+                let appId = events.d[i].app_id;
+                let eventId = events.d[i]._id;
 
                 return [
                 new builder.HeroCard(session)
