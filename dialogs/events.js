@@ -14,6 +14,7 @@ var request = require('request')
         // ];
 
         var cards = getCards();
+        console.log(cards);
         var reply = new builder.Message(session)
             .attachmentLayout(builder.AttachmentLayout.carousel)
             .attachments(cards);
@@ -65,9 +66,9 @@ var request = require('request')
                 ])
             ]
             elements.push(elem);
-            return [
-                elements
-                ]//returnend
+            return elements
+                
+                //returnend
             }
         });
 
