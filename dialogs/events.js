@@ -13,18 +13,17 @@ var request = require('request')
         //     "buy-tickets"
         // ];
 
-        var cards = getCards();
-        console.log(cards);
-        var reply = new builder.Message(session)
-            .attachmentLayout(builder.AttachmentLayout.carousel)
-            .attachments(cards);
-        session.send("Here are the upcoming events at House Manila");
-        builder.Prompts.choice(session, reply, { maxRetries:0,promptAfterAction:false});
+        // var cards = getCards();
+        // var reply = new builder.Message(session)
+        //     .attachmentLayout(builder.AttachmentLayout.carousel)
+        //     .attachments(cards);
+        // session.send("Here are the upcoming events at House Manila");
+        // builder.Prompts.choice(session, reply, { maxRetries:0,promptAfterAction:false});
 
         
         
 
-        function getCards(session){
+        //function getCards(session){
                 var options = { 
                 method: 'GET',
                 url: 'http://7d2fa0f4.ngrok.io/api/events',
@@ -52,7 +51,7 @@ var request = require('request')
                 let eventId = events.d[i]._id;
 
                 
-                let elem = [
+                var elem = [
                 new builder.HeroCard(session)
                 .title(eventName)
                 .images([
@@ -64,15 +63,18 @@ var request = require('request')
                     builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
 
                 ])
-            ]
-            elements.push(elem);
-            console.log(elements);
-            return elements
-                
-                //returnend
+            ];
+            elements.push(...elem);
+            
             }
         });
+var msg = new builder.Message(session)
+    .attachmentLayout(builder.AttachmentLayout.carousel)
+    .attachments(elements);
 
+// Show carousel
+session.send("Here are the upcoming events at House Manila");
+session.send(msg);
 
             // return [
             //     new builder.HeroCard(session)
@@ -98,7 +100,7 @@ var request = require('request')
                 //     builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
                 // ]),                
   //          ]
-        }
+        //}
     },
     function (session, results){
         if (results.response){
