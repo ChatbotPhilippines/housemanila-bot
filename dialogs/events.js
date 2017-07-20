@@ -19,7 +19,23 @@ var consts = require('../helpers/consts')
         session.send("Here are the upcoming events at House Manila");
         builder.Prompts.choice(session, reply, { maxRetries:0,promptAfterAction:false});
 
+        
+        
+
         function getCards(session){
+                var options = { method: 'GET',
+                url: 'http://7d2fa0f4.ngrok.io/api/events',
+                headers: 
+                {
+                    'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q' } };
+
+                request(options, function (error, response, body) {
+                if (error) throw new Error(error);
+
+                console.log(body);
+                    });
+
+
             return [
                 new builder.HeroCard(session)
                 .title('Sample 1')

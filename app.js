@@ -77,7 +77,7 @@ bot.dialog('/test', [
   function(session){
 var id = '596d94e775ed0a6bac40b708';
     var options = { method: 'GET',
-  url: 'http://7d2fa0f4.ngrok.io/api/tablebooking/'+id,
+  url: 'http://7d2fa0f4.ngrok.io/api/events',
   headers: 
    {
      'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q' } };
