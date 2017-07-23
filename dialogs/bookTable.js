@@ -3,7 +3,7 @@
 var builder = require('botbuilder');
 var consts = require('../helpers/consts');
 module.exports = [
-    function(session, args){
+    function(session, args, next){
         console.log(args);
         if (args != "add"){
         builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
