@@ -89,94 +89,10 @@ module.exports = [
      function(session, results){  
         console.log(session.dialogData.reserve + "reserve at r");      
         
-        builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
+        //builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
+        session.replaceDialog("/tablereserve");
         
 
-    },
-    function(session, results){   
-        console.log(results.response.entity);
-        if (results.response != null){
-            builder.Prompts.choice(session, consts.Prompts.GROUP_COUNT, "4-6|7-10|11-15|16+", 
-        {listStyle: builder.ListStyle.button});
-
-        }
-    },
-    function(session, results, args, next){   
-    session.dialogData.head = results.response.entity; 
-    if(session.dialogData.head != "16+"){
-        session.dialogData.numbers = args || {};
-        if (args && args.reprompt) {
-              builder.Prompts.text(session, consts.Prompts.CONTACT_NUMBER_FORMAT);
-        }else{   
-        builder.Prompts.text(session, consts.Prompts.SEVEN_FIFTEEN);                    
-        }
-    }else{
-        next();
-        }
-    },
-    function(session,results, next){   
-        if(session.dialogData.head != "16+"){
-        //console.log(results.response);
-        session.dialogData.numbers.phone = results.response;
-        var phonestring = session.dialogData.numbers.phone;
-        var phonenumber = phonestring.toString();
-        var matched = phonenumber.match(/\d+/g);
-        var number = matched ? matched.join('') : '';
-        if (number.length == 10 || number.length == 11 || number.length == 9) {                    
-
-            
-            builder.Prompts.choice(session, `${phonestring} ${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button}, {reprompt: false});
-
-        }else{
-             session.replaceDialog('/contactnumber', { reprompt: true });
-        }
-    }else{
-        next();
     }
-        
-    },
-    function(session,results, next){   
-        if(session.dialogData.head != "16+"){
-        console.log(results.response.entity);
-        if(results.response.entity == "Yes"){
-
-            session.endDialog(consts.Messages.CONFIRMATION_CODE, session.dialogData.numbers.phone);
-
-        }else if (results.response.entity == "No"){
-            session.replaceDialog("/contactnumber");
-        }
-
-    
-    }else{
-        next();
-    }
-
-},
-
-function(session, args, next){
-        session.send(consts.Messages.VIP_OFFER);
-        var img = new builder.Message(session)
-                        .addAttachment({
-                            contentURL: 'http://i.imgur.com/fJsZQY6.png',
-                            contentType: 'image/jpg',                            
-                        });                    
-                    session.send(img);
-        builder.Prompts.choice(session, `Select: `, "Sure! Get me one|No thanks", 
-        {listStyle: builder.ListStyle.button});
-        
-
-    },
-    function(session,results){   
-        console.log(results.response.entity);
-        if (results.response.entity == "Sure! Get me one"){
-
-            session.endDialog(consts.Messages.VIP_CONFIRMATION);
-
-        }else if (results.response.entity == "No thanks"){
-            session.replaceDialog("/contactnumber");
-        }
-        
-    }
-
 
 ]
