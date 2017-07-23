@@ -37,17 +37,35 @@ module.exports = [
         
 
     },
-    function(session,results){  
+    function(session,results, next){  
         console.log(results.response.entity);
         if (results.response.entity == 'Others'){            
             builder.Prompts.text(session, consts.Prompts.ENTER_MESSAGE);
         }
-        else if (results.response != null){
-            session.replaceDialog('/birthday2'); 
+         else{ //if (results.response != null){
+        //     session.replaceDialog('/birthday2'); 
+        next();
         }
     },
-    function(session,results){  
+
+    function(session, results, next){
+        builder.Prompts.choice(session, consts.Prompts.IS_THAT_ALL, "Add another|Yes, continue", 
+        {listStyle: builder.ListStyle.button});
         
+
+    },
+
+    function(session,results){   
+        console.log(results.response.entity);
+        if (results.response.entity == 'Add another'){
+            session.replaceDialog('/bookTable', "add"); 
+        }else if (results.response.entity == 'Yes, continue'){            
+            session.replaceDialog('/tablereserve'); 
+        }
+    },
+
+    function(session,results){  
+        console.log(results.response.entity);
         builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
         {listStyle: builder.ListStyle.button});
         
