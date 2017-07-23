@@ -39,7 +39,6 @@ module.exports = [
     },
     function(session,results, next){  
         console.log(results.response.entity);
-        //var others = results.response.entity;
         if (results.response.entity == 'Others'){            
             builder.Prompts.text(session, consts.Prompts.ENTER_MESSAGE);
         }
@@ -62,21 +61,18 @@ module.exports = [
     },
 
     function(session,results, next){   
-        console.log(JSON.stringify(results)+ 'sa add an');
-        if (results.response == null){                     
-                
-            if (results.response.entity == 'Add another'){
+        //console.log(results.response.entity);
+        if (results.response.entity == 'Add another'){
             session.replaceDialog('/bookTable', "add"); 
         }else if (results.response.entity == 'Yes, continue'){            
             session.replaceDialog('/tablereserve'); 
+        }else{
+            next();
         }
-    }else{
-        next();
-    }
-},
+    },
 
     function(session,results, next){  
-        //console.log(results.response.entity);
+        console.log(results.response.entity);
         builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
         {listStyle: builder.ListStyle.button});
         
