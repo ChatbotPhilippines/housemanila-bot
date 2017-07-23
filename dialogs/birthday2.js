@@ -14,7 +14,7 @@ module.exports = [
     function(session,results){   
         console.log(results.response.entity);
         if (results.response.entity == 'Add another'){
-            session.replaceDialog('/birthday3'); 
+            session.replaceDialog('/booktable'); 
         }else if (results.response.entity == 'Yes, continue'){            
             session.replaceDialog('/tablereserve'); 
         }
