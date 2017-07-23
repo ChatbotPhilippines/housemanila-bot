@@ -50,8 +50,12 @@ module.exports = [
 
     function(session, results, next){
         console.log(JSON.stringify(results));
+        if(results.response == null){
         builder.Prompts.choice(session, consts.Prompts.IS_THAT_ALL, "Add another|Yes, continue", 
         {listStyle: builder.ListStyle.button});
+        }else{
+            next();
+        }
         
 
     },
@@ -65,7 +69,7 @@ module.exports = [
         }
     },
 
-    function(session,results){  
+    function(session,results, next){  
         console.log(results.response.entity);
         builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
         {listStyle: builder.ListStyle.button});
