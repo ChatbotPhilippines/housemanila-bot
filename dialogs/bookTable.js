@@ -38,8 +38,10 @@ module.exports = [
 
     },
     function(session,results, next){  
+        var select = "";
         console.log(results.response.entity);
-        if (results.response.entity == 'Others'){            
+        if (results.response.entity == 'Others'){  
+            select = results.response.entity;           
             builder.Prompts.text(session, consts.Prompts.ENTER_MESSAGE);
         }
          else{ //if (results.response != null){
@@ -49,10 +51,13 @@ module.exports = [
     },
 
     function(session, results, next){
-        console.log(JSON.stringify(results) + "sa choice is that all");
-        if(results.response == null){
+        if (select == null){
+
+        console.log(JSON.stringify(results) + "sa choice is that all");            
         builder.Prompts.choice(session, consts.Prompts.IS_THAT_ALL, "Add another|Yes, continue", 
         {listStyle: builder.ListStyle.button});
+                
+                
         }else{
             next();
         }
@@ -62,12 +67,14 @@ module.exports = [
 
     function(session,results, next){   
         //console.log(results.response.entity);
+        if (select == null){
         console.log(JSON.stringify(results) + `results ng
         add another`);
-        if (results.response.entity == 'Add another'){
+            if (results.response.entity == 'Add another'){
             session.replaceDialog('/bookTable', "add"); 
-        }else if (results.response.entity == 'Yes, continue'){            
+            }else if (results.response.entity == 'Yes, continue'){            
             session.replaceDialog('/tablereserve'); 
+            }
         }else{
             next();
         }
