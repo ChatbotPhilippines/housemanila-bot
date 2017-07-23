@@ -22,10 +22,10 @@ module.exports = [
     // }
     
     function(session, results, next){  
-        if (results.response != null){      
+             
         builder.Prompts.choice(session, consts.Prompts.BIRTHDAY_REQUEST, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
         {listStyle: builder.ListStyle.button});
-        }
+        
 
     },
     function(session,results){  
