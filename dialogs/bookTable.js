@@ -116,7 +116,7 @@ module.exports = [
     },
     function(session,results, next){   
         if(session.dialogData.head != "16+"){
-        console.log(results.response);
+        //console.log(results.response);
         session.dialogData.numbers.phone = results.response;
         var phonestring = session.dialogData.numbers.phone;
         var phonenumber = phonestring.toString();
