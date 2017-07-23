@@ -88,9 +88,9 @@ module.exports = [
     },
      function(session, results){  
         console.log(session.dialogData.reserve + "reserve at r");      
-        if (results.response != null){
+        
         builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
-        }
+        
 
     },
     function(session, results){   
