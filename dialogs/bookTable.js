@@ -22,7 +22,7 @@ module.exports = [
     // }
     
     function(session, results, next){  
-        console.log(results.response.entity + "this is reults");     
+        console.log(results.response + "this is reults");     
         builder.Prompts.choice(session, consts.Prompts.BIRTHDAY_REQUEST, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
         {listStyle: builder.ListStyle.button});
         
