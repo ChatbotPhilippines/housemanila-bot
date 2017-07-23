@@ -67,7 +67,8 @@ module.exports = [
             if (results.response.entity == 'Add another'){
             session.replaceDialog('/bookTable', "add"); 
             }else if (results.response.entity == 'Yes, continue'){            
-            session.replaceDialog('/tablereserve'); 
+            session.dialogData.reserve = results.response.entity;
+            next();
             }
         }else{
             next();
@@ -75,10 +76,13 @@ module.exports = [
     },
 
     function(session,results, next){  
-        
+        if (session.dialogData.reserve == null){
         builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
         {listStyle: builder.ListStyle.button});
-        
+    }
+    else{
+        next();
+    }
 
     },
      function(session, results){        
