@@ -3,8 +3,8 @@
 var builder = require('botbuilder');
 var consts = require('../helpers/consts');
 module.exports = [
-    function(session){
-    
+    function(session, args){
+        console.log(args);
 
         builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
         {listStyle: builder.ListStyle.button});        
