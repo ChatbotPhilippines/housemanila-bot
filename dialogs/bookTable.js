@@ -81,7 +81,7 @@ module.exports = [
     },
 
     function(session,results, next){  
-        console.log(results.response.entity);
+        //console.log(results.response.entity);
         builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
         {listStyle: builder.ListStyle.button});
         
