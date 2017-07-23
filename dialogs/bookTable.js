@@ -49,6 +49,7 @@ module.exports = [
     },
 
     function(session, results, next){
+        console.log(JSON.stringify(results));
         builder.Prompts.choice(session, consts.Prompts.IS_THAT_ALL, "Add another|Yes, continue", 
         {listStyle: builder.ListStyle.button});
         
