@@ -38,10 +38,10 @@ module.exports = [
 
     },
     function(session,results, next){  
-        var select = "";
+        
         console.log(results.response.entity);
         if (results.response.entity == 'Others'){  
-            select = results.response.entity;           
+            session.dialogData.select = results.response.entity;           
             builder.Prompts.text(session, consts.Prompts.ENTER_MESSAGE);
         }
          else{ //if (results.response != null){
@@ -51,7 +51,7 @@ module.exports = [
     },
 
     function(session, results, next){
-        if (select == null){
+        if (session.dialogData.select == null){
 
         console.log(JSON.stringify(results) + "sa choice is that all");            
         builder.Prompts.choice(session, consts.Prompts.IS_THAT_ALL, "Add another|Yes, continue", 
@@ -67,7 +67,7 @@ module.exports = [
 
     function(session,results, next){   
         //console.log(results.response.entity);
-        if (select == null){
+        if (session.dialogData.select == null){
         console.log(JSON.stringify(results) + `results ng
         add another`);
             if (results.response.entity == 'Add another'){
