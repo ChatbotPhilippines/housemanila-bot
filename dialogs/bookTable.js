@@ -76,6 +76,7 @@ module.exports = [
     },
 
     function(session,results, next){  
+        console.log(session.dialogData.reserve + "reserve");
         if (session.dialogData.reserve == null){
         builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
         {listStyle: builder.ListStyle.button});
