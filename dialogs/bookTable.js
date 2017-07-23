@@ -62,12 +62,13 @@ module.exports = [
 
     function(session,results, next){   
         //console.log(results.response.entity);
-        if (results.response.entity == 'Add another'){
+        if (results.response != null){         
+            next();
+        }        
+        else if (results.response.entity == 'Add another'){
             session.replaceDialog('/bookTable', "add"); 
         }else if (results.response.entity == 'Yes, continue'){            
             session.replaceDialog('/tablereserve'); 
-        }else{
-            next();
         }
     },
 
