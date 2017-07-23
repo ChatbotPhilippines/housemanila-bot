@@ -76,7 +76,7 @@ module.exports = [
     },
 
     function(session,results, next){  
-        console.log(session.dialogData.reserve + "reserve");
+        console.log(session.dialogData.reserve + "reserve at other");
         if (session.dialogData.reserve == null){
         builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
         {listStyle: builder.ListStyle.button});
@@ -86,7 +86,8 @@ module.exports = [
     }
 
     },
-     function(session, results){        
+     function(session, results){  
+        console.log(session.dialogData.reserve + "reserve at r");      
         if (results.response != null){
         builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
         }
