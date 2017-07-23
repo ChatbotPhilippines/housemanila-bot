@@ -13,14 +13,7 @@ module.exports = [
     }
     
     
-    },
-    // function(session,results){   
-    //     console.log(results.response.entity);
-    //     if (results.response != null){
-    //         session.replaceDialog('/birthday');             
-    //     }
-    // }
-    
+    },    
     function(session, results, next){  
         console.log(JSON.stringify(results.response) + "this is reults");     
         if(results.response != undefined){
@@ -44,8 +37,7 @@ module.exports = [
             session.dialogData.select = results.response.entity;           
             builder.Prompts.text(session, consts.Prompts.ENTER_MESSAGE);
         }
-         else{ //if (results.response != null){
-        //     session.replaceDialog('/birthday2'); 
+         else{ 
         next();
         }
     },
@@ -66,7 +58,7 @@ module.exports = [
     },
 
     function(session,results, next){   
-        //console.log(results.response.entity);
+        
         if (session.dialogData.select == null){
         console.log(JSON.stringify(results) + `results ng
         add another`);
@@ -81,18 +73,37 @@ module.exports = [
     },
 
     function(session,results, next){  
-        //console.log(results.response.entity);
+        
         builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
         {listStyle: builder.ListStyle.button});
         
 
     },
-    function(session,results){  
-        
-        if(results.response.entity == 'Continue'){
-            session.replaceDialog("/tablereserve");
+     function(session, results){        
+        if (results.response != null){
+        builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
         }
+
+    },
+    function(session, results){   
+        console.log(results.response.entity);
+        if (results.response != null){
+            builder.Prompts.choice(session, consts.Prompts.GROUP_COUNT, "4-6|7-10|11-15|16+", 
+        {listStyle: builder.ListStyle.button});
+
+        }
+    },
+    function(session, results){   
+
+        if (results.response.entity != "16+"){
         
+        session.replaceDialog("/seven-fifteen");
+
+        }else if (results.response.entity == "16+"){
+
+        session.replaceDialog("/sixteen");
+
+        }
 
     }
 
