@@ -5,7 +5,7 @@ var consts = require('../helpers/consts');
 module.exports = [
     function(session, args){
         console.log(args);
-        if (args != "args"){
+        if (args != "add"){
         builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
         {listStyle: builder.ListStyle.button});        
     }else{
