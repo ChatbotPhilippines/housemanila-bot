@@ -4,13 +4,14 @@ var builder = require('botbuilder');
 var consts = require('../helpers/consts');
 module.exports = [
     function(session, args, next){
-        console.log(args);
-        if (!isNaN(args)){
-        session.endDialog(consts.Messages.CONFIRMATION_CODE, args);
-        }else if (args != "add"){
+        //console.log(args);
+        //if (!isNaN(args)){
+        //session.endDialog(consts.Messages.CONFIRMATION_CODE, args);
+    //}else 
+        if (args != "add"){
         builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
         {listStyle: builder.ListStyle.button});        
-    }else{
+        }else{
         next();
     }
     
