@@ -49,7 +49,7 @@ module.exports = [
     },
 
     function(session, results, next){
-        console.log(JSON.stringify(results));
+        console.log(JSON.stringify(results) + "sa choice is that all");
         if(results.response == null){
         builder.Prompts.choice(session, consts.Prompts.IS_THAT_ALL, "Add another|Yes, continue", 
         {listStyle: builder.ListStyle.button});
@@ -62,6 +62,8 @@ module.exports = [
 
     function(session,results, next){   
         //console.log(results.response.entity);
+        console.log(JSON.stringify(results) + `results ng
+        add another`);
         if (results.response.entity == 'Add another'){
             session.replaceDialog('/bookTable', "add"); 
         }else if (results.response.entity == 'Yes, continue'){            
