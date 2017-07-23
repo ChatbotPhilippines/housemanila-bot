@@ -23,8 +23,17 @@ module.exports = [
     
     function(session, results, next){  
         console.log(JSON.stringify(results.response) + "this is reults");     
+        if(results.response != undefined){
+
         builder.Prompts.choice(session, consts.Prompts.BIRTHDAY_REQUEST, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
         {listStyle: builder.ListStyle.button});
+
+    } else {
+        
+        builder.Prompts.choice(session, consts.Prompts.WHAT_ELSE, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
+        {listStyle: builder.ListStyle.button});
+            
+        }
         
 
     },
