@@ -61,7 +61,7 @@ module.exports = [
         }
     },
     function (session, results){
-        session.dialogData.party = results.response.entity;
+        session.userData.party = results.response.entity;
         session.replaceDialog('/guestnames');
     }
 ]
