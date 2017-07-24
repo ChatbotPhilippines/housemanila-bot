@@ -34,6 +34,7 @@ module.exports = [
         if(results.response.entity == "Yes"){
 
             session.endDialog(consts.Messages.CONFIRMATION_CODE, session.dialogData.numbers.phone);
+            //session.replaceDialog("/bookTable", session.dialogData.numbers.phone);
 
         }else if (results.response.entity == "No"){
             session.replaceDialog("/contactnumber");

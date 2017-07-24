@@ -15,10 +15,11 @@ var request = require('request')
         
                 var options = { 
                 method: 'GET',
-                url: 'http://7d2fa0f4.ngrok.io/api/events',
+                url: 'https://events-app-hm.herokuapp.com/api/events',
                 headers: 
                 {
-                    'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q' 
+                    'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
+                    'app-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.jWMtZaGkI2eb2hnk5DhazAXB-S8y6PIUHntngyuO-ow' 
                 } 
             };
 
