@@ -20,14 +20,14 @@ module.exports = [
                 headers: {
                     'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q'
                 },
-                body: JSON.stringify({
+                body: {
                     'guests': session.userData.guests,
                     'event_id': session.userData.party,
                     'app_dtl': {
                         'app_name': "House Manila",
                         'app_code': "hm"
                     }
-                })
+                }
             }, (error, response, body) => {
                 console.log(body);
                 console.log(response);
