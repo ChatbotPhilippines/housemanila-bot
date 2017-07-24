@@ -20,9 +20,6 @@ var request = require('request')
         session.send("Here are the upcoming events at House Manila");
         builder.Prompts.choice(session, reply, { maxRetries:0,promptAfterAction:false});
 
-        
-        
-
         function getCards(session){
                 var options = { 
                 method: 'GET',
@@ -41,59 +38,33 @@ var request = require('request')
                 
                 
                 for(var i= 0; i < events.d.length; i++){
-                let eventName = events.d[i].event_name;
-                let eventVenue = events.d[i].event_venue;
-                let eventDate = events.d[i].event_date;
-                let eventImage = events.d[i].event_image;
-                let startTime = events.d[i].start_time;
-                let endTime = events.d[i].end_time;
-                let appId = events.d[i].app_id;
-                let eventId = events.d[i]._id;
+                    let eventName = events.d[i].event_name;
+                    let eventVenue = events.d[i].event_venue;
+                    let eventDate = events.d[i].event_date;
+                    let eventImage = events.d[i].event_image;
+                    let startTime = events.d[i].start_time;
+                    let endTime = events.d[i].end_time;
+                    let appId = events.d[i].app_id;
+                    let eventId = events.d[i]._id;
 
-                return [
-                new builder.HeroCard(session)
-                .title(eventName)
-                .images([
-                    builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-                ])
-                .buttons([
-                    builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
-                    builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
-                    builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
+                    return [
+                    new builder.HeroCard(session)
+                    .title(eventName)
+                    .images([
+                        builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+                    ])
+                    .buttons([
+                        builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
+                        builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
+                        builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
 
-                ])
-                
-                ]//returnend
-            }
-        });
-
-
-            // return [
-            //     new builder.HeroCard(session)
-            //     .title('Sample 1')
-            //     .images([
-            //         builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-            //     ])
-            //     .buttons([
-            //         builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
-            //         builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
-            //         builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
-
-            //     ])
-
-                // new builder.HeroCard(session)
-                // .title('Sample 2')
-                // .images([
-                //     builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-                // ])
-                // .buttons([
-                //     builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
-                //     builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
-                //     builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
-                // ]),                
-  //          ]
-        }
-    },
+                    ])
+                    
+                    ]//return end
+                } //end of for loop
+        }); //end of request
+        }//end of getCards
+    }, //end of first waterfall
     function (session, results){
         if (results.response){
             console.log(JSON.stringify(results.response) + "This is the reply");
