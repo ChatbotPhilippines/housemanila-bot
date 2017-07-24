@@ -12,15 +12,7 @@ var request = require('request')
         //     "floor-plan",
         //     "buy-tickets"
         // ];
-
-        var cards = getCards();
-        var reply = new builder.Message(session)
-            .attachmentLayout(builder.AttachmentLayout.carousel)
-            .attachments(cards);
-        session.send("Here are the upcoming events at House Manila");
-        builder.Prompts.choice(session, reply, { maxRetries:0,promptAfterAction:false});
-
-        function getCards(session){
+        
                 var options = { 
                 method: 'GET',
                 url: 'http://7d2fa0f4.ngrok.io/api/events',
@@ -36,35 +28,44 @@ var request = require('request')
                 var events =JSON.parse(body); 
                 console.log(JSON.parse(body));
                 
-                
+                var elements = [];
                 for(var i= 0; i < events.d.length; i++){
-                    let eventName = events.d[i].event_name;
-                    let eventVenue = events.d[i].event_venue;
-                    let eventDate = events.d[i].event_date;
-                    let eventImage = events.d[i].event_image;
-                    let startTime = events.d[i].start_time;
-                    let endTime = events.d[i].end_time;
-                    let appId = events.d[i].app_id;
-                    let eventId = events.d[i]._id;
+                let eventName = events.d[i].event_name;
+                let eventVenue = events.d[i].event_venue;
+                let eventDate = events.d[i].event_date;
+                let eventImage = events.d[i].event_image;
+                let startTime = events.d[i].start_time;
+                let endTime = events.d[i].end_time;
+                let appId = events.d[i].app_id;
+                let eventId = events.d[i]._id;
 
-                    return [
-                    new builder.HeroCard(session)
-                    .title(eventName)
-                    .images([
-                        builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-                    ])
-                    .buttons([
-                        builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
-                        builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
-                        builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
+                
+                var elem = [
+                new builder.HeroCard(session)
+                .title(eventName)
+                .images([
+                    builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+                ])
+                .buttons([
+                    builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
+                    builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
+                    builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
 
-                    ])
-                    
-                    ]//return end
-                } //end of for loop
-        }); //end of request
-        }//end of getCards
-    }, //end of first waterfall
+                ])
+            ];
+            elements.push(...elem);
+            
+        }
+        
+        var msg = new builder.Message(session)
+    .attachmentLayout(builder.AttachmentLayout.carousel)
+    .attachments(elements);
+
+        // Show carousel
+        session.send("Here are the upcoming events at House Manila");
+        session.send(msg);
+        });            
+    },
     function (session, results){
         if (results.response){
             console.log(JSON.stringify(results.response) + "This is the reply");
