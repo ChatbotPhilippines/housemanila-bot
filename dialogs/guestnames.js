@@ -9,6 +9,7 @@ module.exports = [
     },
     function (session, results){
         session.userData.guests = results.response.split(/[,\n]+/).map(function (x) { return x.trim(); }) || [];
+        console.log("Userdata mo ito" + session.userData.guests);
         builder.Prompts.choice(session, `${consts.Messages.GUEST_LIST}<br/>${session.userData.guests.join('<br/>')}<br/>${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button});
     },
     function (session, results){
