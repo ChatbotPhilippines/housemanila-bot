@@ -37,7 +37,7 @@ module.exports = [
 
             var options = {
             method: 'POST',
-            url: 'https://events-app-hm.herokuapp.com/api/events',
+            url: 'https://guestlist-app-hm.herokuapp.com/api/guestlist',
             headers: 
             { 
                 'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
