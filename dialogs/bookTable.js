@@ -37,13 +37,14 @@ module.exports = [
     },
     function(session,results, next){  
         
-        console.log(results.response.entity);
-        request.push(results.response.entity);
+        console.log(results.response.entity);      
+        
         if (results.response.entity == 'Others'){  
             session.dialogData.select = results.response.entity;           
             builder.Prompts.text(session, consts.Prompts.ENTER_MESSAGE);
         }
          else{ 
+        request.push(results.response.entity);             
         next();
         }
     },

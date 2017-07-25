@@ -34,7 +34,7 @@ module.exports = [
         console.log(results.response.entity);
         if(results.response.entity == "Yes"){            
             session.userData.contact = session.dialogData.numbers.phone;
-            session.endDialog(consts.Messages.CONFIRMATION_CODE, session.dialogData.numbers.phone);//////////
+            session.endDialog(consts.Messages.CONFIRMATION_CODE, session.dialogData.numbers.phone);
             console.log(`${session.userData.occasion},
             ${session.userData.contact},
             ${session.userData.occasion},
