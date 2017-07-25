@@ -24,7 +24,7 @@ module.exports = [
                 'content-type': 'application/json' 
             },
             qs:{
-                    MSpointname: "events", //user, session, aimodule, member, Basta microservice name                
+                    MSpointname: "guestlist", //user, session, aimodule, member, Basta microservice name                
             },
             body: 
             {   guests: session.userData.guests,
