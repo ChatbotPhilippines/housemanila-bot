@@ -21,11 +21,11 @@ module.exports = [
                     'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q'
                 },
                 body: {
-                    'guests': session.userData.guests,
-                    'event_id': session.userData.party,
-                    'app_dtl': {
-                        'app_name': "House Manila",
-                        'app_code': "hm"
+                    "guests": session.userData.guests,
+                    "event_id": session.userData.party,
+                    "app_dtl": {
+                        "app_name": "House Manila",
+                        "app_code": "hm"
                     }
                 }
             }, (error, response, body) => {
