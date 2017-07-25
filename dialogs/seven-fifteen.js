@@ -33,9 +33,9 @@ module.exports = [
     function(session,results){   
         console.log(results.response.entity);
         if(results.response.entity == "Yes"){
-
+            session.userData.contact = session.dialogData.numbers.phone;
             session.endDialog(consts.Messages.CONFIRMATION_CODE, session.dialogData.numbers.phone);
-
+            
         }else if (results.response.entity == "No"){
             session.replaceDialog("/contactnumber");
         }

@@ -6,12 +6,7 @@ var request = require('request')
 
  module.exports = [
         
-    function(session){
-        // var selectArray = [
-        //     "table-rates",
-        //     "floor-plan",
-        //     "buy-tickets"
-        // ];
+    function(session){        
         
                 var options = { 
                 method: 'GET',

@@ -19,13 +19,13 @@ module.exports = [
         }
     },
     function(session, results){   
-
+        session.userData.ppl = results.response.entity;
         if (results.response.entity != "16+"){
         
         session.replaceDialog("/seven-fifteen");
 
         }else if (results.response.entity == "16+"){
-
+                 
         session.replaceDialog("/sixteen");
 
         }
