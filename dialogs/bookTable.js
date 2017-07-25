@@ -57,7 +57,7 @@ module.exports = [
                 
                 
         }else{
-        request.push(results.response.entity);
+        request.push(results.response);
             next();
         }
         
