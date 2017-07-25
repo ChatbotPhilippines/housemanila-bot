@@ -12,6 +12,7 @@ module.exports = [
     },
     function(session, results){   
         console.log(results.response.entity);
+        session.userData.name = results.response.entity;
         if (results.response != null){
             builder.Prompts.choice(session, consts.Prompts.GROUP_COUNT, "4-6|7-10|11-15|16+", 
         {listStyle: builder.ListStyle.button});

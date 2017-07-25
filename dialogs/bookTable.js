@@ -75,6 +75,7 @@ module.exports = [
             session.replaceDialog('/bookTable', "add"); 
             }else if (results.response.entity == 'Yes, continue'){            
             session.dialogData.reserve = results.response.entity;
+            session.userData.special = request;
             next();
             }
         }else{
@@ -95,7 +96,7 @@ module.exports = [
     },
      function(session, results){  
         console.log(session.dialogData.reserve + "reserve at r");      
-        
+        session.userData.special = request;
         //builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
         session.replaceDialog("/tablereserve");
         
