@@ -20,9 +20,12 @@ module.exports = [
     },    
     function(session, results, next){  
         console.log(JSON.stringify(results.response) + "this is reults");
-        session.userData.occasion = results.response.entity;
+        if(results.response == undefined){
+            session.userData.occasion = results.response.entity;
+        }
+        
         if(results.response != undefined){
-
+        session.userData.occasion = results.response.entity;    
         builder.Prompts.choice(session, consts.Prompts.BIRTHDAY_REQUEST, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
         {listStyle: builder.ListStyle.button});
 
