@@ -15,19 +15,27 @@ var request = require('request')
         
                 var options = { 
                 method: 'GET',
-                url: 'https://events-app-hm.herokuapp.com/api/events',
+                url: 'https://fd6f9091.ngrok.io/api/',
                 headers: 
                 {
                     'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
-                    'app-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.jWMtZaGkI2eb2hnk5DhazAXB-S8y6PIUHntngyuO-ow' 
+                    //'app-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.jWMtZaGkI2eb2hnk5DhazAXB-S8y6PIUHntngyuO-ow' 
+                },
+
+                params:{
+                    App_details: {
+                    appname: "House Manila", //client NBS,CITIBANK etc
+                    apptype: "bot", //cms bot or another microservice
+                },
+                MSpointname: "events", //user, session, aimodule, member, Basta microservice name                
                 } 
             };
 
                 request(options, function (error, response, body) {
                 if (error) throw new Error(error);
                 
-                var events =JSON.parse(body); 
-                console.log(JSON.parse(body));
+                //var events =JSON.parse(body); 
+                console.log((body));
                 
                 var elements = [];
                 for(var i= 0; i < events.d.length; i++){
