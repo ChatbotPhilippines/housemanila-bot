@@ -45,7 +45,7 @@ module.exports = [
             },
             body: 
             {   guests: session.userData.guests,
-                event_id: 'session.userData.party',
+                event_id: session.userData.party,
                 app_dtl: { 
                     app_name: 'House Manila', 
                     app_code: 'hm' 
