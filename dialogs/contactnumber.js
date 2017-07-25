@@ -43,6 +43,33 @@ module.exports = [
             ${session.userData.special},
             `);
             //session.replaceDialog("/bookTable", session.dialogData.numbers.phone);
+            var options = { method: 'POST',
+            url: 'https://a591c982.ngrok.io/api',
+            qs: { MSpointname: 'tablebooking' },
+            headers: 
+            {               
+                'content-type': 'application/json',
+                'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q' },
+            body: 
+            {   event_id: 'id1',
+                isvip: `${session.userData.isVIP}`,
+                occasion: session.userData.occasion,
+                special_requests: [session.userData.special],
+                table_type: 'type1',
+                no_ppl: session.userData.ppl,
+                reservation_date: '2016-05-18T16:00:00',
+                referral_name: session.userData.name,
+                contact_number: session.userData.contact,
+                status: 'pending',
+                name_list: [ 'try' ],
+                app_dtl: { app_name: 'house manila', app_code: '123' } },
+            json: true };
+
+            request(options, function (error, response, body) {
+            if (error) throw new Error(error);
+
+            console.log(body);
+            });
 
         }else if (results.response.entity == "No"){
             session.replaceDialog("/contactnumber");
