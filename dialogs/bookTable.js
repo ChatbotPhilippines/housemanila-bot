@@ -48,10 +48,7 @@ module.exports = [
         }
     },
 
-    function(session, results, next){
-        if(results.response.entity != null ){
-        request.push(results.response.entity);
-        }
+    function(session, results, next){        
         if (session.dialogData.select == null){
         
         console.log(JSON.stringify(results) + "sa choice is that all");            
@@ -60,6 +57,7 @@ module.exports = [
                 
                 
         }else{
+        request.push(results.response.entity);
             next();
         }
         
