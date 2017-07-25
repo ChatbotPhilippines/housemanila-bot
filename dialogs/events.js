@@ -34,45 +34,45 @@ var request = require('request')
                 request(options, function (error, response, body) {
                 if (error) throw new Error(error);
                 
-                var events =JSON.parse(body); 
-                console.log(JSON.parse(body));
+                //var events =JSON.parse(body); 
+                console.log((body));
                 
-                var elements = [];
-                for(var i= 0; i < events.d.length; i++){
-                let eventName = events.d[i].event_name;
-                let eventVenue = events.d[i].event_venue;
-                let eventDate = events.d[i].event_date;
-                let eventImage = events.d[i].event_image;
-                let startTime = events.d[i].start_time;
-                let endTime = events.d[i].end_time;
-                let appId = events.d[i].app_id;
-                let eventId = events.d[i]._id;
+    //             var elements = [];
+    //             for(var i= 0; i < events.d.length; i++){
+    //             let eventName = events.d[i].event_name;
+    //             let eventVenue = events.d[i].event_venue;
+    //             let eventDate = events.d[i].event_date;
+    //             let eventImage = events.d[i].event_image;
+    //             let startTime = events.d[i].start_time;
+    //             let endTime = events.d[i].end_time;
+    //             let appId = events.d[i].app_id;
+    //             let eventId = events.d[i]._id;
 
                 
-                var elem = [
-                new builder.HeroCard(session)
-                .title(eventName)
-                .images([
-                    builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
-                ])
-                .buttons([
-                    builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
-                    builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
-                    builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
+    //             var elem = [
+    //             new builder.HeroCard(session)
+    //             .title(eventName)
+    //             .images([
+    //                 builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+    //             ])
+    //             .buttons([
+    //                 builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
+    //                 builder.CardAction.imBack(session, 'floor-plan', 'Floor Plan'),
+    //                 builder.CardAction.imBack(session, 'buy-tickets', 'Buy Tickets')
 
-                ])
-            ];
-            elements.push(...elem);
+    //             ])
+    //         ];
+    //         elements.push(...elem);
             
-        }
+    //     }
         
-        var msg = new builder.Message(session)
-    .attachmentLayout(builder.AttachmentLayout.carousel)
-    .attachments(elements);
+    //     var msg = new builder.Message(session)
+    // .attachmentLayout(builder.AttachmentLayout.carousel)
+    // .attachments(elements);
 
-        // Show carousel
-        session.send("Here are the upcoming events at House Manila");
-        session.send(msg);
+    //     // Show carousel
+    //     session.send("Here are the upcoming events at House Manila");
+    //     session.send(msg);
         });            
     },
     function (session, results){
