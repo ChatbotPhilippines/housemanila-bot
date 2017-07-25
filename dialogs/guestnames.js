@@ -17,11 +17,14 @@ module.exports = [
 
             var options = {
             method: 'POST',
-            url: 'https://guestlist-app-hm.herokuapp.com/api/guestlist',
+            url: 'https://a591c982.ngrok.io/api',
             headers: 
             { 
                 'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
                 'content-type': 'application/json' 
+            },
+            qs:{
+                    MSpointname: "events", //user, session, aimodule, member, Basta microservice name                
             },
             body: 
             {   guests: session.userData.guests,
