@@ -26,9 +26,12 @@ var request = require('request')
                     App_details: {
                     appname: "House Manila", //client NBS,CITIBANK etc
                     apptype: "bot", //cms bot or another microservice
-                },
-                MSpointname: "events", //user, session, aimodule, member, Basta microservice name                
-                } 
+                }
+                
+            },
+            qs:{
+                    MSpointname: "events", //user, session, aimodule, member, Basta microservice name                
+            } 
             };
 
                 request(options, function (error, response, body) {
