@@ -13,27 +13,7 @@ module.exports = [
         builder.Prompts.choice(session, `${consts.Messages.GUEST_LIST}<br/>${session.userData.guests.join('<br/>')}<br/>${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button});
     },
     function (session, results){
-        if(results.response.entity === 'Yes'){
-            // request({
-            //     uri: 'https://guestlist-app-hm.herokuapp.com/api/guestlist',
-            //     method: 'POST',
-            //     headers: {
-            //         'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q'
-            //     },
-
-            //     body: {
-            //         "guests": session.userData.guests,
-            //         "event_id": session.userData.party,
-            //         "app_dtl": {
-            //             "app_name": "House Manila",
-            //             "app_code": "hm"
-            //         }
-            //     }
-            // }, (error, response, body) => {
-            //     console.log(body);
-            //     console.log(response);
-            //     console.log(error);
-            // })
+        if(results.response.entity === 'Yes'){            
 
             var options = {
             method: 'POST',
