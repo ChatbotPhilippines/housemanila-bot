@@ -21,6 +21,7 @@ module.exports = [
                 
                 },
                 qs:{
+                        client: "housemanila",
                         MSpointname: "events", //user, session, aimodule, member, Basta microservice name                
                 } 
             };
