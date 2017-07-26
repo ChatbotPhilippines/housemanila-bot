@@ -5,18 +5,67 @@ var consts = require('../helpers/consts');
 var request = [];
 module.exports = [
     function(session, args, next){
-        //console.log(args);
-        //if (!isNaN(args)){
-        //session.endDialog(consts.Messages.CONFIRMATION_CODE, args);
-    //}else 
+        var selectArray = [
+            "DROP",
+            "RSVP",
+            "Organized Chaos",
+            "We Own The Night"
+        ];
+
+        var cards = getCards();
+        var reply = new builder.Message(session)
+            .attachmentLayout(builder.AttachmentLayout.carousel)
+            .attachments(cards);
+        session.send(consts.Prompts.EVENT);
+        builder.Prompts.choice(session, reply, selectArray, { maxRetries:0,promptAfterAction:false});
+
+        function getCards(session){
+            return [
+                new builder.HeroCard(session)
+                .title('DROP')
+                .images([
+                    builder.CardImage.create(session, 'http://i.imgur.com/G1Ovu1I.jpg')
+                ])
+                .buttons([
+                    builder.CardAction.imBack(session, 'DROP', 'DROP')
+                ]),
+
+                new builder.HeroCard(session)
+                .title('RSVP')
+                .images([
+                    builder.CardImage.create(session, 'http://i.imgur.com/usQas1O.jpg')
+                ])
+                .buttons([
+                    builder.CardAction.imBack(session, 'RSVP', 'RSVP')
+                ]),
+
+                new builder.HeroCard(session)
+                .title('Organized Chaos')
+                .images([
+                    builder.CardImage.create(session, 'http://i.imgur.com/DLhhycD.jpg')
+                ])
+                .buttons([
+                    builder.CardAction.imBack(session, 'Organized', 'Organized Chaos')
+                ]),
+
+                new builder.HeroCard(session)
+                .title('We Own The Night')
+                .images([
+                    builder.CardImage.create(session, 'http://i.imgur.com/QCAFdT6.jpg')
+                ])
+                .buttons([
+                    builder.CardAction.imBack(session, 'WOTN', 'We Own The Night')
+                ])
+            ]
+        }
+    },
+    function(session, args, next){
         if (args != "add"){
-        builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
-        {listStyle: builder.ListStyle.button});        
+            builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
+            {listStyle: builder.ListStyle.button});        
         }else{
-        next();
-    }
-    
-    
+            next();
+        }
     },    
     function(session, results, next){  
         console.log(JSON.stringify(results.response) + "this is reults");
