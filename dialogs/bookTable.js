@@ -4,60 +4,67 @@ var builder = require('botbuilder');
 var consts = require('../helpers/consts');
 var request = [];
 module.exports = [
-    function(session, args, next){
-        var selectArray = [
-            "DROP",
-            "RSVP",
-            "Organized Chaos",
-            "We Own The Night"
-        ];
+    function(session){
+        var options = { 
+                method: 'GET',
+                url: 'https://ms-gateway-api.herokuapp.com/api',
+                headers: 
+                {
+                    'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
+                    //'app-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.jWMtZaGkI2eb2hnk5DhazAXB-S8y6PIUHntngyuO-ow' 
+                },
+                params:{
+                    App_details: {
+                        appname: "House Manila", //client NBS,CITIBANK etc
+                        apptype: "bot", //cms bot or another microservice
+                    }   
+                
+                },
+                qs:{
+                        MSpointname: "events", //user, session, aimodule, member, Basta microservice name                
+                } 
+            };
 
-        var cards = getCards();
-        var reply = new builder.Message(session)
-            .attachmentLayout(builder.AttachmentLayout.carousel)
-            .attachments(cards);
-        session.send(consts.Prompts.EVENT);
-        builder.Prompts.choice(session, reply, selectArray, { maxRetries:0,promptAfterAction:false});
+            request(options, function (error, response, body) {
+                if (error) throw new Error(error);
+                
+                var events =JSON.parse(body); 
+                console.log((body));
+                
+                var elements = [];
+                for(var i= 0; i < events.d.length; i++){
+                    let eventName = events.d[i].event_name;
+                    let eventVenue = events.d[i].event_venue;
+                    let eventDate = events.d[i].event_date;
+                    let eventImage = events.d[i].img;
+                    let startTime = events.d[i].start_time;
+                    let endTime = events.d[i].end_time;
+                    let appId = events.d[i].app_id;
+                    let eventId = events.d[i]._id;
+                    let eventCode = events.d[i].event_code;
 
-        function getCards(session){
-            return [
-                new builder.HeroCard(session)
-                .title('DROP')
-                .images([
-                    builder.CardImage.create(session, 'http://i.imgur.com/G1Ovu1I.jpg')
-                ])
-                .buttons([
-                    builder.CardAction.imBack(session, 'DROP', 'DROP')
-                ]),
+                
+                    var elem = [
+                        new builder.HeroCard(session)
+                        .title(eventName)
+                        .images([
+                            builder.CardImage.create(session, eventImage)
+                        ])
+                        .buttons([
+                            builder.CardAction.imBack(session, eventCode, eventName)
+                        ])
+                    ];
+                    elements.push(...elem);       
+                }
+        
+                var msg = new builder.Message(session)
+                    .attachmentLayout(builder.AttachmentLayout.carousel)
+                    .attachments(elements);
 
-                new builder.HeroCard(session)
-                .title('RSVP')
-                .images([
-                    builder.CardImage.create(session, 'http://i.imgur.com/usQas1O.jpg')
-                ])
-                .buttons([
-                    builder.CardAction.imBack(session, 'RSVP', 'RSVP')
-                ]),
-
-                new builder.HeroCard(session)
-                .title('Organized Chaos')
-                .images([
-                    builder.CardImage.create(session, 'http://i.imgur.com/DLhhycD.jpg')
-                ])
-                .buttons([
-                    builder.CardAction.imBack(session, 'Organized', 'Organized Chaos')
-                ]),
-
-                new builder.HeroCard(session)
-                .title('We Own The Night')
-                .images([
-                    builder.CardImage.create(session, 'http://i.imgur.com/QCAFdT6.jpg')
-                ])
-                .buttons([
-                    builder.CardAction.imBack(session, 'WOTN', 'We Own The Night')
-                ])
-            ]
-        }
+                // Show carousel
+                session.send(consts.Prompts.EVENT);
+                session.send(msg);
+            });
     },
     function(session, results, args, next){
         session.userData.bookParty = results.response.entity;
@@ -77,7 +84,7 @@ module.exports = [
         builder.Prompts.choice(session, consts.Prompts.BIRTHDAY_REQUEST, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
         {listStyle: builder.ListStyle.button});
 
-    } else {
+        } else {
         
         builder.Prompts.choice(session, consts.Prompts.WHAT_ELSE, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
         {listStyle: builder.ListStyle.button});
@@ -138,10 +145,10 @@ module.exports = [
         if (session.dialogData.reserve == null){            
         builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
         {listStyle: builder.ListStyle.button});
-    }
-    else{
-        next();
-    }
+        }
+        else{
+            next();
+        }
 
     },
      function(session, results){  
