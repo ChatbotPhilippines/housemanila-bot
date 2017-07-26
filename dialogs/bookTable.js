@@ -60,6 +60,8 @@ module.exports = [
         }
     },
     function(session, args, next){
+        session.userData.bookParty = results.response;
+        console.log(results.response);
         if (args != "add"){
             builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
             {listStyle: builder.ListStyle.button});        
