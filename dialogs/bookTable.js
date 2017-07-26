@@ -5,6 +5,7 @@ var consts = require('../helpers/consts');
 var request = require('request');
 module.exports = [
     function(session){
+        var selectArray = [];
         var options = { 
                 method: 'GET',
                 url: 'https://ms-gateway-api.herokuapp.com/api',
@@ -55,6 +56,7 @@ module.exports = [
                             builder.CardAction.imBack(session, eventCode, eventName)
                         ])
                     ];
+                    selectArray.push(eventCode);
                     elements.push(...elem);       
                 }
         
@@ -65,7 +67,7 @@ module.exports = [
                 // Show carousel
                 session.send(consts.Prompts.EVENT);
                 // session.send(msg);
-                builder.Prompts.choice(session, msg, { maxRetries:0,promptAfterAction:false});
+                builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
             });
     },
     function(session, results, args, next){
