@@ -2,6 +2,7 @@
 
 var builder = require('botbuilder');
 var consts = require('../helpers/consts');
+var request = [];
 module.exports = [
     function(session, args, next){
         //console.log(args);
@@ -18,9 +19,10 @@ module.exports = [
     
     },    
     function(session, results, next){  
-        console.log(JSON.stringify(results.response) + "this is reults");     
+        console.log(JSON.stringify(results.response) + "this is reults");
+        
         if(results.response != undefined){
-
+        session.userData.occasion = results.response.entity;
         builder.Prompts.choice(session, consts.Prompts.BIRTHDAY_REQUEST, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
         {listStyle: builder.ListStyle.button});
 
@@ -35,25 +37,28 @@ module.exports = [
     },
     function(session,results, next){  
         
-        console.log(results.response.entity);
+        console.log(results.response.entity);      
+        
         if (results.response.entity == 'Others'){  
             session.dialogData.select = results.response.entity;           
             builder.Prompts.text(session, consts.Prompts.ENTER_MESSAGE);
         }
          else{ 
+        request.push(results.response.entity);             
         next();
         }
     },
 
-    function(session, results, next){
+    function(session, results, next){        
         if (session.dialogData.select == null){
-
+        
         console.log(JSON.stringify(results) + "sa choice is that all");            
         builder.Prompts.choice(session, consts.Prompts.IS_THAT_ALL, "Add another|Yes, continue", 
         {listStyle: builder.ListStyle.button});
                 
                 
         }else{
+        request.push(results.response);
             next();
         }
         
@@ -69,6 +74,7 @@ module.exports = [
             session.replaceDialog('/bookTable', "add"); 
             }else if (results.response.entity == 'Yes, continue'){            
             session.dialogData.reserve = results.response.entity;
+            session.userData.special = request;
             next();
             }
         }else{
@@ -78,7 +84,7 @@ module.exports = [
 
     function(session,results, next){  
         console.log(session.dialogData.reserve + "reserve at other");
-        if (session.dialogData.reserve == null){
+        if (session.dialogData.reserve == null){            
         builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
         {listStyle: builder.ListStyle.button});
     }
@@ -89,7 +95,7 @@ module.exports = [
     },
      function(session, results){  
         console.log(session.dialogData.reserve + "reserve at r");      
-        
+        session.userData.special = request;
         //builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
         session.replaceDialog("/tablereserve");
         

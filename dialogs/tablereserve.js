@@ -11,7 +11,8 @@ module.exports = [
 
     },
     function(session, results){   
-        console.log(results.response.entity);
+        console.log(results.response);
+        session.userData.name = results.response;
         if (results.response != null){
             builder.Prompts.choice(session, consts.Prompts.GROUP_COUNT, "4-6|7-10|11-15|16+", 
         {listStyle: builder.ListStyle.button});
@@ -19,13 +20,13 @@ module.exports = [
         }
     },
     function(session, results){   
-
+        session.userData.ppl = results.response.entity;
         if (results.response.entity != "16+"){
         
         session.replaceDialog("/seven-fifteen");
 
         }else if (results.response.entity == "16+"){
-
+                 
         session.replaceDialog("/sixteen");
 
         }

@@ -13,14 +13,18 @@ module.exports = [
         builder.Prompts.choice(session, `${consts.Messages.GUEST_LIST}<br/>${session.userData.guests.join('<br/>')}<br/>${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button});
     },
     function (session, results){
-        if(results.response.entity === 'Yes'){
+        if(results.response.entity === 'Yes'){            
+
             var options = {
             method: 'POST',
-            url: 'https://guestlist-app-hm.herokuapp.com/api/guestlist',
+            url: 'https://ms-gateway-api.herokuapp.com/api',
             headers: 
             { 
                 'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
                 'content-type': 'application/json' 
+            },
+            qs:{
+                    MSpointname: "guestlist", //user, session, aimodule, member, Basta microservice name                
             },
             body: 
             {   guests: session.userData.guests,

@@ -21,10 +21,11 @@ module.exports = [
     function(session,results){   
         console.log(results.response.entity);
         if (results.response.entity == "Sure! Get me one"){
-
+            session.userData.isVIP = true;
             session.endDialog(consts.Messages.VIP_CONFIRMATION);
 
         }else if (results.response.entity == "No thanks"){
+            session.userData.isVIP = false;
             session.replaceDialog("/contactnumber");
         }
         
