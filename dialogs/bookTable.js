@@ -27,7 +27,7 @@ module.exports = [
                     builder.CardImage.create(session, 'http://i.imgur.com/G1Ovu1I.jpg')
                 ])
                 .buttons([
-                    builder.CardAction.postBack(session, 'DROP', 'DROP')
+                    builder.CardAction.imBack(session, 'DROP', 'DROP')
                 ]),
 
                 new builder.HeroCard(session)
@@ -36,7 +36,7 @@ module.exports = [
                     builder.CardImage.create(session, 'http://i.imgur.com/usQas1O.jpg')
                 ])
                 .buttons([
-                    builder.CardAction.postBack(session, 'RSVP', 'RSVP')
+                    builder.CardAction.imBack(session, 'RSVP', 'RSVP')
                 ]),
 
                 new builder.HeroCard(session)
@@ -45,7 +45,7 @@ module.exports = [
                     builder.CardImage.create(session, 'http://i.imgur.com/DLhhycD.jpg')
                 ])
                 .buttons([
-                    builder.CardAction.postBack(session, 'Organized', 'Organized Chaos')
+                    builder.CardAction.imBack(session, 'Organized', 'Organized Chaos')
                 ]),
 
                 new builder.HeroCard(session)
@@ -54,14 +54,14 @@ module.exports = [
                     builder.CardImage.create(session, 'http://i.imgur.com/QCAFdT6.jpg')
                 ])
                 .buttons([
-                    builder.CardAction.postBack(session, 'WOTN', 'We Own The Night')
+                    builder.CardAction.imBack(session, 'WOTN', 'We Own The Night')
                 ])
             ]
         }
     },
-    function(session, args, next, results){
-        // session.userData.bookParty = results.response.entity;
-        console.log(results.response);
+    function(session, results, args, next){
+        // session.userData.bookParty = results.response;
+        console.log(JSON.stringify(results.response));
         if (args != "add"){
             builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
             {listStyle: builder.ListStyle.button});        
