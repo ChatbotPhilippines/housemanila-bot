@@ -64,7 +64,8 @@ module.exports = [
 
                 // Show carousel
                 session.send(consts.Prompts.EVENT);
-                session.send(msg);
+                // session.send(msg);
+                builder.Prompts.choice(session, msg, { maxRetries:0,promptAfterAction:false});
             });
     },
     function(session, results, args, next){
