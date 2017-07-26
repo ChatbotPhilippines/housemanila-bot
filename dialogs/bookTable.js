@@ -2,7 +2,7 @@
 
 var builder = require('botbuilder');
 var consts = require('../helpers/consts');
-var request = [];
+var request = require('request');
 module.exports = [
     function(session){
         var options = { 
