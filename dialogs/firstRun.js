@@ -24,7 +24,7 @@
         new builder.HeroCard(session)
             .title('House Manila')            
             .images([
-                builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+                builder.CardImage.create(session, 'http://i.imgur.com/ie3lav5.jpg')
             ])
             .buttons([
                 builder.CardAction.postBack(session, 'mainMenu', 'Main Menu')

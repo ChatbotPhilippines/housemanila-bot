@@ -2,21 +2,83 @@
 
 var builder = require('botbuilder');
 var consts = require('../helpers/consts');
-var request = [];
+var request = require('request');
 module.exports = [
-    function(session, args, next){
-        //console.log(args);
-        //if (!isNaN(args)){
-        //session.endDialog(consts.Messages.CONFIRMATION_CODE, args);
-    //}else 
+    function(session){
+        var selectArray = [];
+        var options = { 
+                method: 'GET',
+                url: 'https://ms-gateway-api.herokuapp.com/api',
+                headers: 
+                {
+                    'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
+                    //'app-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.jWMtZaGkI2eb2hnk5DhazAXB-S8y6PIUHntngyuO-ow' 
+                },
+                params:{
+                    App_details: {
+                        appname: "House Manila", //client NBS,CITIBANK etc
+                        apptype: "bot", //cms bot or another microservice
+                    }   
+                
+                },
+                qs:{
+                        client: "housemanila",
+                        MSpointname: "events", //user, session, aimodule, member, Basta microservice name                
+                } 
+            };
+
+            request(options, function (error, response, body) {
+                if (error) throw new Error(error);
+                
+                var events =JSON.parse(body); 
+                console.log((body));
+                
+                var elements = [];
+                for(var i= 0; i < events.d.length; i++){
+                    let eventName = events.d[i].event_name;
+                    let eventVenue = events.d[i].event_venue;
+                    let eventDate = events.d[i].event_date;
+                    let eventImage = events.d[i].img;
+                    let startTime = events.d[i].start_time;
+                    let endTime = events.d[i].end_time;
+                    let appId = events.d[i].app_id;
+                    let eventId = events.d[i]._id;
+                    let eventCode = events.d[i].event_code;
+
+                
+                    var elem = [
+                        new builder.HeroCard(session)
+                        .title(eventName)
+                        .images([
+                            builder.CardImage.create(session, eventImage)
+                        ])
+                        .buttons([
+                            builder.CardAction.imBack(session, eventCode, eventName)
+                        ])
+                    ];
+                    selectArray.push(eventCode);
+                    elements.push(...elem);       
+                }
+        
+                var msg = new builder.Message(session)
+                    .attachmentLayout(builder.AttachmentLayout.carousel)
+                    .attachments(elements);
+
+                // Show carousel
+                session.send(consts.Prompts.EVENT);
+                // session.send(msg);
+                builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
+            });
+    },
+    function(session, results, args, next){
+        session.userData.bookParty = results.response.entity;
+        // console.log(JSON.stringify(results.response));
         if (args != "add"){
-        builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
-        {listStyle: builder.ListStyle.button});        
+            builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
+            {listStyle: builder.ListStyle.button});        
         }else{
-        next();
-    }
-    
-    
+            next();
+        }
     },    
     function(session, results, next){  
         console.log(JSON.stringify(results.response) + "this is reults");
@@ -26,7 +88,7 @@ module.exports = [
         builder.Prompts.choice(session, consts.Prompts.BIRTHDAY_REQUEST, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
         {listStyle: builder.ListStyle.button});
 
-    } else {
+        } else {
         
         builder.Prompts.choice(session, consts.Prompts.WHAT_ELSE, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
         {listStyle: builder.ListStyle.button});
@@ -87,10 +149,10 @@ module.exports = [
         if (session.dialogData.reserve == null){            
         builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
         {listStyle: builder.ListStyle.button});
-    }
-    else{
-        next();
-    }
+        }
+        else{
+            next();
+        }
 
     },
      function(session, results){  
