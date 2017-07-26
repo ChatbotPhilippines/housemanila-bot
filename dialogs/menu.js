@@ -43,7 +43,7 @@ var consts = require('../helpers/consts')
                 new builder.HeroCard(session)
                 .title('Events')
                 .images([
-                    builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+                    builder.CardImage.create(session, 'http://i.imgur.com/vJIeMGH.jpg')
                 ])
                 .buttons([
                     builder.CardAction.imBack(session, 'Events', 'See Upcoming Events')
