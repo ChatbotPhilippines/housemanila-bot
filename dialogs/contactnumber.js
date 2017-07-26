@@ -44,7 +44,7 @@ module.exports = [
             `);
             //session.replaceDialog("/bookTable", session.dialogData.numbers.phone);
             var options = { method: 'POST',
-            url: 'https://a591c982.ngrok.io/api',
+            url: 'https://ms-gateway-api.herokuapp.com/api',
             qs: { MSpointname: 'tablebooking' },
             headers: 
             {               

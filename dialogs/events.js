@@ -10,7 +10,7 @@ var request = require('request')
         
                 var options = { 
                 method: 'GET',
-                url: 'https://a591c982.ngrok.io/api',
+                url: 'https://ms-gateway-api.herokuapp.com/api',
                 headers: 
                 {
                     'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q',
