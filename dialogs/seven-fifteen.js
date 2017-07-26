@@ -32,6 +32,7 @@ module.exports = [
     },
     function(session,results){   
         console.log(results.response.entity);
+        session.userData.isVIP = false;
         if(results.response.entity == "Yes"){            
             session.userData.contact = session.dialogData.numbers.phone;
             session.endDialog(consts.Messages.CONFIRMATION_CODE, session.dialogData.numbers.phone);
