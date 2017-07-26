@@ -27,7 +27,7 @@ module.exports = [
                     builder.CardImage.create(session, 'http://i.imgur.com/G1Ovu1I.jpg')
                 ])
                 .buttons([
-                    builder.CardAction.imBack(session, 'DROP', 'DROP')
+                    builder.CardAction.postBack(session, 'DROP', 'DROP')
                 ]),
 
                 new builder.HeroCard(session)
@@ -36,7 +36,7 @@ module.exports = [
                     builder.CardImage.create(session, 'http://i.imgur.com/usQas1O.jpg')
                 ])
                 .buttons([
-                    builder.CardAction.imBack(session, 'RSVP', 'RSVP')
+                    builder.CardAction.postBack(session, 'RSVP', 'RSVP')
                 ]),
 
                 new builder.HeroCard(session)
@@ -45,7 +45,7 @@ module.exports = [
                     builder.CardImage.create(session, 'http://i.imgur.com/DLhhycD.jpg')
                 ])
                 .buttons([
-                    builder.CardAction.imBack(session, 'Organized', 'Organized Chaos')
+                    builder.CardAction.postBack(session, 'Organized', 'Organized Chaos')
                 ]),
 
                 new builder.HeroCard(session)
@@ -54,7 +54,7 @@ module.exports = [
                     builder.CardImage.create(session, 'http://i.imgur.com/QCAFdT6.jpg')
                 ])
                 .buttons([
-                    builder.CardAction.imBack(session, 'WOTN', 'We Own The Night')
+                    builder.CardAction.postBack(session, 'WOTN', 'We Own The Night')
                 ])
             ]
         }
