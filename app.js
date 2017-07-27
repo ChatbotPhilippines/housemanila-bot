@@ -58,8 +58,7 @@ bot.dialog('/contactnumber', dialogs.number);
 bot.dialog('/wit', [
 
 function (session, results, next) {
-  console.log(JSON.stringify(session));
-  console.log(JSON.stringify(results));
+  session.send("HAHAHA ulol");
 }
 ]);
 

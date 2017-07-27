@@ -81,11 +81,11 @@ var consts = require('../helpers/consts')
                 break;
 
                 default:
-                    session.send('May error ka lol.');
+                    session.replaceDialog('/wit');
             }
         }
         else{
-            session.send('May error ka din lol.');
+            session.replaceDialog('/wit');
         }
     }
 ]
