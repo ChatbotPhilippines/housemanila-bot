@@ -40,7 +40,7 @@ bot.dialog('/', [
         session.replaceDialog('/wit');
     }
 ]);
-
+console.log(session);
 bot.dialog('/mainMenu', dialogs.menu).triggerAction({matches:/mainMenu/i});
 bot.dialog('/guestlist', dialogs.guestlist).triggerAction({matches:/Guest-List/i});
 bot.dialog('/guestnames', dialogs.guestnames);
