@@ -53,10 +53,10 @@ module.exports = [
                             builder.CardImage.create(session, eventImage)
                         ])
                         .buttons([
-                            builder.CardAction.imBack(session, eventCode, eventName)
+                            builder.CardAction.imBack(session, eventId, eventName)
                         ])
                     ];
-                    selectArray.push(eventCode);
+                    selectArray.push(eventId);
                     elements.push(...elem);       
                 }
         
@@ -72,7 +72,7 @@ module.exports = [
     },
     function(session, results, args, next){
         session.userData.bookParty = results.response.entity;
-        // console.log(JSON.stringify(results.response));
+        console.log(JSON.stringify(results.response));
         if (args != "add"){
             builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
             {listStyle: builder.ListStyle.button});        
