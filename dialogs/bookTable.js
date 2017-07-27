@@ -5,7 +5,7 @@ var consts = require('../helpers/consts');
 var request = require('request');
 var specialrequest = [];
 module.exports = [
-    function(session, args){
+    function(session, args, next){
         if(args != "add"){
         var selectArray = [];
         var options = { 
