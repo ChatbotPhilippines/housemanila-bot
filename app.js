@@ -45,7 +45,9 @@ var intentDialog = new builder.IntentDialog({
 
 bot.dialog('/', [
     function(session){
-        session.beginDialog('/wit');
+        if(session.message.text != "Get_Started"){
+          session.replaceDialog('/wit');
+        }
     }
 ]);
 bot.dialog('/mainMenu', dialogs.menu).triggerAction({matches:/mainMenu/i});
