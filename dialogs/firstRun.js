@@ -14,6 +14,7 @@
             .attachments(cards)
 
         session.send(reply);
+        builder.Prompts.text(session, "");
     },
     function(session, results){
         console.log(JSON.stringify(session));
