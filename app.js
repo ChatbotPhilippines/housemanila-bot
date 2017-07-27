@@ -53,8 +53,8 @@ bot.dialog('/', [
 
 bot.dialog('/wit', [
 
-function (session, results, next) {
-  session.send("HAHAHA ulol");
+function (session, args, next) {
+  session.send(args);
 }
 ]);
 

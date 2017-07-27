@@ -18,7 +18,7 @@
     },
     function(session, results){        
         if(results.response != (undefined || null) ){
-            session.replaceDialog('/wit');
+            session.replaceDialog('/wit', results.response);
         }
     }
 
