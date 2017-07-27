@@ -16,9 +16,10 @@
         session.send(reply);
         
     },
-    function(session, results){
-        console.log(JSON.stringify(session));
-        console.log(JSON.stringify(results));
+    function(session, results){        
+        if(results.response != (undefined || null) ){
+            session.replaceDialog('/wit');
+        }
     }
 
     
