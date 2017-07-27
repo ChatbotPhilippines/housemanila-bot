@@ -6,7 +6,7 @@
  module.exports = [
 
     function(session){        
-        session.send(consts.Messages.WELCOME);
+        builder.Prompts.text(session, consts.Messages.WELCOME);
         var cards = main_menu_card();
 
         var reply = new builder.Message(session)
@@ -14,7 +14,7 @@
             .attachments(cards)
 
         session.send(reply);
-        builder.Prompts.text(session, "");
+        
     },
     function(session, results){
         console.log(JSON.stringify(session));
