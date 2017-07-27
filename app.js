@@ -43,7 +43,11 @@ var intentDialog = new builder.IntentDialog({
 
 
 
-bot.dialog('/', intentDialog);
+bot.dialog('/', [
+    function(session){
+        session.beginDialog('/wit');
+    }
+]);
 bot.dialog('/mainMenu', dialogs.menu).triggerAction({matches:/mainMenu/i});
 bot.dialog('/guestlist', dialogs.guestlist).triggerAction({matches:/Guest-List/i});
 bot.dialog('/guestnames', dialogs.guestnames);
@@ -65,11 +69,11 @@ function (session, results, next) {
 }
 ]);
 
-intentDialog.onDefault([
-    function (session, next) {
-        session.replaceDialog('/wit');
-    }
+// intentDialog.onDefault([
+//     function (session, next) {
+//         session.replaceDialog('/wit');
+//     }
     
-]);
+// ]);
 
 
