@@ -5,7 +5,8 @@ var consts = require('../helpers/consts');
 var request = require('request');
 var specialrequest = [];
 module.exports = [
-    function(session){
+    function(session, args){
+        if(args != "add"){
         var selectArray = [];
         var options = { 
                 method: 'GET',
@@ -70,6 +71,9 @@ module.exports = [
                 // session.send(msg);
                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
             });
+            }else{
+                next();
+            }
     },
     function(session, results, args, next){
         session.userData.bookParty = results.response.entity;
