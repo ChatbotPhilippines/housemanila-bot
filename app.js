@@ -35,9 +35,9 @@ server.post('/api/messages', connector.listen());
 
 bot.dialog('/', [
   function(session){
-    console.log(JSON.stringify(session));
-    console.log(session.message.text);
-        session.beginDialog('/firstRun');
+    // console.log(JSON.stringify(session));
+    // console.log(session.message.text);
+        session.beginDialog('/wit');
     }
 ]);
 
@@ -55,7 +55,13 @@ bot.dialog('/tablereserve', dialogs.reserve);
 bot.dialog('/seven-fifteen', dialogs.sevenFifteen);
 bot.dialog('/sixteen', dialogs.sixteen);
 bot.dialog('/contactnumber', dialogs.number);
+bot.dialog('/wit', [
 
+function (session, results, next) {
+  console.log(JSON.stringify(session));
+  console.log(JSON.stringify(results));
+}
+]);
 
 
 
