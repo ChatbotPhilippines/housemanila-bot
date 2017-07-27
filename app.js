@@ -35,6 +35,7 @@ server.post('/api/messages', connector.listen());
 
 bot.dialog('/', [
   function(session){
+    console.log(session.message.text);
         session.beginDialog('/firstRun');
     }
 ]);
@@ -48,9 +49,6 @@ bot.dialog('/firstRun', dialogs.firstRun).triggerAction({matches:/Get_Started/i}
 bot.dialog('/events', dialogs.events).triggerAction({matches:/Events/i});
 bot.dialog('/tablerates', dialogs.tablerates).triggerAction({matches:/table-rates/i});
 bot.dialog('/floorplan', dialogs.floorplan).triggerAction({matches:/floor-plan/i});
-// bot.dialog('/birthday', dialogs.birthday);
-// bot.dialog('/birthday2', dialogs.birthday2);
-// bot.dialog('/birthday3', dialogs.birthday3);
 bot.dialog('/enteremail', dialogs.enteremail);
 bot.dialog('/tablereserve', dialogs.reserve);
 bot.dialog('/seven-fifteen', dialogs.sevenFifteen);
