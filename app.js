@@ -18,12 +18,6 @@ var connector = new builder.ChatConnector({
 });
 var bot = new builder.UniversalBot(connector);
 
-var intentDialog = new builder.IntentDialog({
-    recognizers: [recognizer],
-    intentThreshold: 0.5,
-    recognizeMode: builder.RecognizeMode.onBegin
-});
-
 
 //Setup Restify Server
 var server = restify.createServer();
@@ -39,7 +33,14 @@ server.post('/api/messages', connector.listen());
 
 
 
-bot.dialog('/', intentDialog);
+bot.dialog('/', [
+  function(session){
+    // console.log(JSON.stringify(session));
+    // console.log(session.message.text);
+        session.replaceDialog('/wit');
+    }
+]);
+
 bot.dialog('/mainMenu', dialogs.menu).triggerAction({matches:/mainMenu/i});
 bot.dialog('/guestlist', dialogs.guestlist).triggerAction({matches:/Guest-List/i});
 bot.dialog('/guestnames', dialogs.guestnames);
@@ -54,12 +55,6 @@ bot.dialog('/tablereserve', dialogs.reserve);
 bot.dialog('/seven-fifteen', dialogs.sevenFifteen);
 bot.dialog('/sixteen', dialogs.sixteen);
 bot.dialog('/contactnumber', dialogs.number);
-intentDialog.onDefault([
-    function (session, next) {
-        session.replaceDialog('/wit', session.message.text);
-    }
-    
-]);
 bot.dialog('/wit', [
 
 function (session, results, next) {
