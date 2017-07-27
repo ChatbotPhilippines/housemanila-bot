@@ -5,7 +5,8 @@ var consts = require('../helpers/consts');
 var request = require('request');
 var specialrequest = [];
 module.exports = [
-    function(session){
+    function(session, args, next){
+        if(args != "add"){
         var selectArray = [];
         var options = { 
                 method: 'GET',
@@ -70,11 +71,15 @@ module.exports = [
                 // session.send(msg);
                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
             });
+            }else{
+                next();
+            }
     },
     function(session, results, args, next){
-        session.userData.bookParty = results.response.entity;
+        
         console.log(JSON.stringify(results.response));
         if (args != "add"){
+            session.userData.bookParty = results.response.entity;
             builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
             {listStyle: builder.ListStyle.button});        
         }else{
