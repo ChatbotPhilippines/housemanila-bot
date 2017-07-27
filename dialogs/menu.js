@@ -85,7 +85,7 @@ var consts = require('../helpers/consts')
             }
         }
         else{
-            session.send('May error ka din lol.');
+            session.replaceDialog('/wit');
         }
     }
 ]
