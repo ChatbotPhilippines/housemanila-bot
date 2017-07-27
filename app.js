@@ -50,6 +50,14 @@ bot.dialog('/', [
         }
     }
 ]);
+
+bot.dialog('/wit', [
+
+function (session, results, next) {
+  session.send("HAHAHA ulol");
+}
+]);
+
 bot.dialog('/mainMenu', dialogs.menu).triggerAction({matches:/mainMenu/i});
 bot.dialog('/guestlist', dialogs.guestlist).triggerAction({matches:/Guest-List/i});
 bot.dialog('/guestnames', dialogs.guestnames);
@@ -64,12 +72,7 @@ bot.dialog('/tablereserve', dialogs.reserve);
 bot.dialog('/seven-fifteen', dialogs.sevenFifteen);
 bot.dialog('/sixteen', dialogs.sixteen);
 bot.dialog('/contactnumber', dialogs.number);
-bot.dialog('/wit', [
 
-function (session, results, next) {
-  session.send("HAHAHA ulol");
-}
-]);
 
 // intentDialog.onDefault([
 //     function (session, next) {
