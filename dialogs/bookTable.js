@@ -56,7 +56,7 @@ module.exports = [
                             builder.CardAction.imBack(session, eventId, eventName)
                         ])
                     ];
-                    selectArray.push(eventCode);
+                    selectArray.push(eventId);
                     elements.push(...elem);       
                 }
         
