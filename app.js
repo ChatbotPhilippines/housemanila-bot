@@ -37,7 +37,7 @@ bot.dialog('/', [
   function(session){
     // console.log(JSON.stringify(session));
     // console.log(session.message.text);
-        session.beginDialog('/wit');
+        session.replaceDialog('/wit');
     }
 ]);
 
