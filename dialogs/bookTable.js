@@ -3,6 +3,7 @@
 var builder = require('botbuilder');
 var consts = require('../helpers/consts');
 var request = require('request');
+var specialrequest = [];
 module.exports = [
     function(session){
         var selectArray = [];
@@ -106,7 +107,7 @@ module.exports = [
             builder.Prompts.text(session, consts.Prompts.ENTER_MESSAGE);
         }
          else{ 
-        request.push(results.response.entity);             
+        specialrequest.push(results.response.entity);             
         next();
         }
     },
@@ -120,7 +121,7 @@ module.exports = [
                 
                 
         }else{
-        request.push(results.response);
+        specialrequest.push(results.response);
             next();
         }
         
@@ -136,7 +137,7 @@ module.exports = [
             session.replaceDialog('/bookTable', "add"); 
             }else if (results.response.entity == 'Yes, continue'){            
             session.dialogData.reserve = results.response.entity;
-            session.userData.special = request;
+            session.userData.special = specialrequest;
             next();
             }
         }else{
