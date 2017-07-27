@@ -12,6 +12,7 @@
     "botbuilder": "^3.8.4",
     "mailgun-js": "^0.11.2",
     "mongoose": "^4.11.3",
+    "node-wit": "^4.2.0",
     "request": "^2.81.0",
     "restify": "^5.0.0"
   }
