@@ -14,6 +14,10 @@
             .attachments(cards)
 
         session.send(reply);
+    },
+    function(session, results){
+        console.log(JSON.stringify(session));
+        console.log(JSON.stringify(results));
     }
 
     
