@@ -52,7 +52,7 @@ module.exports = [
                 'content-type': 'application/json',
                 'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q' },
             body: 
-            {   event_id: 'id1',
+            {   event_id: session.userData.bookParty,
                 isvip: `${session.userData.isVIP}`,
                 occasion: session.userData.occasion,
                 special_requests: [session.userData.special],
