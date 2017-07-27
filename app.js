@@ -92,9 +92,9 @@ function getWitIntents(intent, inquiry_type, emotion, session){
         break;
 
         case 'get_compliment':
-            let random = [ 'Aww, thanks! Appreciate it, {{fb_first_name}}!',
+            let randomcomp = [ 'Aww, thanks! Appreciate it, {{fb_first_name}}!',
                                 '🙈🙈🙈' ];
-            let reply = random[Math.floor(Math.random() * random.length)];
+            let reply = randomcomp[Math.floor(Math.random() * randomcomp.length)];
             session.send(reply);
         break;
 
