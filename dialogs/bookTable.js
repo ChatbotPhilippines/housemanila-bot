@@ -6,6 +6,7 @@ var request = require('request');
 var specialrequest = [];
 module.exports = [
     function(session, args, next){
+        session.dialogData.add = false;
         if(args != "add"){
         var selectArray = [];
         var options = { 
@@ -72,14 +73,14 @@ module.exports = [
                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
             });
             }else{
+                session.dialogData.add = true;
                 next();
             }
     },
     function(session, results, next){
         
         console.log(JSON.stringify(results.response));
-        
-        if(results.response != undefined){
+        if (session.dialogData.add == false){
             session.userData.bookParty = results.response.entity;
             builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
             {listStyle: builder.ListStyle.button});        
@@ -164,7 +165,7 @@ module.exports = [
     },
      function(session, results){  
         console.log(session.dialogData.reserve + "reserve at r");      
-        session.userData.special = request;
+        session.userData.special = specialrequest;
         //builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
         session.replaceDialog("/tablereserve");
         
