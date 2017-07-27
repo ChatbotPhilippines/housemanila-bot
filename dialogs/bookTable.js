@@ -53,7 +53,7 @@ module.exports = [
                             builder.CardImage.create(session, eventImage)
                         ])
                         .buttons([
-                            builder.CardAction.imBack(session, eventCode, eventName)
+                            builder.CardAction.imBack(session, eventId, eventName)
                         ])
                     ];
                     selectArray.push(eventCode);
