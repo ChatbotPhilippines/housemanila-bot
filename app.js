@@ -7,6 +7,8 @@ const config = require('./config');
 const dialogs = require("./dialogs");
 const request = require('request');
 const mongoose = require('mongoose');
+var WIT_TOKEN = '3BFUICWEDOOHQBM5KCAXLVSMDAL653J6';
+const {Wit, log} = require('node-wit');
 
 //=======================================================
 // Bot Setup
@@ -26,7 +28,14 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 });
 server.post('/api/messages', connector.listen());
 
-bot.use(builder.Middleware.firstRun({ version: 1.0, dialogId: '/firstRun' }));
+var model = process.env.model ||
+    'https://api.projectoxford.ai/luis/v1/application?id=6c4a0d3e-41ff-4800-9ec7-8fd206ee41e8&subscription-key=692f717f9c3b4f52b852d51c46358315&q=';
+var recognizer = new builder.LuisRecognizer(model)
+var intentDialog = new builder.IntentDialog({
+    recognizers: [recognizer],
+    intentThreshold: 0.5,
+    recognizeMode: builder.RecognizeMode.onBegin
+});
 
 //=======================================================
 // Start of Conversation
@@ -34,13 +43,7 @@ bot.use(builder.Middleware.firstRun({ version: 1.0, dialogId: '/firstRun' }));
 
 
 
-bot.dialog('/', [
-  function(session){
-    // console.log(JSON.stringify(session));
-    // console.log(session.message.text);
-        session.replaceDialog('/wit');
-    }
-]);
+bot.dialog('/', intentDialog);
 bot.dialog('/mainMenu', dialogs.menu).triggerAction({matches:/mainMenu/i});
 bot.dialog('/guestlist', dialogs.guestlist).triggerAction({matches:/Guest-List/i});
 bot.dialog('/guestnames', dialogs.guestnames);
@@ -62,6 +65,11 @@ function (session, results, next) {
 }
 ]);
 
-
+intentDialog.onDefault([
+    function (session, next) {
+        session.replaceDialog('/wit');
+    }
+    
+]);
 
 
