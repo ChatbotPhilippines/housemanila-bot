@@ -75,7 +75,7 @@ module.exports = [
                 next();
             }
     },
-    function(session, results, args, next){
+    function(session, results, next){
         
         console.log(JSON.stringify(results.response));
         
