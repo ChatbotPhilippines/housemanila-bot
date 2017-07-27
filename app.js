@@ -94,8 +94,8 @@ function getWitIntents(intent, inquiry_type, emotion, session){
         case 'get_compliment':
             let randomcomp = [ 'Aww, thanks! Appreciate it, {{fb_first_name}}!',
                                 '🙈🙈🙈' ];
-            let reply = randomcomp[Math.floor(Math.random() * randomcomp.length)];
-            session.send(reply);
+            let replycomp = randomcomp[Math.floor(Math.random() * randomcomp.length)];
+            session.send(replycomp);
         break;
 
         case 'get_thanks':
@@ -103,12 +103,12 @@ function getWitIntents(intent, inquiry_type, emotion, session){
         break;
 
         case 'get_profanity':
-            let random = ['Hey! Sorry for whatever prompted you to say that. To make your experience better, why not party with us at House Manila? :)',
+            let randomprof = ['Hey! Sorry for whatever prompted you to say that. To make your experience better, why not party with us at House Manila? :)',
                               '💩💩💩',
                             'Duuuuude!',
                           'Ey dude, that\'s not cool!'];
-            let reply = random[Math.floor(Math.random() * random.length)];
-            session.send(reply);
+            let replyprof = randomprof[Math.floor(Math.random() * randomprof.length)];
+            session.send(replyprof);
         break;
 
     }
