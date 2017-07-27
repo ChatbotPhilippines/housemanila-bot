@@ -63,7 +63,8 @@ module.exports = [
                 contact_number: session.userData.contact,
                 status: 'pending',
                 name_list: [ 'try' ],
-                app_dtl: { app_name: 'house manila', app_code: '123' } },
+                app_dtl: { app_name: 'house manila', app_code: '123' },
+                client: "housemanila" },
             json: true };
 
             request(options, function (error, response, body) {
