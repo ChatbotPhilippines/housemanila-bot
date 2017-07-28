@@ -70,12 +70,10 @@ function (session, args, next) {
 }
 ]);
 
-
-
-function getWitIntents(intent, inquiry_type, emotion, session){    
 var firstname = "";
+function getUserDetail(id){
     request({
-		uri: 'https://graph.facebook.com/v2.7/' + session.message.user.id,
+		uri: 'https://graph.facebook.com/v2.7/' + id,
 		qs: {
 			access_token: config.FB_PAGE_TOKEN
 		}
@@ -89,11 +87,17 @@ var firstname = "";
 
             }
     });
-        
+}
+
+
+
+function getWitIntents(intent, inquiry_type, emotion, session){    
+
     switch(intent){
+        
 
         case 'get_greetings':
-        
+            getUserDetail(session.message.user.id);
             let random = [ `Hey, ${firstname}! Welcome to House Manila! How may I help you?`,
                                 'Heeyy!! What can I do for you today?',
                               'Sup! What can I do for you today?',
@@ -107,10 +111,12 @@ var firstname = "";
         break;
 
         case 'get_farewell':
+            getUserDetail(session.message.user.id);
             session.send(`Thanks, ${firstname}! See you at House Manila! Just hit me up whenever you need me :)`);
         break;
 
         case 'get_compliment':
+            getUserDetail(session.message.user.id); 
             let randomcomp = [ `Aww, thanks! Appreciate it, ${firstname}!`,
                                 '🙈🙈🙈' ];
             let replycomp = randomcomp[Math.floor(Math.random() * randomcomp.length)];
