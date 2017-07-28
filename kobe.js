@@ -37,5 +37,9 @@
 //    return msg;
 // }
 
-var date = "2016-05-18T16:00:00";
+var date = new Date();
 
+var n = date.toDateString();
+
+console.log(date);
+console.log(n);
