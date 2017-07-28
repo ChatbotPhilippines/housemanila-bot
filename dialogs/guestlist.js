@@ -53,6 +53,7 @@ module.exports = [
                         .images([
                             builder.CardImage.create(session, eventImage)
                         ])
+                        .text(eventDate)
                         .buttons([
                             builder.CardAction.imBack(session, eventId, eventName)
                         ])
