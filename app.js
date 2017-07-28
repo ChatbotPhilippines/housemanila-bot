@@ -80,6 +80,8 @@ function getWitIntents(intent, inquiry_type, emotion, session){
                               'Sup! What can I do for you today?',
                             'Hi there! 🎉  Type "Menu" to start partying with us!' ];
             let reply = random[Math.floor(Math.random() * random.length)];
+            var senderId = session.message.user.id;
+            console.log(senderId);
             session.send(reply);
         break;
 
