@@ -70,18 +70,35 @@ function (session, args, next) {
 }
 ]);
 
-function getWitIntents(intent, inquiry_type, emotion, session){
 
+
+function getWitIntents(intent, inquiry_type, emotion, session){    
+var firstname = "";
+    request({
+		uri: 'https://graph.facebook.com/v2.7/' + session.message.user.id,
+		qs: {
+			access_token: config.FB_PAGE_TOKEN
+		}
+
+	}, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+
+			var user = JSON.parse(body);
+
+			firstname = user.first_name;
+
+            }
+    });
+        
     switch(intent){
 
         case 'get_greetings':
-            let random = [ 'Hey, {{fb_first_name}}! Welcome to House Manila! How may I help you?',
+        
+            let random = [ `Hey, ${firstname}! Welcome to House Manila! How may I help you?`,
                                 'Heeyy!! What can I do for you today?',
                               'Sup! What can I do for you today?',
                             'Hi there! 🎉  Type "Menu" to start partying with us!' ];
-            let reply = random[Math.floor(Math.random() * random.length)];
-            var senderId = session.message.user.id;
-            console.log(senderId);
+            let reply = random[Math.floor(Math.random() * random.length)];            
             session.send(reply);
         break;
 
@@ -90,11 +107,11 @@ function getWitIntents(intent, inquiry_type, emotion, session){
         break;
 
         case 'get_farewell':
-            session.send('Thanks, {{fb_first_name}}! See you at House Manila! Just hit me up whenever you need me :)');
+            session.send(`Thanks, ${firstname}! See you at House Manila! Just hit me up whenever you need me :)`);
         break;
 
         case 'get_compliment':
-            let randomcomp = [ 'Aww, thanks! Appreciate it, {{fb_first_name}}!',
+            let randomcomp = [ `Aww, thanks! Appreciate it, ${firstname}!`,
                                 '🙈🙈🙈' ];
             let replycomp = randomcomp[Math.floor(Math.random() * randomcomp.length)];
             session.send(replycomp);
