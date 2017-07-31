@@ -41,6 +41,7 @@ module.exports = [
                     let eventName = events.d[i].event_name;
                     let eventVenue = events.d[i].event_venue;
                     let eventDate = events.d[i].event_date;
+                    let eventDateConverted = new Date(eventDate);
                     let eventImage = events.d[i].img;
                     let startTime = events.d[i].start_time;
                     let endTime = events.d[i].end_time;
@@ -55,6 +56,7 @@ module.exports = [
                         .images([
                             builder.CardImage.create(session, eventImage)
                         ])
+                        .text(eventDateConverted.toDateString())
                         .buttons([
                             builder.CardAction.imBack(session, eventId, eventName)
                         ])

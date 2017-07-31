@@ -70,16 +70,39 @@ function (session, args, next) {
 }
 ]);
 
-function getWitIntents(intent, inquiry_type, emotion, session){
+var firstname = "";
+function getUserDetail(id){
+    request({
+		uri: 'https://graph.facebook.com/v2.7/' + id,
+		qs: {
+			access_token: config.FB_PAGE_TOKEN
+		}
+
+	}, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+
+			var user = JSON.parse(body);
+
+			firstname = user.first_name;
+
+            }
+    });
+}
+
+
+
+function getWitIntents(intent, inquiry_type, emotion, session){    
 
     switch(intent){
+        
 
         case 'get_greetings':
-            let random = [ 'Hey, {{fb_first_name}}! Welcome to House Manila! How may I help you?',
+            getUserDetail(session.message.user.id);
+            let random = [ `Hey, ${firstname}! Welcome to House Manila! How may I help you?`,
                                 'Heeyy!! What can I do for you today?',
                               'Sup! What can I do for you today?',
                             'Hi there! 🎉  Type "Menu" to start partying with us!' ];
-            let reply = random[Math.floor(Math.random() * random.length)];
+            let reply = random[Math.floor(Math.random() * random.length)];            
             session.send(reply);
         break;
 
@@ -88,11 +111,13 @@ function getWitIntents(intent, inquiry_type, emotion, session){
         break;
 
         case 'get_farewell':
-            session.send('Thanks, {{fb_first_name}}! See you at House Manila! Just hit me up whenever you need me :)');
+            getUserDetail(session.message.user.id);
+            session.send(`Thanks, ${firstname}! See you at House Manila! Just hit me up whenever you need me :)`);
         break;
 
         case 'get_compliment':
-            let randomcomp = [ 'Aww, thanks! Appreciate it, {{fb_first_name}}!',
+            getUserDetail(session.message.user.id); 
+            let randomcomp = [ `Aww, thanks! Appreciate it, ${firstname}!`,
                                 '🙈🙈🙈' ];
             let replycomp = randomcomp[Math.floor(Math.random() * randomcomp.length)];
             session.send(replycomp);
