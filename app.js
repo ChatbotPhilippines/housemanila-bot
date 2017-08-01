@@ -161,6 +161,12 @@ function getWitIntents(intent, inquiry_type, emotion, session){
 
                 case 'dress code':
                     session.send("Please check out this poster for more details:");
+                    var imgpolicies = new builder.Message(session)
+                        .addAttachment({
+                            contentURL: 'http://i.imgur.com/bikUN2k.jpg',
+                            contentType: 'image/jpg',                            
+                        });                    
+                    session.send(imgpolicies);
                 break;
 
                 case 'payments':
@@ -177,6 +183,12 @@ function getWitIntents(intent, inquiry_type, emotion, session){
 
                 case 'policies':
                     session.send("Please check out this poster for more details:");
+                    var imgpolicies = new builder.Message(session)
+                        .addAttachment({
+                            contentURL: 'http://i.imgur.com/bikUN2k.jpg',
+                            contentType: 'image/jpg',                            
+                        });                    
+                    session.send(imgpolicies);
                 break;
 
                 case 'help':
