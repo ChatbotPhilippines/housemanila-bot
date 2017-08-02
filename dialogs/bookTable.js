@@ -70,7 +70,7 @@ module.exports = [
                     .attachments(elements);
 
                 // Show carousel
-                session.send(consts.Prompts.EVENT);
+                session.send(consts.Prompts.BOOKING);
                 // session.send(msg);
                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
             });
@@ -80,6 +80,9 @@ module.exports = [
             }
     },
     function(session, results, next){
+        if(results.response == (null || undefined)){
+           session.replaceDialog('/wit');
+         }else{
         
         console.log(JSON.stringify(results.response));
         if (session.dialogData.add == false){
@@ -88,6 +91,7 @@ module.exports = [
             {listStyle: builder.ListStyle.button});        
         }else{
             next();
+            }
         }
     },    
     function(session, results, next){  

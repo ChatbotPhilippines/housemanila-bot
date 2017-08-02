@@ -12,6 +12,7 @@ exports.Prompts = {
     CONFIRMATION: 'Is this confirmed?',
     ENTER_DATE_TIME: 'When would you like to have the event? Enter the date and time.',
     EVENT: 'Which event would you like to get in the guestlist for?',
+    BOOKING: 'Which event would you like to get booked for?',
     ENTER_NAMES: `Please enter the names you would like to add in the guest list (separated by a comma):`,
     ENTER_EMAIL: `Please enter you email address`, 
     SEVEN_FIFTEEN: 'Alright! Lastly, please enter your contact number so we can send a confirmation code once your table is approved.',

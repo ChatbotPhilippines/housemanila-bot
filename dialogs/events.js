@@ -97,7 +97,7 @@ var request = require('request');
             }
         }
         else{
-            session.send('May error ka din lol.');
+            session.replaceDialog('/wit');
         }
     }
 ]
