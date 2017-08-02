@@ -65,8 +65,8 @@ function (session, args, next) {
                 
 
                 if(('inquiry_type' in entities)){var inquiry_type = entities.inquiry_type[0].value;}
-                if(('emotions' in entities)){var emotion = entities.emotions[0].value;}
-                getWitIntents(intent, inquiry_type,  emotion, session);
+                if(('emotion_type' in entities)){var emotion_type = entities.emotion_type[0].value;}
+                getWitIntents(intent, inquiry_type, emotion_type, session);
 
             // }
         })
@@ -76,7 +76,7 @@ function (session, args, next) {
 }
 ]);
 
-function getWitIntents(intent, inquiry_type, emotion, session){
+function getWitIntents(intent, inquiry_type, emotion_type, session){
 
     switch(intent){
 
@@ -124,6 +124,30 @@ function getWitIntents(intent, inquiry_type, emotion, session){
             let replyapo = randomapo[Math.floor(Math.random() * randomapo.length)];
             session.send(replyapo);
         break;
+
+        case "get_emotions":
+            switch(emotion_type){
+                case 'happy':
+                let randomhappy = ['LOL!!!',
+                              'Hahahahhahahahaha!',
+                            '😂😂😂'];
+                let replyhappy = randomhappy[Math.floor(Math.random() * randomhappy.length)];
+            session.send(replyhappy);
+                break;
+
+                case 'sad':
+                let randomsad = ['Man, I\'m sorry. How about you party with us at House Manila?',
+                              'Sorry, dude! How about you party with us at House Manila?'];
+                let replysad = randomsad[Math.floor(Math.random() * randomsad.length)];
+                session.send(replysad);
+                break;
+
+                default:
+                session.send("Hey! Sorry, but I didn't quite understand what you said. In the mean time, you may contact us through the following:\n For event bookings & inquiries, text or Viber us: 09159657715 or 09166387666 \n E-mail: housemanilaph@gmail.com                                                                                                                                                  Table reservations: reservation@housemanila.com \n You can also type “Menu” to find out the other cool things I can do for you!");
+                break;
+            }
+        break;
+
         case "get_inquiry":
             switch(inquiry_type){
                 case 'about':
