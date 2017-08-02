@@ -70,8 +70,8 @@ var request = require('request');
 
                 // Show carousel
                 session.send("Here are the upcoming events at House Manila");
-                //session.send(msg);
-                builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
+                session.send(msg);
+                // builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
             });            
     },
     function (session, results){
