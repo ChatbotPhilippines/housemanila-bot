@@ -117,6 +117,13 @@ function getWitIntents(intent, inquiry_type, emotion, session){
             session.send(replyprof);
         break;
         
+        case 'get_apology':
+            let randomapo = ['Don\'t worry about it!',
+                              'No worries!',
+                            'It\'s ayt, bruh!'];
+            let replyapo = randomapo[Math.floor(Math.random() * randomapo.length)];
+            session.send(replyapo);
+        break;
         case "get_inquiry":
             switch(inquiry_type){
                 case 'about':
