@@ -70,7 +70,8 @@ var request = require('request');
 
                 // Show carousel
                 session.send("Here are the upcoming events at House Manila");
-                session.send(msg);
+                //session.send(msg);
+                builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
             });            
     },
     function (session, results){
@@ -93,7 +94,7 @@ var request = require('request');
                 break;
 
                 default:
-                    session.send('May error ka lol.');
+                    session.replaceDialog('/wit');
             }
         }
         else{
