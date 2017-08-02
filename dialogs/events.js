@@ -3,7 +3,7 @@
 var builder = require('botbuilder');
 var consts = require('../helpers/consts');
 var request = require('request');
-
+var selectArray = [];
  module.exports = [
         
     function(session){        
@@ -61,6 +61,7 @@ var request = require('request');
 
                         ])
                     ];
+                    selectArray.push(eventId);
                     elements.push(...elem);       
                 }
         
@@ -70,13 +71,13 @@ var request = require('request');
 
                 // Show carousel
                 session.send("Here are the upcoming events at House Manila");
-                session.send(msg);
-                // builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
+                //session.send(msg);
+                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
             });            
     },
     function (session, results){
         if (results.response){
-            console.log(JSON.stringify(results.response) + "This is the reply");
+            console.log(JSON.stringify(results) + "This is the reply");
             var reply = results.response.entity;
             switch (reply){
                 case 'table-rates':                                
