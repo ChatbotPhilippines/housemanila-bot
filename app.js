@@ -75,7 +75,7 @@ function getWitIntents(intent, inquiry_type, emotion, session){
     switch(intent){
 
         case 'get_greetings':
-            let random = [ 'Hey, {{fb_first_name}}! Welcome to House Manila! How may I help you?',
+            let random = [ 'Hey! Welcome to House Manila! How may I help you?',
                                 'Heeyy!! What can I do for you today?',
                               'Sup! What can I do for you today?',
                             'Hi there! 🎉  Type "Menu" to start partying with us!' ];
@@ -88,11 +88,11 @@ function getWitIntents(intent, inquiry_type, emotion, session){
         break;
 
         case 'get_farewell':
-            session.send('Thanks, {{fb_first_name}}! See you at House Manila! Just hit me up whenever you need me :)');
+            session.send('Thanks! See you at House Manila! Just hit me up whenever you need me :)');
         break;
 
         case 'get_compliment':
-            let randomcomp = [ 'Aww, thanks! Appreciate it, {{fb_first_name}}!',
+            let randomcomp = [ 'Aww, thanks! Appreciate it!',
                                 '🙈🙈🙈' ];
             let replycomp = randomcomp[Math.floor(Math.random() * randomcomp.length)];
             session.send(replycomp);
