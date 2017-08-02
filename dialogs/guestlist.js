@@ -74,7 +74,13 @@ module.exports = [
             });
     },
     function (session, results){
+        if(results.response.entity == (null || undefined)){
+            session.replaceDialog('/wit');
+        }else{
+        
         session.userData.party = results.response.entity;
         session.replaceDialog('/guestnames');
+        }
+        
     }
 ]
