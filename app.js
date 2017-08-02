@@ -70,39 +70,16 @@ function (session, args, next) {
 }
 ]);
 
-var firstname = "";
-function getUserDetail(id){
-    request({
-		uri: 'https://graph.facebook.com/v2.7/' + id,
-		qs: {
-			access_token: config.FB_PAGE_TOKEN
-		}
-
-	}, function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-
-			var user = JSON.parse(body);
-
-			firstname = user.first_name;
-
-            }
-    });
-}
-
-
-
-function getWitIntents(intent, inquiry_type, emotion, session){    
+function getWitIntents(intent, inquiry_type, emotion, session){
 
     switch(intent){
-        
 
         case 'get_greetings':
-            getUserDetail(session.message.user.id);
-            let random = [ `Hey, ${firstname}! Welcome to House Manila! How may I help you?`,
+            let random = [ 'Hey, {{fb_first_name}}! Welcome to House Manila! How may I help you?',
                                 'Heeyy!! What can I do for you today?',
                               'Sup! What can I do for you today?',
                             'Hi there! 🎉  Type "Menu" to start partying with us!' ];
-            let reply = random[Math.floor(Math.random() * random.length)];            
+            let reply = random[Math.floor(Math.random() * random.length)];
             session.send(reply);
         break;
 
@@ -111,13 +88,11 @@ function getWitIntents(intent, inquiry_type, emotion, session){
         break;
 
         case 'get_farewell':
-            getUserDetail(session.message.user.id);
-            session.send(`Thanks, ${firstname}! See you at House Manila! Just hit me up whenever you need me :)`);
+            session.send('Thanks, {{fb_first_name}}! See you at House Manila! Just hit me up whenever you need me :)');
         break;
 
         case 'get_compliment':
-            getUserDetail(session.message.user.id); 
-            let randomcomp = [ `Aww, thanks! Appreciate it, ${firstname}!`,
+            let randomcomp = [ 'Aww, thanks! Appreciate it, {{fb_first_name}}!',
                                 '🙈🙈🙈' ];
             let replycomp = randomcomp[Math.floor(Math.random() * randomcomp.length)];
             session.send(replycomp);
@@ -136,6 +111,93 @@ function getWitIntents(intent, inquiry_type, emotion, session){
             session.send(replyprof);
         break;
         
+        case "get_inquiry":
+            switch(inquiry_type){
+                case 'about':
+                    session.send("House Manila is the hippest and the newest party place and entertainment spot.")
+                    session.send('We can accommodate 400 pax (seating) and 1, 200 pax (standing). We are good for all kinds of events such as: company/corporate events, product launching, press launch, school events, debuts, wedding reception, concerts, and etc.')
+                break;
+
+                case 'origin':
+                    session.send("Suh dude! I'm House Manila bot, here to make your partying with us easier!");
+                break;
+
+                case 'photos':
+                    session.send("Photos are up on FB by Monday night. You may check and tag your photos by then.");
+                break;
+
+                case 'operations':
+                    session.send("You can party with us from Wednesday to Saturday, from 10pm onwards.");
+                break;
+
+                case 'guest list':
+                    session.beginDialog('/guestlist');
+                break;
+
+                case 'tables':
+                    session.send("We offer the following Birthday packages: \nPHP 5,000\nPHP 10,000\nPHP 15,000\nPHP 20,000\nPHP 30,000\nPHP 50,000\nAs well as a Clubbers' package at PHP 7,000.");
+                break;
+
+                case 'events':
+                    session.beginDialog('/events');
+                break;
+
+                case 'careers':
+                    session.send("You may send your résumé to housemanilaph@gmail.com. :)");
+                break;
+
+                case 'private':
+                    session.send("Of course, dude! ");
+                    session.send("For event bookings & inquiries, you may text or Viber us at 09159657715 or 09166387666, or e-mail us at housemanilaph@gmail.com.");
+                break;
+
+                case 'location':
+                    session.send("We are located at the Remington Hotel, Resorts World Manila.");
+                break;
+
+                case 'contacts':
+                    session.send("For event bookings & inquiries\nText us or Viber: 09159657715 or 09166387666\nE-mail: housemanilaph@gmail.com\nTable reservations: reservation@housemanila.com\nFacebook: HouseManilaOfficial\nInstagram/Twitter: @HouseManilaPH");
+                break;
+
+                case 'dress code':
+                    session.send("Please check out this poster for more details:");
+                    var imgpolicies = new builder.Message(session)
+                        .addAttachment({
+                            contentURL: 'http://i.imgur.com/bikUN2k.jpg',
+                            contentType: 'image/jpg',                            
+                        });                    
+                    session.send(imgpolicies);
+                break;
+
+                case 'payments':
+                    session.send("We accept Cash, Visa, American Express, and Mastercard.");
+                break;
+
+                case 'lost':
+                    session.send("We are located at the Remington Hotel, Resorts World Manila.");
+                break;
+
+                case 'services':
+                    session.send("We take table reservations, private bookings, and walk-ins.");
+                break;
+
+                case 'policies':
+                    session.send("Please check out this poster for more details:");
+                    var imgpolicies = new builder.Message(session)
+                        .addAttachment({
+                            contentURL: 'http://i.imgur.com/bikUN2k.jpg',
+                            contentType: 'image/jpg',                            
+                        });                    
+                    session.send(imgpolicies);
+                break;
+
+                case 'help':
+                    session.send("How may I help you?");
+                    session.send("For immediate assistance with your concern, please contact us at at these numbers: 09159657715 or 09166387666");
+                break;
+            }
+        break;
+
         default:
         session.send("Hey! Sorry, but I didn't quite understand what you said. In the mean time, you may contact us through the following:\n For event bookings & inquiries, text or Viber us: 09159657715 or 09166387666 \n E-mail: housemanilaph@gmail.com                                                                                                                                                  Table reservations: reservation@housemanila.com \n You can also type “Menu” to find out the other cool things I can do for you!");
         break;
