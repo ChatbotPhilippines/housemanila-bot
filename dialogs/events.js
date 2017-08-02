@@ -46,12 +46,13 @@ var request = require('request');
                     let appId = events.d[i].app_id;
                     let eventId = events.d[i]._id;
 
+
                 
                     var elem = [
                         new builder.HeroCard(session)
                         .title(eventName)
                         .images([
-                            builder.CardImage.create(session, 'http://i.imgur.com/fJsZQY6.png')
+                            builder.CardImage.create(session, eventImage)
                         ])
                         .buttons([
                             builder.CardAction.imBack(session, 'table-rates', 'Table Rates'),
