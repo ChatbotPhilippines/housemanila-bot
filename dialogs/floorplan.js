@@ -7,7 +7,7 @@ module.exports = [
             session.send("Here's the floor plan for this event");
                     var imgfloor = new builder.Message(session)
                         .addAttachment({
-                            contentURL: 'http://i.imgur.com/fJsZQY6.png',
+                            contentURL: 'http://i.imgur.com/lMWt9os.jpg',
                             contentType: 'image/jpg',                            
                         });                    
                     session.send(imgfloor);
