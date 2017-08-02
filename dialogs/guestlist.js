@@ -74,14 +74,14 @@ module.exports = [
             });
     },
     function (session, results){
-        // if(results.response == (null || undefined)){
-        //     session.replaceDialog('/wit');
-        // }else{
+        if(results.response == (null || undefined)){
+           session.replaceDialog('/wit');
+         }else{
         
             console.log(JSON.stringify(results));
         session.userData.party = results.response.entity;
         session.replaceDialog('/guestnames');
-        //}
+        }
         
     }
 ]
