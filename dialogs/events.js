@@ -95,6 +95,7 @@ var request = require('request');
 
                 default:
                     session.replaceDialog('/wit');
+                    break;
             }
         }
         else{
