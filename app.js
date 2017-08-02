@@ -56,7 +56,8 @@ function (session, args, next) {
             // if(Object.keys(entities).length == 0){
             //    if(entity !== 'GET_STARTED'){session.send('Sorry, I didn’t quite understand that yet since I’m still a learning bot. Let me store that for future reference. In the mean time, you may contact +639176808888 or type “Menu” if you want to find out the cool things I can do for you!');}
             // }else{
-                if(entities.intent[0].value == (null || undefined)){
+                console.log(JSON.stringify(entities));
+                if(entities.intent == (null || undefined)){
                     session.send("Hey! Sorry, but I didn't quite understand what you said. In the mean time, you may contact us through the following:\n For event bookings & inquiries, text or Viber us: 09159657715 or 09166387666 \n E-mail: housemanilaph@gmail.com                                                                                                                                                  Table reservations: reservation@housemanila.com \n You can also type “Menu” to find out the other cool things I can do for you!");
                 }else{
                     var intent = entities.intent[0].value;
