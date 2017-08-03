@@ -43,5 +43,8 @@
 
 // console.log(date);
 // console.log(n);
+var shit = "kobe/asd";
 
-console.log(Date());
+let recTitle = shit.split("/")[0];
+
+console.log(recTitle);
