@@ -47,7 +47,9 @@ module.exports = [
             `);
             var options = { method: 'POST',
             url: 'https://ms-gateway-api.herokuapp.com/api',
-            qs: { MSpointname: 'tablebooking' },
+            qs: { MSpointname: 'tablebooking',
+            client: "housemanila"
+                 },
             headers: 
             {               
                 'content-type': 'application/json',
@@ -56,7 +58,7 @@ module.exports = [
             {   event_id: session.userData.bookParty,
                 isvip: `${session.userData.isVIP}`,
                 occasion: session.userData.occasion,
-                special_requests: [session.userData.special],
+                special_requests: ['asd'],
                 table_type: 'type1',
                 no_ppl: session.userData.ppl,
                 reservation_date: today,
@@ -65,7 +67,7 @@ module.exports = [
                 status: 'pending',
                 name_list: [ 'try' ],
                 app_dtl: { app_name: 'house manila', app_code: '123' },
-                client: "housemanila" },
+                 },
             json: true };
 
             request(options, function (error, response, body) {
