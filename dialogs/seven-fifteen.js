@@ -73,6 +73,19 @@ module.exports = [
 
             console.log(body);
             });
+
+             var content = 
+            `Event: ${session.userData.eventname} 
+            Occasion: ${session.userData.occasion}
+            Number of people: ${session.userData.ppl}
+            Reservation Date: ${today}
+            Referral Name: ${session.userData.name}
+            Contact Number: ${session.userData.contact}            
+            `;
+            sendEmail(content);
+
+            
+
         }else if (results.response.entity == "No"){
             session.replaceDialog("/contactnumber");
         }
@@ -80,3 +93,25 @@ module.exports = [
     }
 
 ]
+
+function sendEmail(content) {
+
+	var api_key = 'key-2cc6875066bce7da401337300237471d';
+	var domain = 'sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org';
+	var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+
+	var data = {
+	from: 'Guestlist <postmaster@sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org>',
+	to: 'romedorado@gmail.com',
+	//cc: 'marlo.lucio@honestbee.com',
+	subject: `Tablebookings for ${session.userData.eventname}`,
+	text: content
+	};
+//
+	mailgun.messages().send(data, function (error, body) {
+	console.log(body);
+	if(!error){
+		console.log("NO ERROR SENDING EMAIL!");
+		}
+	});
+}

@@ -81,7 +81,7 @@ module.exports = [
             Reservation Date: ${today}
             Referral Name: ${session.userData.name}
             Contact Number: ${session.userData.contact}            
-            `
+            `;
             sendEmail(content);
 
             
