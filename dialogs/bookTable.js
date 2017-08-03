@@ -6,7 +6,7 @@ var request = require('request');
 var specialrequest = [];
 module.exports = [
     function(session, args, next){
-        session.dialogData.add = false;
+        session.dialogData.add = false;        
         if(args != "add"){
         var selectArray = [];
         var options = { 
@@ -78,12 +78,17 @@ module.exports = [
                 session.dialogData.add = true;
                 next();
             }
+            session.userData.another = false;
     },
     function(session, results, next){
         console.log(JSON.stringify(results.response));
         //if(results.response == (null || undefined)){
         //    session.replaceDialog('/wit');
          //}else{                        
+             if(session.userData.another == false){
+                 session.replaceDialog('/wit');
+             }else{
+             }             
                 if (session.dialogData.add == false){
                     session.userData.bookParty = results.response.entity;
                     builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
@@ -146,6 +151,7 @@ module.exports = [
         console.log(JSON.stringify(results) + `results ng
         add another`);
             if (results.response.entity == 'Add another'){
+            session.userData.another = true;
             session.replaceDialog('/bookTable', "add"); 
             }else if (results.response.entity == 'Yes, continue'){            
             session.dialogData.reserve = results.response.entity;
