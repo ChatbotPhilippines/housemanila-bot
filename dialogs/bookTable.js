@@ -7,6 +7,7 @@ var specialrequest = [];
 module.exports = [
     function(session, args, next){
         session.dialogData.add = false;
+        session.userData.another = false;
         if(args != "add"){
         var selectArray = [];
         var options = { 
