@@ -80,18 +80,17 @@ module.exports = [
             }
     },
     function(session, results, next){
+        console.log(JSON.stringify(results.response));
         if(results.response == (null || undefined)){
            session.replaceDialog('/wit');
-         }else{
-        
-        console.log(JSON.stringify(results.response));
-        if (session.dialogData.add == false){
-            session.userData.bookParty = results.response.entity;
-            builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
-            {listStyle: builder.ListStyle.button});        
-        }else{
-            next();
-            }
+         }else{                        
+                if (session.dialogData.add == false){
+                    session.userData.bookParty = results.response.entity;
+                    builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
+                    {listStyle: builder.ListStyle.button});        
+                }else{
+                    next();
+                    }
         }
     },    
     function(session, results, next){  
