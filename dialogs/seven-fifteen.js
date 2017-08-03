@@ -56,14 +56,14 @@ module.exports = [
             {   event_id: session.userData.bookParty,
                 isvip: `${session.userData.isVIP}`,
                 occasion: session.userData.occasion,
-                //special_requests: [session.userData.special],
-                //table_type: 'type1',
+                special_requests: [session.userData.special],
+                table_type: 'type1',
                 no_ppl: session.userData.ppl,
                 reservation_date: today,
                 referral_name: session.userData.name,
                 contact_number: session.userData.contact,
                 status: 'pending',
-                //name_list: [ 'try' ],
+                name_list: [ 'try' ],
                 app_dtl: { app_name: 'house manila', app_code: '123' },
                 client: "housemanila" },
             json: true };
@@ -74,6 +74,18 @@ module.exports = [
             console.log(body);
             });
 
+            var content = 
+            `Event: ${session.userData.eventname} 
+            Occasion: ${session.userData.occasion}
+            Number of people: ${session.userData.ppl}
+            Reservation Date: ${today}
+            Referral Name: ${session.userData.name}
+            Contact Number: ${session.userData.contact}            
+            `;
+            var event = session.userData.eventname;
+            sendEmail(content, event);
+
+
             
         }else if (results.response.entity == "No"){
             session.replaceDialog("/contactnumber");
@@ -82,3 +94,25 @@ module.exports = [
     }
 
 ]
+
+function sendEmail(content, event) {
+
+	var api_key = 'key-2cc6875066bce7da401337300237471d';
+	var domain = 'sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org';
+	var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+
+	var data = {
+	from: 'Tablebookings <postmaster@sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org>',
+	to: 'romedorado@gmail.com',
+	//cc: 'marlo.lucio@honestbee.com',
+	subject: `Tablebookings for ${event}`,
+	text: content
+	};
+//
+	mailgun.messages().send(data, function (error, body) {
+	console.log(body);
+	if(!error){
+		console.log("NO ERROR SENDING EMAIL!");
+		}
+	});
+}
