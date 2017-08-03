@@ -33,7 +33,8 @@ module.exports = [
     function(session,results){   
         console.log(results.response.entity);
         session.userData.isVIP = false;
-        if(results.response.entity == "Yes"){            
+        if(results.response.entity == "Yes"){  
+            var today = new Date();          
             session.userData.contact = session.dialogData.numbers.phone;
             session.endDialog(consts.Messages.CONFIRMATION_CODE, session.dialogData.numbers.phone);
             console.log(`${session.userData.occasion},
@@ -55,14 +56,14 @@ module.exports = [
             {   event_id: session.userData.bookParty,
                 isvip: `${session.userData.isVIP}`,
                 occasion: session.userData.occasion,
-                special_requests: [session.userData.special],
-                table_type: 'type1',
+                //special_requests: [session.userData.special],
+                //table_type: 'type1',
                 no_ppl: session.userData.ppl,
-                reservation_date: '2016-05-18T16:00:00',
+                reservation_date: today,
                 referral_name: session.userData.name,
                 contact_number: session.userData.contact,
                 status: 'pending',
-                name_list: [ 'try' ],
+                //name_list: [ 'try' ],
                 app_dtl: { app_name: 'house manila', app_code: '123' },
                 client: "housemanila" },
             json: true };
