@@ -71,6 +71,8 @@ module.exports = [
                 session.send(consts.Prompts.BOOKING);
                 // session.send(msg);
                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
+                var date = new Date();
+                console.log(date.getDate());
             });            
     },
     function(session, results, next){
