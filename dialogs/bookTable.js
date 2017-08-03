@@ -84,6 +84,7 @@ module.exports = [
                 } 
                 var today = dd+'/'+mm+'/'+yyyy;
                 console.log(today);
+                console.log(Date.now);
             });            
     },
     function(session, results, next){
