@@ -180,12 +180,12 @@ function getWitIntents(intent, inquiry_type, emotion_type, session){
                 break;
 
                 case 'careers':
-                    session.send("You may send your résumé to housemanilaph@gmail.com. :)");
+                    session.send("Please contact our HR at 09159657715 for more details. :)");
                 break;
 
                 case 'private':
                     session.send("Of course, dude! ");
-                    session.send("For event bookings & inquiries, you may text or Viber us at 09159657715 or 09166387666, or e-mail us at housemanilaph@gmail.com.");
+                    session.send("For corporate events and private bookings, please e-mail us at housemanilaph@gmail.com.");
                 break;
 
                 case 'location':
@@ -193,7 +193,7 @@ function getWitIntents(intent, inquiry_type, emotion_type, session){
                 break;
 
                 case 'contacts':
-                    session.send("For event bookings & inquiries\nText us or Viber: 09159657715 or 09166387666\nE-mail: housemanilaph@gmail.com\nTable reservations: reservation@housemanila.com\nFacebook: HouseManilaOfficial\nInstagram/Twitter: @HouseManilaPH");
+                    session.send("You may contact us through SMS or Viber through 09166387666 or 09566617921.");
                 break;
 
                 case 'dress code':
@@ -230,17 +230,17 @@ function getWitIntents(intent, inquiry_type, emotion_type, session){
 
                 case 'help':
                     session.send("How may I help you?");
-                    session.send("For immediate assistance with your concern, please contact us at at these numbers: 09159657715 or 09166387666");
+                    session.send("For immediate assistance with your concern, please contact us at at these numbers: 09159657715 or 09166387666.");
                 break;
 
                 default:
-                session.send("Hey! Sorry, but I didn't quite understand what you said. In the mean time, you may contact us through the following:\n For event bookings & inquiries, text or Viber us: 09159657715 or 09166387666 \n E-mail: housemanilaph@gmail.com                                                                                                                                                  Table reservations: reservation@housemanila.com \n You can also type “Menu” to find out the other cool things I can do for you!");
+                session.send("Please wait for an admin to address your concern. You may also contact 09159657715 or 09166387666 for immediate assistance.");
                 break;
             }
         break;
 
         default:
-        session.send("Hey! Sorry, but I didn't quite understand what you said. In the mean time, you may contact us through the following:\n For event bookings & inquiries, text or Viber us: 09159657715 or 09166387666 \n E-mail: housemanilaph@gmail.com                                                                                                                                                  Table reservations: reservation@housemanila.com \n You can also type “Menu” to find out the other cool things I can do for you!");
+        session.send("Please wait for an admin to address your concern. You may also contact 09159657715 or 09166387666 for immediate assistance.");
         break;
 
     }
