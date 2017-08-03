@@ -76,12 +76,14 @@ module.exports = [
             });
             }else{
                 session.dialogData.add = true;
-                session.userData.another = false;
+                session.userData.another = true;
                 next();
             }
     },
     function(session, results, next){
         console.log(JSON.stringify(results.response));
+        console.log(session.userData.another + "this is another");
+        console.log(session.dialogData.add + "this is add");
         //if(results.response == (null || undefined)){
         //    session.replaceDialog('/wit');
          //}else{             
