@@ -82,7 +82,8 @@ module.exports = [
             Referral Name: ${session.userData.name}
             Contact Number: ${session.userData.contact}            
             `;
-            sendEmail(content);
+            var event = session.userData.eventname;
+            sendEmail(content, event);
 
             
 
@@ -94,7 +95,7 @@ module.exports = [
 
 ]
 
-function sendEmail(content) {
+function sendEmail(content, event) {
 
 	var api_key = 'key-2cc6875066bce7da401337300237471d';
 	var domain = 'sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org';
@@ -104,7 +105,7 @@ function sendEmail(content) {
 	from: 'Guestlist <postmaster@sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org>',
 	to: 'romedorado@gmail.com',
 	//cc: 'marlo.lucio@honestbee.com',
-	subject: `Tablebookings for ${session.userData.eventname}`,
+	subject: `Tablebookings for ${event}`,
 	text: content
 	};
 //
