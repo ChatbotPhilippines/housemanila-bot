@@ -81,9 +81,9 @@ module.exports = [
     },
     function(session, results, next){
         console.log(JSON.stringify(results.response));
-        if(results.response == (null || undefined)){
+        //if(results.response == (null || undefined)){
         //    session.replaceDialog('/wit');
-         }else{                        
+         //}else{                        
                 if (session.dialogData.add == false){
                     session.userData.bookParty = results.response.entity;
                     builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
@@ -91,7 +91,7 @@ module.exports = [
                 }else{
                     next();
                     }
-        }
+        //}
     },    
     function(session, results, next){  
         console.log(JSON.stringify(results.response) + "this is reults");
