@@ -160,7 +160,7 @@ function getWitIntents(intent, inquiry_type, emotion_type, session){
                 break;
 
                 case 'photos':
-                    session.send("Photos are up on FB by Monday night. You may check and tag your photos by then.");
+                    session.send("Photos are up on FB by Tuesday night. You may check and tag your photos by then.");
                 break;
 
                 case 'operations':
