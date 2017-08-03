@@ -76,6 +76,7 @@ module.exports = [
             });
             }else{
                 session.dialogData.add = true;
+                session.userData.another = false;
                 next();
             }
     },
@@ -85,7 +86,7 @@ module.exports = [
         //    session.replaceDialog('/wit');
          //}else{             
                         
-                if (session.dialogData.add == false){                    
+                if (session.dialogData.add == false && session.userData.another == false){             
                         session.userData.bookParty = results.response.entity;
                         builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
                         {listStyle: builder.ListStyle.button});        
@@ -147,6 +148,7 @@ module.exports = [
         console.log(JSON.stringify(results) + `results ng
         add another`);
             if (results.response.entity == 'Add another'){
+            session.userData.another = true;
             session.replaceDialog('/bookTable', "add"); 
             }else if (results.response.entity == 'Yes, continue'){            
             session.dialogData.reserve = results.response.entity;
