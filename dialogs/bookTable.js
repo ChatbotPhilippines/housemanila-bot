@@ -82,7 +82,7 @@ module.exports = [
     function(session, results, next){
         console.log(JSON.stringify(results.response));
         if(results.response == (null || undefined)){
-           session.replaceDialog('/wit');
+        //    session.replaceDialog('/wit');
          }else{                        
                 if (session.dialogData.add == false){
                     session.userData.bookParty = results.response.entity;
