@@ -5,10 +5,7 @@ var consts = require('../helpers/consts');
 var request = require('request');
 var specialrequest = [];
 module.exports = [
-    function(session, args, next){
-        session.dialogData.add = false;
-        session.userData.another = false;
-        if(args != "add"){
+    function(session, args, next){               
         var selectArray = [];
         var options = { 
                 method: 'GET',
@@ -74,109 +71,95 @@ module.exports = [
                 session.send(consts.Prompts.BOOKING);
                 // session.send(msg);
                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
-            });
-            }else{
-                session.dialogData.add = true;
-                session.userData.another = true;
-                next();
-            }
+            });            
     },
     function(session, results, next){
-        console.log(JSON.stringify(results.response));
-        console.log(session.userData.another + "this is another");
-        console.log(session.dialogData.add + "this is add");
-        //if(results.response == (null || undefined)){
-        //    session.replaceDialog('/wit');
-         //}else{             
-                        
-                if (session.dialogData.add == false && session.userData.another == false){             
-                        session.userData.bookParty = results.response.entity;
-                        builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
-                        {listStyle: builder.ListStyle.button});        
-                }else{
-                    next();
-                    }
+        console.log(JSON.stringify(results.response));                                         
+          session.userData.bookParty = results.response.entity;
+          builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
+          {listStyle: builder.ListStyle.button});                        
         //}
-    },    
-    function(session, results, next){  
-        console.log(JSON.stringify(results.response) + "this is reults");
+    // },    
+    // function(session, results, next){  
+    //     console.log(JSON.stringify(results.response) + "this is reults");
         
-        if(results.response != undefined){
-        session.userData.occasion = results.response.entity;
-        builder.Prompts.choice(session, consts.Prompts.BIRTHDAY_REQUEST, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
-        {listStyle: builder.ListStyle.button});
+    //     if(results.response != undefined){
+    //     session.userData.occasion = results.response.entity;
+    //     builder.Prompts.choice(session, consts.Prompts.BIRTHDAY_REQUEST, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
+    //     {listStyle: builder.ListStyle.button});
 
-        } else {
+    //     } else {
         
-        builder.Prompts.choice(session, consts.Prompts.WHAT_ELSE, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
-        {listStyle: builder.ListStyle.button});
+    //     builder.Prompts.choice(session, consts.Prompts.WHAT_ELSE, "Balloons|Party Poppers|Sparklers|Cake|Bottle Parade|Others|None", 
+    //     {listStyle: builder.ListStyle.button});
             
-        }
+    //     }
         
 
-    },
-    function(session,results, next){  
+    // },
+    // function(session,results, next){  
         
-        console.log(results.response.entity);      
+    //     console.log(results.response.entity);      
         
-        if (results.response.entity == 'Others'){  
-            session.dialogData.select = results.response.entity;           
-            builder.Prompts.text(session, consts.Prompts.ENTER_MESSAGE);
-        }
-         else{ 
-        specialrequest.push(results.response.entity);             
-        next();
-        }
-    },
+    //     if (results.response.entity == 'Others'){  
+    //         session.dialogData.select = results.response.entity;           
+    //         builder.Prompts.text(session, consts.Prompts.ENTER_MESSAGE);
+    //     }
+    //      else{ 
+    //     specialrequest.push(results.response.entity);             
+    //     next();
+    //     }
+    // },
 
-    function(session, results, next){        
-        if (session.dialogData.select == null){
+    // function(session, results, next){        
+    //     if (session.dialogData.select == null){
         
-        console.log(JSON.stringify(results) + "sa choice is that all");            
-        builder.Prompts.choice(session, consts.Prompts.IS_THAT_ALL, "Add another|Yes, continue", 
-        {listStyle: builder.ListStyle.button});
+    //     console.log(JSON.stringify(results) + "sa choice is that all");            
+    //     builder.Prompts.choice(session, consts.Prompts.IS_THAT_ALL, "Add another|Yes, continue", 
+    //     {listStyle: builder.ListStyle.button});
                 
                 
-        }else{
-        specialrequest.push(results.response);
-            next();
-        }
+    //     }else{
+    //     specialrequest.push(results.response);
+    //         next();
+    //     }
         
 
-    },
+    // },
 
-    function(session,results, next){   
+    // function(session,results, next){   
         
-        if (session.dialogData.select == null){
-        console.log(JSON.stringify(results) + `results ng
-        add another`);
-            if (results.response.entity == 'Add another'){
-            session.userData.another = true;
-            session.replaceDialog('/bookTable', "add"); 
-            }else if (results.response.entity == 'Yes, continue'){            
-            session.dialogData.reserve = results.response.entity;
-            session.userData.special = specialrequest;
-            next();
-            }
-        }else{
-            next();
-        }
-    },
+    //     if (session.dialogData.select == null){
+    //     console.log(JSON.stringify(results) + `results ng
+    //     add another`);
+    //         if (results.response.entity == 'Add another'){
+    //         session.userData.another = true;
+    //         session.replaceDialog('/bookTable', "add"); 
+    //         }else if (results.response.entity == 'Yes, continue'){            
+    //         session.dialogData.reserve = results.response.entity;
+    //         session.userData.special = specialrequest;
+    //         next();
+    //         }
+    //     }else{
+    //         next();
+    //     }
+    // },
 
-    function(session,results, next){  
-        console.log(session.dialogData.reserve + "reserve at other");
-        if (session.dialogData.reserve == null){            
-        builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
-        {listStyle: builder.ListStyle.button});
-        }
-        else{
-            next();
-        }
+    // function(session,results, next){  
+    //     console.log(session.dialogData.reserve + "reserve at other");
+    //     if (session.dialogData.reserve == null){            
+    //     builder.Prompts.choice(session, consts.Messages.OTHERS_REQUEST, "Continue", 
+    //     {listStyle: builder.ListStyle.button});
+    //     }
+    //     else{
+    //         next();
+    //     }
 
-    },
+     },
      function(session, results){  
+        session.userData.occasion = results.response.entity;
         console.log(session.dialogData.reserve + "reserve at r");      
-        session.userData.special = specialrequest;
+        //session.userData.special = specialrequest;
         //builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
         session.replaceDialog("/tablereserve");
         
