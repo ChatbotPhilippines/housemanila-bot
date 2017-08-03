@@ -6,7 +6,7 @@ var request = require('request');
 var specialrequest = [];
 module.exports = [
     function(session, args, next){
-        session.dialogData.add = "";
+        session.dialogData.add = false;
         if(args != "add"){
         var selectArray = [];
         var options = { 
@@ -73,23 +73,23 @@ module.exports = [
                 session.send(consts.Prompts.BOOKING);
                 // session.send(msg);
                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
-                session.dialogData.add = "uncheck";
             });
             }else{
-                session.dialogData.add = "check";
+                session.dialogData.add = true;
                 next();
             }
     },
     function(session, results, next){
         console.log(JSON.stringify(results.response));
         //if(results.response == (null || undefined)){
-        //    session.replaceDialog('/wi9t');
-        //}else{                                         
-                if (session.dialogData.add == "uncheck"){                    
+        //    session.replaceDialog('/wit');
+         //}else{             
+                        
+                if (session.dialogData.add == false){                    
                         session.userData.bookParty = results.response.entity;
                         builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
                         {listStyle: builder.ListStyle.button});        
-                }else if (session.dialogData.add == "check"){
+                }else{
                     next();
                     }
         //}
