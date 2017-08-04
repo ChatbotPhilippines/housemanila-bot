@@ -25,9 +25,9 @@ module.exports = [
     },
     function(session, results){
         session.userData.eventdate = results.response.entity;
-        var convertedTime = builder.EntityRecognizer.resolveTime(session.userData.eventdate);
+        var convertedTime = builder.EntityRecognizer.resolveTime([results.response]);
         console.log(session.userData.eventdate);
-        console.log(convertedTime);
+        console.log(convertedTime)
         session.endDialog(consts.Messages.THANK_INFO);
     }
 ]
