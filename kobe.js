@@ -43,8 +43,9 @@
 
 // console.log(date);
 // console.log(n);
-var shit = "kobe/asd";
+var targetTime = new Date();
+var diff = -8.00;
+var timeZoneDiff = diff * 60 + targetTime.getTimezoneOffset();
+var kobe = new Date(targetTime.getTime()+ timeZoneDiff * 60 * 1000);
 
-let recTitle = shit.split("/")[0];
-
-console.log(recTitle);
+console.log(kobe);

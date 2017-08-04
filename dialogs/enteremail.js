@@ -25,6 +25,7 @@ module.exports = [
     },
     function(session, results){
         session.userData.eventdate = results.response;
+        
         session.endDialog(consts.Messages.THANK_INFO);
     }
 ]
