@@ -58,14 +58,14 @@ module.exports = [
             {   event_id: session.userData.bookParty,
                 isvip: `${session.userData.isVIP}`,
                 occasion: session.userData.occasion,
-                special_requests: ['asd'],
-                table_type: 'type1',
+                //special_requests: ['asd'],
+                //table_type: 'type1',
                 no_ppl: session.userData.ppl,
                 reservation_date: today,
                 referral_name: session.userData.name,
                 contact_number: session.userData.contact,
                 status: 'pending',
-                name_list: [ 'try' ],
+                //name_list: [ 'try' ],
                 app_dtl: { app_name: 'house manila', app_code: '123' },
                  },
             json: true };
@@ -77,7 +77,7 @@ module.exports = [
             });
 
             var content = 
-            `Event: ${session.userData.eventname} 
+                `Event: ${session.userData.eventname} 
             Occasion: ${session.userData.occasion}
             Number of people: ${session.userData.ppl}
             Reservation Date: ${today}
@@ -85,7 +85,7 @@ module.exports = [
             Contact Number: ${session.userData.contact}            
             `;
             var event = session.userData.eventname;
-            sendEmail(content, event);
+            //sendEmail(content, event);
 
 
             
