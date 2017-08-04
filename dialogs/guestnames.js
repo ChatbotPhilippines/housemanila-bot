@@ -51,7 +51,7 @@ module.exports = [
             session.replaceDialog('/guestnames');
         }
         var content = `
-        Guests: 
+        Here are the list of people who requested to be part of the guestlist for ${session.userData.partyname}: 
         ${session.userData.guests}`;
         sendEmail(content, session.userData.partyname);
     }
@@ -65,7 +65,7 @@ function sendEmail(content, event) {
 	var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 	var data = {
-	from: 'Tablebookings <postmaster@sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org>',
+	from: 'Guestlists <postmaster@sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org>',
 	to: 'romedorado@gmail.com',
 	//cc: 'marlo.lucio@honestbee.com',
 	subject: `Guestlist for ${event}`,
