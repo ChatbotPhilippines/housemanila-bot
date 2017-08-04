@@ -50,5 +50,32 @@ module.exports = [
         else if(results.response.entity === 'No'){
             session.replaceDialog('/guestnames');
         }
+        var content = `
+        Here are the list of people who requested to be part of the guestlist for ${session.userData.partyname}: 
+        ${session.userData.guests}`;
+        sendEmail(content, session.userData.partyname);
     }
+    
 ];
+
+function sendEmail(content, event) {
+
+	var api_key = 'key-2cc6875066bce7da401337300237471d';
+	var domain = 'sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org';
+	var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+
+	var data = {
+	from: 'Guestlists <postmaster@sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org>',
+	to: 'romedorado@gmail.com',
+	//cc: 'marlo.lucio@honestbee.com',
+	subject: `Guestlist for ${event}`,
+	text: content
+	};
+//
+	mailgun.messages().send(data, function (error, body) {
+	console.log(body);
+	if(!error){
+		console.log("NO ERROR SENDING EMAIL!");
+		}
+	});
+}
