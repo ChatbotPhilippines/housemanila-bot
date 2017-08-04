@@ -64,7 +64,7 @@ module.exports = [
                 reservation_date: today,
                 referral_name: session.userData.name,
                 contact_number: session.userData.contact,
-                status: 'pending',
+                status: 'Pending',
                 //name_list: [ 'try' ],
                 app_dtl: { app_name: 'house manila', app_code: '123' },
                  },

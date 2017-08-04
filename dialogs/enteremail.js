@@ -24,10 +24,46 @@ module.exports = [
         }
     },
     function(session, results){
-        session.userData.eventdate = results.response.entity;
-        var convertedTime = builder.EntityRecognizer.resolveTime([results.response]);
-        console.log(session.userData.eventdate);
-        console.log(convertedTime)
+        session.userData.eventdate = builder.EntityRecognizer.resolveTime([results.response]);
+        console.log(`${session.userData.company}, 
+                     ${session.userData.fullname},
+                     ${session.userData.contact},
+                     ${session.userData.emailAdd},
+                     ${session.userData.eventdate}`);
+        
+        var options = {
+            method: 'POST',
+            url: 'https://ms-gateway-api.herokuapp.com/api',
+            qs: {
+                MSpointname: 'eventbooking',
+                client: 'housemanila'
+            },
+            headers: {
+                'content-type': 'application/json',
+                'access-token': 'eyJhbGciOiJIUzI1NiJ9.c2FtcGxlVG9rZW4.F2vUteLfaWAK9iUKu1PRZnPS2r_HlhzU9NC8zeBN28Q'
+            },
+            body: {
+                event_date: session.userData.eventdate,
+                producer: {
+                    name: session.userData.company,
+                    contact_number: session.userData.contact,
+                    organizer_name: session.userData.fullname,
+                    email_address: session.userData.emailAdd
+                },
+                status: 'Pending',
+                app_dtl: {
+                    app_name: "house manila",
+                    app_code: "123"
+                }   
+            },
+            json: true
+        };
+
+        request(options, function(error, response, body) {
+            if(error) throw new Error(error);
+            console.log(body);
+        });
+        
         session.endDialog(consts.Messages.THANK_INFO);
     }
 ]
