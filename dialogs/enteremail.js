@@ -24,10 +24,10 @@ module.exports = [
         }
     },
     function(session, results){
-        session.userData.eventdate = results.response;
-        // var convertedTime = 
-        console.log(results.response.entity);
+        session.userData.eventdate = results.response.entity;
+        var convertedTime = builder.EntityRecognizer.resolveTime(session.userData.eventdate);
         console.log(session.userData.eventdate);
+        console.log(convertedTime);
         session.endDialog(consts.Messages.THANK_INFO);
     }
 ]
