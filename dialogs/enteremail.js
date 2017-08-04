@@ -64,7 +64,38 @@ module.exports = [
             if(error) throw new Error(error);
             console.log(body);
         });
+
+        var content = `
+            ${session.userData.company} is requesting to book an event in House Manila.
+
+            Name of Organizer: ${session.userData.fullname}
+            Contact Number: ${session.userData.contact}
+            Email Address: ${session.userData.emailAdd}
+            Event Date: ${session.userData.eventdate}
+        `
         
         session.endDialog(consts.Messages.THANK_INFO);
     }
 ]
+
+function sendEmail(content, event) {
+
+	var api_key = 'key-2cc6875066bce7da401337300237471d';
+	var domain = 'sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org';
+	var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+
+	var data = {
+	from: 'Event Bookings <postmaster@sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org>',
+	to: 'romedorado@gmail.com',
+	//cc: 'marlo.lucio@honestbee.com',
+	subject: `Event Booking Request from ${session.userData.company}`,
+	text: content
+	};
+//
+	mailgun.messages().send(data, function (error, body) {
+	console.log(body);
+	if(!error){
+		console.log("NO ERROR SENDING EMAIL!");
+		}
+	});
+}
