@@ -75,7 +75,7 @@ module.exports = [
             });
 
             var content = 
-            `Event: ${session.userData.eventname} 
+                `Event: ${session.userData.eventname} 
             Occasion: ${session.userData.occasion}
             Number of people: ${session.userData.ppl}
             Reservation Date: ${today}
