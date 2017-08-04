@@ -26,6 +26,7 @@ module.exports = [
     function(session, results){
         session.userData.eventdate = results.response;
         // var convertedTime = 
+        console.log(results.response.entity);
         console.log(session.userData.eventdate);
         session.endDialog(consts.Messages.THANK_INFO);
     }
