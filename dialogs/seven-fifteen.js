@@ -85,7 +85,7 @@ module.exports = [
             Contact Number: ${session.userData.contact}            
             `;
             var event = session.userData.eventname;
-            //sendEmail(content, event);
+            sendEmail(content, event);
 
 
             
