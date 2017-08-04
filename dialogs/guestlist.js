@@ -56,10 +56,10 @@ module.exports = [
                         ])
                         .text(eventDateConverted.toDateString())
                         .buttons([
-                            builder.CardAction.imBack(session, eventId, eventName)
+                            builder.CardAction.imBack(session, eventId+"/"+eventName, eventName)
                         ])
                     ];
-                    selectArray.push(eventId);
+                    selectArray.push(eventId+"/"+eventName);
                     elements.push(...elem);       
                 }
         
@@ -78,10 +78,12 @@ module.exports = [
            session.replaceDialog('/wit');
          }else{
         
-            console.log(JSON.stringify(results));
-        session.userData.party = results.response.entity;
+            console.log(JSON.stringify(results));        
+        session.userData.party = results.response.entity.split("/")[0];
+        session.userData.partyname = results.response.entity.split("/")[1];
         session.replaceDialog('/guestnames');
         }
         
     }
 ]
+
