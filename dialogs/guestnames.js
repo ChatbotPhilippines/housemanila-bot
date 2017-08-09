@@ -36,7 +36,8 @@ module.exports = [
                 app_dtl: { 
                     app_name: 'House Manila', 
                     app_code: 'hm' 
-                } 
+                },
+                status: "Pending"
             },
             json: true 
             };
