@@ -13,6 +13,7 @@ module.exports = [
         builder.Prompts.choice(session, `${consts.Messages.GUEST_LIST}<br/>${session.userData.guests.join('<br/>')}<br/>${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button});
     },
     function (session, results){
+        console.log(session.message.user.name + "this is the name")
         if(results.response.entity === 'Yes'){            
 
             var options = {
@@ -28,7 +29,9 @@ module.exports = [
                     MSpointname: "guestlist", //user, session, aimodule, member, Basta microservice name                
             },
             body: 
-            {   guests: session.userData.guests,
+            {   
+                referral_name: session.message.user.name,
+                guests: session.userData.guests,
                 event_id: session.userData.party,
                 app_dtl: { 
                     app_name: 'House Manila', 
