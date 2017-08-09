@@ -64,7 +64,7 @@ module.exports = [
                 reservation_date: today,
                 referral_name: session.userData.name,
                 contact_number: session.userData.contact,
-                status: 'pending',
+                status: 'Pending',
                 //name_list: [ 'try' ],
                 app_dtl: { app_name: 'house manila', app_code: '123' },
                  },
@@ -104,7 +104,7 @@ function sendEmail(content, event) {
 	var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 	var data = {
-	from: 'Tablebookings <postmaster@sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org>',
+	from: 'Table Bookings <postmaster@sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org>',
 	to: 'romedorado@gmail.com',
 	//cc: 'marlo.lucio@honestbee.com',
 	subject: `Tablebookings for ${event}`,
