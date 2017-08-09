@@ -44,7 +44,7 @@ bot.dialog('/', [
 bot.dialog('/wit', [
 
 function (session, args, next) {
-  console.log(JSON.stringify(session.message));
+  console.log(session.message.sourceEvent.sender.id);
   var entity = args || session.message.text;
   const client = new Wit({accessToken: WIT_TOKEN});
 
