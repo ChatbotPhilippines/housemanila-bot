@@ -54,9 +54,7 @@ module.exports = [
         else if(results.response.entity === 'No'){
             session.replaceDialog('/guestnames');
         }        
-        var content = `
-        Here are the list of people who requested to be part of the guestlist for ${session.userData.partyname}: 
-        ${session.userData.guests.join('\n')}`;
+        var content = `Here are the list of people who requested to be part of the guestlist for ${session.userData.partyname}: \n${session.userData.guests.join('\n')}`;
         sendEmail(content, session.userData.partyname);
     }
     
