@@ -81,6 +81,8 @@ module.exports = [
             console.log(JSON.stringify(results));        
         session.userData.party = results.response.entity.split("/")[0];
         session.userData.partyname = results.response.entity.split("/")[1];
+        var formattedString = session.userData.guests.split(",").join("\n");
+        console.log(formattedString);
         session.replaceDialog('/guestnames');
         }
         
