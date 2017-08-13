@@ -53,11 +53,10 @@ module.exports = [
         }
         else if(results.response.entity === 'No'){
             session.replaceDialog('/guestnames');
-        }
-        var formattedString = session.userData.guests.split(",").join("\n");
+        }        
         var content = `
         Here are the list of people who requested to be part of the guestlist for ${session.userData.partyname}: 
-        ${session.userData.guests}`;
+        ${session.userData.guests.join('<br/>')}`;
         sendEmail(content, session.userData.partyname);
     }
     
