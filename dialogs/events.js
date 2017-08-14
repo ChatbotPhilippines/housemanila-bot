@@ -67,7 +67,7 @@ var selectArray = [];
                     elements.push(...elem);  
                     }     
                 }
-
+                console.log(selectArray + "this is the select array");
                 if(selectArray == []){
                     session.send("There are no upcoming special events");
                 }else{                
