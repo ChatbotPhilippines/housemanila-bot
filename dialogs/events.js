@@ -67,6 +67,10 @@ var selectArray = [];
                     elements.push(...elem);  
                     }     
                 }
+
+                if(selectArray == null){
+                    session.send("There are no upcoming special events");
+                }else{                
         
                 var msg = new builder.Message(session)
                     .attachmentLayout(builder.AttachmentLayout.carousel)
@@ -76,7 +80,7 @@ var selectArray = [];
                 session.send("Here are the upcoming events at House Manila");
                 //session.send(msg);
                  builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
-                
+                }
             });            
     },
     function (session, results){
