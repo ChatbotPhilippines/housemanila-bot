@@ -46,8 +46,11 @@ module.exports = [
                     let appId = events.d[i].app_id;
                     let eventId = events.d[i]._id;
                     let eventCode = events.d[i].event_code;
+                    let isGuestlist = events.d[i].is_guest;
 
-                
+                    if(isGuestlist == true){
+
+                    
                     var elem = [
                         new builder.HeroCard(session)
                         .title(eventName)
@@ -60,7 +63,8 @@ module.exports = [
                         ])
                     ];
                     selectArray.push(eventId+"/"+eventName);
-                    elements.push(...elem);       
+                    elements.push(...elem);     
+                    }  
                 }
         
                 var msg = new builder.Message(session)
