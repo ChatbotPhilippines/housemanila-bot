@@ -46,7 +46,9 @@ module.exports = [
                     let appId = events.d[i].app_id;
                     let eventId = events.d[i]._id;
                     let eventCode = events.d[i].event_code;
-
+                    let isTable = events.d[i].is_table;
+                    
+                    if(isTable == true){
                 
                     var elem = [
                         new builder.HeroCard(session)
@@ -71,6 +73,7 @@ module.exports = [
                 session.send(consts.Prompts.BOOKING);
                 // session.send(msg);
                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});                                                
+                }
             });            
     },
     function(session, results, next){

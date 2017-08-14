@@ -45,7 +45,9 @@ var selectArray = [];
                     let endTime = events.d[i].end_time;
                     let appId = events.d[i].app_id;
                     let eventId = events.d[i]._id;
-
+                    let isSpecial = events.d[i].is_special;
+                    
+                    if(isSpecial == true){
 
                 
                     var elem = [
@@ -73,6 +75,7 @@ var selectArray = [];
                 session.send("Here are the upcoming events at House Manila");
                 //session.send(msg);
                  builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
+                }
             });            
     },
     function (session, results){
