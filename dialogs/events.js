@@ -68,10 +68,7 @@ var selectArray = [];
                     }     
                 }
                 console.log(selectArray + "this is the select array");
-                if(selectArray == []){
-                    session.send("There are no upcoming special events");
-                }else{                
-        
+                if(selectArray.length > 0){
                 var msg = new builder.Message(session)
                     .attachmentLayout(builder.AttachmentLayout.carousel)
                     .attachments(elements);
@@ -79,8 +76,13 @@ var selectArray = [];
                 // Show carousel
                 session.send("Here are the upcoming events at House Manila");
                 //session.send(msg);
-                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
+                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});    
+                }else{                
+        
+                
+                 session.send("There are no upcoming special events");
                 }
+                
             });            
     },
     function (session, results){
