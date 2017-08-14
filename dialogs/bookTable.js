@@ -62,7 +62,8 @@ module.exports = [
                         ])
                     ];
                     selectArray.push(eventId+"/"+eventName);
-                    elements.push(...elem);       
+                    elements.push(...elem);     
+                    }  
                 }
         
                 var msg = new builder.Message(session)
@@ -73,7 +74,7 @@ module.exports = [
                 session.send(consts.Prompts.BOOKING);
                 // session.send(msg);
                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});                                                
-                }
+            
             });            
     },
     function(session, results, next){

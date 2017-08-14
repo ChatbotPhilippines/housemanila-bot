@@ -47,7 +47,8 @@ module.exports = [
                     let eventId = events.d[i]._id;
                     let eventCode = events.d[i].event_code;
                     let isGuestlist = events.d[i].is_guest;
-
+                    let isTable = events.d[i].is_table;
+                    
                     if(isGuestlist == true){
 
                     
