@@ -176,6 +176,10 @@ function getWitIntents(intent, inquiry_type, emotion_type, session){
                     session.send("We offer the following Birthday packages: \nPHP 5,000\nPHP 10,000\nPHP 15,000\nPHP 20,000\nPHP 30,000\nPHP 50,000\nAs well as a Clubbers' package at PHP 7,000.");
                 break;
 
+                case 'reserve':
+                    session.replaceDialog('/bookTable');
+                break;
+
                 case 'events':
                     session.beginDialog('/events');
                 break;
