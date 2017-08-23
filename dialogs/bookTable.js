@@ -78,13 +78,17 @@ module.exports = [
             });            
     },
     function(session, results, next){
-        console.log(JSON.stringify(results.response));                                         
+        console.log(JSON.stringify(results.response));      
+        if(results.response == undefined){
+            session.replaceDialog('/wit');
+        }else{
           session.userData.bookParty = results.response.entity.split("/")[0];
           console.log(session.userData.bookParty);                    
           session.userData.eventname = results.response.entity.split("/")[1];
           console.log(session.userData.eventname);
           builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
           {listStyle: builder.ListStyle.button});                        
+        }
         //}
     // },    
     // function(session, results, next){  
