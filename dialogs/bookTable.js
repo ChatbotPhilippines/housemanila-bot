@@ -46,7 +46,9 @@ module.exports = [
                     let appId = events.d[i].app_id;
                     let eventId = events.d[i]._id;
                     let eventCode = events.d[i].event_code;
-
+                    let isTable = events.d[i].is_table;
+                    
+                    if(isTable == true){
                 
                     var elem = [
                         new builder.HeroCard(session)
@@ -60,7 +62,8 @@ module.exports = [
                         ])
                     ];
                     selectArray.push(eventId+"/"+eventName);
-                    elements.push(...elem);       
+                    elements.push(...elem);     
+                    }  
                 }
         
                 var msg = new builder.Message(session)
@@ -71,16 +74,21 @@ module.exports = [
                 session.send(consts.Prompts.BOOKING);
                 // session.send(msg);
                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});                                                
+            
             });            
     },
     function(session, results, next){
-        console.log(JSON.stringify(results.response));                                         
+        console.log(JSON.stringify(results.response));      
+        if(results.response == undefined){
+            session.replaceDialog('/wit');
+        }else{
           session.userData.bookParty = results.response.entity.split("/")[0];
           console.log(session.userData.bookParty);                    
           session.userData.eventname = results.response.entity.split("/")[1];
           console.log(session.userData.eventname);
           builder.Prompts.choice(session, consts.Prompts.CELEBRATE, "Birthday|Anniversary|Despedida|Bachelor/ette|Others|No Occasion", 
           {listStyle: builder.ListStyle.button});                        
+        }
         //}
     // },    
     // function(session, results, next){  

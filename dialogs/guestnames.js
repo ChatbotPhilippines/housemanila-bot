@@ -13,6 +13,7 @@ module.exports = [
         builder.Prompts.choice(session, `${consts.Messages.GUEST_LIST}<br/>${session.userData.guests.join('<br/>')}<br/>${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button});
     },
     function (session, results){
+        console.log(session.message.user.name + "this is the name")
         if(results.response.entity === 'Yes'){            
 
             var options = {
@@ -28,12 +29,15 @@ module.exports = [
                     MSpointname: "guestlist", //user, session, aimodule, member, Basta microservice name                
             },
             body: 
-            {   guests: session.userData.guests,
+            {   
+                referral_name: session.message.user.name,
+                guests: session.userData.guests,
                 event_id: session.userData.party,
                 app_dtl: { 
                     app_name: 'House Manila', 
                     app_code: 'hm' 
-                } 
+                },
+                status: "Pending"
             },
             json: true 
             };
@@ -49,10 +53,8 @@ module.exports = [
         }
         else if(results.response.entity === 'No'){
             session.replaceDialog('/guestnames');
-        }
-        var content = `
-        Here are the list of people who requested to be part of the guestlist for ${session.userData.partyname}: 
-        ${session.userData.guests}`;
+        }        
+        var content = `Here are the list of people who requested to be part of the guestlist for ${session.userData.partyname}: \n${session.userData.guests.join('\n')}`;
         sendEmail(content, session.userData.partyname);
     }
     

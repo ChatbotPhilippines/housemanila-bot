@@ -46,8 +46,12 @@ module.exports = [
                     let appId = events.d[i].app_id;
                     let eventId = events.d[i]._id;
                     let eventCode = events.d[i].event_code;
+                    let isGuestlist = events.d[i].is_guest;
+                    let isTable = events.d[i].is_table;
+                    
+                    if(isGuestlist == true){
 
-                
+                    
                     var elem = [
                         new builder.HeroCard(session)
                         .title(eventName)
@@ -60,7 +64,8 @@ module.exports = [
                         ])
                     ];
                     selectArray.push(eventId+"/"+eventName);
-                    elements.push(...elem);       
+                    elements.push(...elem);     
+                    }  
                 }
         
                 var msg = new builder.Message(session)
@@ -80,7 +85,7 @@ module.exports = [
         
             console.log(JSON.stringify(results));        
         session.userData.party = results.response.entity.split("/")[0];
-        session.userData.partyname = results.response.entity.split("/")[1];
+        session.userData.partyname = results.response.entity.split("/")[1];        
         session.replaceDialog('/guestnames');
         }
         

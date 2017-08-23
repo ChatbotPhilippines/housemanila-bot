@@ -45,7 +45,9 @@ var selectArray = [];
                     let endTime = events.d[i].end_time;
                     let appId = events.d[i].app_id;
                     let eventId = events.d[i]._id;
-
+                    let isSpecial = events.d[i].is_special;
+                    
+                    if(isSpecial == true){
 
                 
                     var elem = [
@@ -62,9 +64,11 @@ var selectArray = [];
                         ])
                     ];
                     selectArray.push(eventId);
-                    elements.push(...elem);       
+                    elements.push(...elem);  
+                    }     
                 }
-        
+                console.log(selectArray + "this is the select array");
+                if(selectArray.length > 0){
                 var msg = new builder.Message(session)
                     .attachmentLayout(builder.AttachmentLayout.carousel)
                     .attachments(elements);
@@ -72,7 +76,13 @@ var selectArray = [];
                 // Show carousel
                 session.send("Here are the upcoming events at House Manila");
                 //session.send(msg);
-                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});
+                 builder.Prompts.choice(session, msg, selectArray, { maxRetries:0,promptAfterAction:false});    
+                }else{                
+        
+                
+                 session.send("There are no upcoming special events");
+                }
+                
             });            
     },
     function (session, results){

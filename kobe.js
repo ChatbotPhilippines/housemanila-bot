@@ -85,3 +85,5 @@
 var ans = "10" + 20 + 30;
 
 console.log(ans);
+var yourString = ["gege", "gaga", "hehe"];
+var formattedString = yourString.split(",").join("\n")
