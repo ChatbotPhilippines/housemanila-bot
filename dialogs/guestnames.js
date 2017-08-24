@@ -32,7 +32,7 @@ module.exports = [
             body: 
             {   
                 referral_name: session.message.user.name,
-                fb_id: session.message.sourceEvent.user.id,
+                fb_id: session.message.sourceEvent.sender.id,
                 guests: session.userData.guests,
                 event_id: session.userData.party,
                 app_dtl: { 
