@@ -13,7 +13,8 @@ module.exports = [
         builder.Prompts.choice(session, `${consts.Messages.GUEST_LIST}<br/>${session.userData.guests.join('<br/>')}<br/>${consts.Prompts.CONFIRMATION}`, "Yes|No", {listStyle: builder.ListStyle.button});
     },
     function (session, results){
-        console.log(session.message.user.name + "this is the name")
+        console.log(session.message.sourceEvent.sender.id + " fb id");
+        console.log(session.message.user.name + "this is the name");
         if(results.response.entity === 'Yes'){            
 
             var options = {
@@ -31,6 +32,7 @@ module.exports = [
             body: 
             {   
                 referral_name: session.message.user.name,
+                fb_id: session.message.sourceEvent.sender.id,
                 guests: session.userData.guests,
                 event_id: session.userData.party,
                 app_dtl: { 

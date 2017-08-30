@@ -43,5 +43,47 @@
 
 // console.log(date);
 // console.log(n);
+// var targetTime = new Date();
+// var diff = -8.00;
+// var timeZoneDiff = diff * 60 + targetTime.getTimezoneOffset();
+// var kobe = new Date(targetTime.getTime()+ timeZoneDiff * 60 * 1000);
+
+// console.log(kobe);
+
+// let availableAreas = ['Makati', 'Taguig', 
+// 							  'Pasig', 'Manila',
+// 							  'Mandaluyong', 'Quezon City',
+// 							  'Marikina', 'Antipolo',
+// 							  'Rizal', 'Paranaque',
+//                               'Alabang', 'Las Pinas'];
+// let place = "aaa"
+// if(availableAreas.indexOf(place) > -1){
+//     console.log("Nasa loob siya ng array");
+// }
+// else{
+//     console.log("Wala siya sa array");
+// }
+
+// var moment = require('moment');
+
+// console.log('Test for Moment');
+// var today = moment();
+// var event_date = moment("2017-08-13", "YYYY-MM-DD");
+// console.log(today);
+// console.log(event_date);
+
+// if(event_date.isAfter(today)){
+// 	// event_date.add(7, 'days')
+// 	// console.log('New event date is: ' + event_date.format());
+// 	event_date = moment(event_date).add(7, 'd').format("YYYY-MM-DDTHH:mm:ss:sss");
+// 	console.log("New date is: " + event_date);
+// }
+// else{
+// 	console.log('Nothing happened');
+// }
+
+var ans = "10" + 20 + 30;
+
+console.log(ans);
 var yourString = ["gege", "gaga", "hehe"];
 var formattedString = yourString.split(",").join("\n")
