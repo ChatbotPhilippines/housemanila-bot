@@ -64,7 +64,7 @@ module.exports = [
                         ])
                     ];
                     selectArray.push(eventId+"/"+eventName);
-                    elements.push(elem);     
+                    elements.push(...elem);     
                     }  
                 }
         
