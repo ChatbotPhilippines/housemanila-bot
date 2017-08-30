@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "botbuilder": "^3.8.4",
+    "botbuilder-aws-lambda": "^1.0.2",
     "mailgun-js": "^0.11.2",
     "mongoose": "^4.11.3",
     "node-wit": "^4.2.0",

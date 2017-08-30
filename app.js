@@ -18,7 +18,11 @@ var connector = new builder.ChatConnector({
   appId: config.appID,
   appPassword: config.appPassword
 });
+
+//lambda handler aws
 var bot = new builder.UniversalBot(connector);
+
+
 
 
 //Setup Restify Server
