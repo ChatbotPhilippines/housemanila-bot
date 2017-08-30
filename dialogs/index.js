@@ -16,3 +16,4 @@ exports.reserve = require('./tablereserve');
 exports.sevenFifteen = require('./seven-fifteen');
 exports.sixteen = require('./sixteen');
 exports.number = require('./contactnumber');
+exports.tablereserveemail = require('./tablereserveemail');

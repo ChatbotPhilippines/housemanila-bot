@@ -274,4 +274,4 @@ bot.dialog('/tablereserve', dialogs.reserve);
 bot.dialog('/seven-fifteen', dialogs.sevenFifteen);
 bot.dialog('/sixteen', dialogs.sixteen);
 bot.dialog('/contactnumber', dialogs.number);
-
+bot.dialog('/tablereserveemail', dialogs.tablereserveemail);
