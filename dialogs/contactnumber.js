@@ -106,8 +106,8 @@ function sendEmail(content, event) {
 
 	var data = {
 	from: 'Tablebookings <postmaster@sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org>',
-	to: 'romedorado@gmail.com',
-	//cc: 'marlo.lucio@honestbee.com',
+	to: 'romedorado@gmail.com',    
+    // to: 'queenie.housemanila@gmail.com',
 	subject: `Tablebookings for ${event}`,
 	text: content
 	};

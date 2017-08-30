@@ -70,8 +70,8 @@ function sendEmail(content, event) {
 
 	var data = {
 	from: 'Guestlists <postmaster@sandboxb18d41951b2a4b58a7f2bcdc7a7048f8.mailgun.org>',
-	to: 'romedorado@gmail.com',
-	//cc: 'marlo.lucio@honestbee.com',
+    to: 'romedorado@gmail.com',	
+    // to: 'justin.houze2015@gmail.com',
 	subject: `Guestlist for ${event}`,
 	text: content
 	};
