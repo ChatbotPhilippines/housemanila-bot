@@ -13,9 +13,8 @@ module.exports = [
             
     },
     function(session, results, next){   
-        console.log(results.response);
-        console.log(session.userData.name);
-        if(session.userData.name == (undefined || null)){
+        console.log(results.response);        
+        if(results.response != (undefined || null)){
             session.userData.name = results.response;
             session.replaceDialog('/tablereserveemail');
         }else{
