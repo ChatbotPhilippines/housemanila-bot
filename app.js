@@ -190,11 +190,11 @@ function getWitIntents(intent, inquiry_type, emotion_type, session){
                 case 'entrance':
                 let randomentrance = ['Want to get in the guest list for free? join now!',
                 'Our entrance is free! Just join the guest list now'];
-                let replyrandom = randomentrance[Math.floor(Math.random() * replyrandom.length)];
+                let replyrandom = randomentrance[Math.floor(Math.random() * randomentrance.length)];
                     session.send(replyrandom);                                    
                     session.beginDialog('/guestlist');
                 break;                    
-                
+
                 case 'events':
                     session.beginDialog('/events');
                 break;
