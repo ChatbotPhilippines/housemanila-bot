@@ -164,6 +164,9 @@ function getWitIntents(intent, inquiry_type, emotion_type, session){
                     session.send("Suh dude! I'm House Manila bot, here to make your partying with us easier!");
                 break;
 
+                case 'drinks':
+                    session.send("For more info, contact us at 09566617921");
+                break;
                 case 'photos':
                     session.send("Photos are up on FB by Tuesday night. You may check and tag your photos by then.");
                 break;
