@@ -8,8 +8,9 @@ module.exports = [
         function(session, args, next){        
             if(args && !args.reprompt){
                 next();
-            }
+            }else{   
             builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
+        }
             
     },
     function(session, results, next){   
