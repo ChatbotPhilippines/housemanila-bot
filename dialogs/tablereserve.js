@@ -4,28 +4,29 @@ var builder = require('botbuilder');
 var consts = require('../helpers/consts');
 
 module.exports = [
-    
-    function(session){        
-        
-        builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);  
 
+        function(session, args, next){        
+            if(args && !args.reprompt){
+                next();
+            }
+            builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
+            
     },
-
-        function(session, results){      
-        
-        session.userData.name = results.response;
-        builder.Prompts.text(session, consts.Prompts.ENTER_EMAIL);
-        
-
-    },
-    function(session, results){   
+    function(session, results, next){   
         console.log(results.response);
-        session.userData.emailAdd = results.response;  
-        if (results.response != null){
-            builder.Prompts.choice(session, consts.Prompts.GROUP_COUNT, "4-6|7-10|11-15|16+", 
-        {listStyle: builder.ListStyle.button});
-
+        if(session.userData.name == (undefined || null)){
+            session.userData.name = results.response;
+            session.replaceDialog('/tablereserveemail');
+        }else{
+            next();
         }
+    },
+        function(session, results){   
+            
+            builder.Prompts.choice(session, consts.Prompts.GROUP_COUNT, "4-6|7-10|11-15|16+", 
+            {listStyle: builder.ListStyle.button});                
+        
+        
     },
     function(session, results){   
         session.userData.ppl = results.response.entity;
