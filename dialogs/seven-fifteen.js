@@ -65,6 +65,7 @@ module.exports = [
                 referral_name: session.userData.name,
                 contact_number: session.userData.contact,
                 status: 'Pending',
+                email: session.userData.emailAdd,  
                 //name_list: [ 'try' ],
                 app_dtl: { app_name: 'house manila', app_code: '123' },
                  },
@@ -82,7 +83,8 @@ module.exports = [
             Number of people: ${session.userData.ppl}
             Reservation Date: ${today}
             Referral Name: ${session.userData.name}
-            Contact Number: ${session.userData.contact}            
+            Contact Number: ${session.userData.contact}  
+            Email Address: ${session.userData.emailAdd}            
             `;
             var event = session.userData.eventname;
             sendEmail(content, event);

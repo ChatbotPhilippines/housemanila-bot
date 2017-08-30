@@ -17,7 +17,7 @@ exports.Prompts = {
     ENTER_EMAIL: `Please enter you email address`, 
     SEVEN_FIFTEEN: 'Alright! Lastly, please enter your contact number so we can send a confirmation code once your table is approved.',
     TABLE_RESERVE: `Under whose name will the table be reserved?
-    Please enter full name:`,
+    Please enter full name:`,    
     GROUP_COUNT: 'How many persons are in the group?'
 };
 

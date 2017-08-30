@@ -4,8 +4,15 @@ var builder = require('botbuilder');
 var consts = require('../helpers/consts');
 
 module.exports = [
+    
+    function(session){        
+        builder.Prompts.text(session, consts.Prompts.ENTER_EMAIL);
+        
 
-        function(session){        
+    },
+
+        function(session, results){      
+        session.userData.emailAdd = results.response;  
         builder.Prompts.text(session, consts.Prompts.TABLE_RESERVE);
         
 
